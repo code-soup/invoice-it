@@ -46,4 +46,16 @@ class Admin {
 		wp_enqueue_script( PLUGIN_NAME . '/wp/js', $this->assets->get('scripts/admin.js'), [], PLUGIN_VERSION, false );
 	}
 
+	/**
+	 * Set Custom Post Types file location using Sober/models
+	 * WordPress plugin to create custom post types and taxonomies using JSON, YAML or PHP files
+	 * Theme uses models.json file located in the directory set in the filter below
+	 *
+	 * @link( https://github.com/soberwp/models, documentation )
+	 */
+	public function sober_models_path() {
+
+		return PLUGIN_PATH . 'includes/models';
+	}
+
 }

@@ -1,0 +1,24 @@
+[
+    {
+        "type": "post-type",
+        "name": "Invoice",
+        "supports": ["title"],
+        "config": {
+            "menu_icon": "dashicons-media-spreadsheet",
+            "publicly_queryable": false,
+            "show_in_nav_menus": false,
+            "has_archive": true
+        }
+    },
+    {
+        "type": "post-type",
+        "name": "Client",
+        "supports": ["title"],
+        "config": {
+            "menu_icon": "dashicons-groups",
+            "publicly_queryable": false,
+            "show_in_nav_menus": false,
+            "has_archive": true
+        }
+    }
+]

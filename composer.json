@@ -27,7 +27,8 @@
     },
 	"require": {
 		"php": ">=7.3.0",
-		"composer/installers": "~1.0"
+		"composer/installers": "~1.0",
+		"soberwp/models": "1.1.0-p"
 	},
 	"extra": {
 		"installer-paths": {
