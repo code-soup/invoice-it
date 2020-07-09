@@ -33,7 +33,7 @@ Make sure all dependencies have been installed before moving on:
 ```shell
 ~/wp-content/plugins/your-plugin-name/
 ```
-Run `git clone git@github.com:code-soup/wordpress-plugin-boilerplate.git .` in that local dir via terminal.
+Run `git clone git@github.com:code-soup/invoice-plugin.git .` in that local dir via terminal.
 All the following comands need to be run in this folder via terminal.
 
 2. Remove template git repo & start fresh (one command at a time)\
