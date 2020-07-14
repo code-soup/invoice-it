@@ -118,8 +118,7 @@ class PluginInit {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_filter( 'sober/models/path', $plugin_admin, 'sober_models_path' );
-		$this->loader->add_filter( 'after_setup_theme', $plugin_admin, 'crb_load' );
-		$this->loader->add_filter( 'carbon_fields_register_fields', $plugin_admin, 'crb_attach_plugin_options' );
+		$this->loader->add_filter( 'after_setup_theme', $plugin_admin, 'load_custom_fields' );
 
 	}
 
