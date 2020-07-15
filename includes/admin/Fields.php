@@ -15,6 +15,9 @@ defined( 'WPINC' ) || die;
  */
 class Fields {
 
+	/**
+	 * Load all custom field configs
+	 */
 	public static function load() {
 
 		self::crb_attach_plugin_options();
@@ -28,26 +31,6 @@ class Fields {
 	 *
 	 * Load all tabs & fields for plugin options
 	 *
-	 * @return void
-	 */
-
-	/**
-	 * 	Name*
-		Address*
-		City*
-		Zip code*
-		Country*
-		State
-		Phone*
-		E-mail*
-		web
-		Logo
-		Legal form*
-		User in the VAT system*
-		Company identification number
-		VAT ID
-		BIC/SWIFT
-		Signature
 	 */
 	public static function crb_attach_plugin_options() {
 		Container::make( 'theme_options', __( 'Invoice Plugin', 'crb' ) )
@@ -112,11 +95,11 @@ class Fields {
 			) );
 	}
 
+
 	/**
 	 * Invoice fields
 	 *
-	**/
-
+	 */
 	public static function crb_attach_invoice_fields() {
 		$item_col_width = 10;
 		Container::make( 'post_meta', __( 'Invoice' ) )
@@ -160,10 +143,6 @@ class Fields {
 					->set_width( 33 ),
 				Field::make( 'date', 'inv_delivery_date', __( 'Delivery Date' ) )
 					->set_width( 33 ),
-				Field::make( 'text', 'inv_office', __( 'Office' ) )
-					->set_width( 50 ),
-				Field::make( 'text', 'inv_billing_device', __( 'Billing Device' ) )
-					->set_width( 50 ),
 				Field::make( 'textarea', 'inv_remark', __( 'Remark' ) ),
 				Field::make( 'separator', 'inv_separator', __( 'Invoice items' ) ),
 				Field::make( 'complex', 'inv_items', __( 'Items' ) )
