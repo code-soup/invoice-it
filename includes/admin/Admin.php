@@ -3,7 +3,6 @@
 namespace csip\admin;
 
 use csip\Assets;
-use csip\admin\Fields;
 
 // Exit if accessed directly
 defined( 'WPINC' ) || die;
@@ -66,6 +65,9 @@ class Admin {
 	 */
 	public function load_custom_fields() {
 		\Carbon_Fields\Carbon_Fields::boot();
-		Fields::load();
+
+		fields\Options::load();
+		fields\Clients::load();
+		fields\Invoice::load();
 	}
 }

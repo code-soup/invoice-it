@@ -12,26 +12,44 @@ defined( 'WPINC' ) || die;
  */
 class Helpers {
 
+	public static function get_clients() {
+
+		$args = array (
+
+			'post_type' => 'client',
+		);
+
+		// $qry = new \WP_Query( $args );
+
+		// return $qry;
+		return array ( 'client-1' => 'Client 1' );
+	}
+
 	public static function get_currencies() {
 		$currencies = curriencies('longlist');
-		$curr_array = [];
+		$array = [];
 
 		foreach ($currencies as $currency) {
-			$curr_array[$currency['iso_4217_code']] = $currency['iso_4217_name'];
+			$array[$currency['iso_4217_code']] = $currency['iso_4217_name'];
 		}
 
-		return $curr_array;
+		array_multisort($array);
+		array_unshift( $array, '-- Select currency' );
+
+		return $array;
 	}
 
 	public static function get_countries() {
 		$countries = countries();
-		$co_array = [];
-		$co_array[''] = 'Select country';
+		$array = [];
 
 		foreach ($countries as $country) {
-			$co_array[$country['iso_3166_1_alpha3']] = $country['name'];
+			$array[$country['iso_3166_1_alpha3']] = $country['name'];
 		}
 
-		return $co_array;
+		array_multisort($array);
+		array_unshift( $array, '-- Select country' );
+
+		return $array;
 	}
 }
