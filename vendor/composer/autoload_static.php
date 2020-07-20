@@ -8,6 +8,7 @@ class ComposerStaticInitaa93ba345fd02098b5d38771c28d939c
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '6632f90381dd49c5fe745d09406b9abb' => __DIR__ . '/..' . '/htmlburger/carbon-field-number/field.php',
         '3c3a02bc9945aa3571024986c07a1e55' => __DIR__ . '/..' . '/rinvex/countries/src/helpers.php',
         '90abbbd1b4ec36aebe50d92b3788f45e' => __DIR__ . '/..' . '/soberwp/models/models.php',
     );
@@ -36,6 +37,7 @@ class ComposerStaticInitaa93ba345fd02098b5d38771c28d939c
         array (
             'Composer\\Installers\\' => 20,
             'Carbon_Fields\\' => 14,
+            'Carbon_Field_Number\\' => 20,
         ),
     );
 
@@ -75,6 +77,10 @@ class ComposerStaticInitaa93ba345fd02098b5d38771c28d939c
         'Carbon_Fields\\' => 
         array (
             0 => __DIR__ . '/..' . '/htmlburger/carbon-fields/core',
+        ),
+        'Carbon_Field_Number\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/htmlburger/carbon-field-number/core',
         ),
     );
 

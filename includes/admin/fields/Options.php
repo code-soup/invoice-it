@@ -91,9 +91,13 @@ class Options
 				Field::make('text', 'csip_company_phone', __('Phone number'))
 					->set_classes('csip-company-phone'),
 			))
-			->add_tab(__('Bank Details'), array(
-				Field::make('complex', 'inv_items', __('Items'))
-					->add_fields(array(
+			->add_tab(__('Account Details'), array(
+				Field::make('complex', 'inv_items', __('Accounts'))
+					->setup_labels( array(
+						'plural_name' => 'Accounts',
+						'singular_name' => 'Account',
+					))
+					->add_fields('bank_account', array(
 						Field::make('text', 'csip_company_bank_name', __('Bank Name'))
 							->set_classes('csip-company-bank-name'),
 						Field::make('text', 'csip_company_bank_address_1', __('Address 1'))
@@ -123,6 +127,11 @@ class Options
 							->set_classes('span-4 csip-company-iban'),
 						Field::make('text', 'csip_company_swift', __('BIC/SWIFT'))
 							->set_classes('span-4 csip-company-swift'),
+					))
+					->add_fields('paypal_account', array(
+						Field::make('text', 'csip_company_paypal_email', __('PayPal Email'))
+							->set_attribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+							->set_classes('csip-company-paypal-email'),
 					))
 			))
 			->add_tab(__('Invoice Options'), array(

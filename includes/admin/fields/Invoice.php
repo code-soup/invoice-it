@@ -51,7 +51,8 @@ class Invoice
 					->set_classes('span-4 inv-status'),
 				Field::make('date', 'inv_date', __('Invoice Date'))
 					->set_classes('span-4 inv-date'),
-				Field::make('text', 'inv_grace_period', __('Grace period in days'))
+				Field::make('number', 'inv_grace_period', __('Grace period in days'))
+					->set_min(0)
 					->set_attribute('data-number')
 					->set_required(true)
 					->set_classes('span-4 inv-grace-period'),
@@ -66,37 +67,36 @@ class Invoice
 	 */
 	public static function fields_items()
 	{
-		$item_col_width = 10;
 		Container::make('post_meta', __('Items list'))
 			->where('post_type', '=', 'invoice')
 			->add_fields(array(
 				Field::make('complex', 'inv_items', __('Items'))
+					->setup_labels( array(
+						'plural_name' => 'Items',
+						'singular_name' => 'Item',
+					))
 					->add_fields(array(
 						Field::make('text', 'inv_item_title', __('Title'))
 							->set_classes('inv-item-title'),
 						Field::make('textarea', 'inv_item_description', __('Description'))
 							->set_rows(2)
 							->set_classes('inv-item-description'),
-						Field::make('text', 'inv_item_quantity', __('Quantity'))
-							// ->set_attribute( 'pattern', '[0-9]' )
-							->set_attribute('min', 1)
+						Field::make('number', 'inv_item_quantity', __('Quantity'))
+							->set_min(0)
 							->set_attribute('data-item-quantity')
 							->set_attribute('data-number')
 							->set_required(true)
 							->set_classes('span-item-col inv-item-quantity'),
 						Field::make('text', 'inv_item_um', __('Unit'))
 							->set_classes('span-item-col inv-item-um'),
-						Field::make('text', 'inv_item_rate', __('Rate'))
-							// ->set_attribute( 'pattern', '[0-9]' )
-							->set_attribute('min', 1)
+						Field::make('number', 'inv_item_rate', __('Rate'))							->set_min(0)
 							->set_attribute('data-item-price')
 							->set_attribute('data-number')
 							->set_required(true)
 							->set_classes('span-item-col inv-item-rate'),
-						Field::make('text', 'inv_item_discount', __('Discount (%)'))
-							// ->set_attribute( 'pattern', '[0-9]' )
-							->set_attribute('min', 1)
-							->set_attribute('max', 100)
+						Field::make('number', 'inv_item_discount', __('Discount (%)'))
+							->set_min(0)
+							->set_max(100)
 							->set_default_value(0)
 							->set_attribute('data-item-discount')
 							->set_attribute('data-number')

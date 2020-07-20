@@ -97,11 +97,13 @@ class Clients
 		Container::make('post_meta', __('Other Details'))
 			->where('post_type', '=', 'client')
 			->add_fields(array(
-				Field::make('text', 'cli_tax_rate', __('Tax Rate (%)'))
+				Field::make('number', 'cli_tax_rate', __('Tax Rate (%)'))
+					->set_min(0)
 					->set_classes('span-6 cli-tax-rate')
 					->set_attribute('data-number')
 					->set_required(true),
-				Field::make('text', 'cli_grace_period', __('Grace Period (Days)'))
+				Field::make('number', 'cli_grace_period', __('Grace Period (Days)'))
+					->set_min(0)
 					->set_classes('span-6 cli-grace-period')
 					->set_attribute('data-number')
 					->set_required(true),

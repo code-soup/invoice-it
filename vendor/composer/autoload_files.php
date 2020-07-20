@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
+    '6632f90381dd49c5fe745d09406b9abb' => $vendorDir . '/htmlburger/carbon-field-number/field.php',
     '3c3a02bc9945aa3571024986c07a1e55' => $vendorDir . '/rinvex/countries/src/helpers.php',
     '90abbbd1b4ec36aebe50d92b3788f45e' => $vendorDir . '/soberwp/models/models.php',
 );
