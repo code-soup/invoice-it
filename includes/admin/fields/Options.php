@@ -30,6 +30,27 @@ class Options
 	 */
 	public static function fields_company()
 	{
+		$gbr_conditional = array(
+			'field' => 'csip_company_bank_country',
+			'value' => 'GBR',
+		);
+
+		$usa_conditional = array(
+			'field' => 'csip_company_bank_country',
+			'value' => 'USA',
+		);
+
+		$can_conditional = array(
+			'field' => 'csip_company_bank_country',
+			'value' => 'CAN',
+		);
+
+		$aus_conditional = array(
+			'field' => 'csip_company_bank_country',
+			'value' => 'AUS',
+		);
+
+
 		Container::make('theme_options', __('Invoice Plugin', 'crb'))
 			->add_tab(__('Branding'), array(
 				Field::make('text', 'csip_company_name', __('Company Name'))
@@ -109,24 +130,41 @@ class Options
 						Field::make('select', 'csip_company_bank_country', __('Country'))
 							->set_options(\csip\admin\Helpers::get_countries())
 							->set_classes('span-6 csip-company-bank-country'),
-						Field::make('separator', 'csip_separator_2', __('UK Bank'))
-							->set_classes('span-4 csip-separator-2'),
-						Field::make('text', 'csip_company_uk_an', __('Account Number'))
-							->set_classes('csip-company-uk-an'),
-						Field::make('text', 'csip_company_uk_sc', __('Sort Code'))
-							->set_classes('span-4 csip-company-uk-sc'),
-						Field::make('separator', 'csip_separator_3', __('USA/Canada Bank'))
-							->set_classes('span-4 csip-separator-3'),
-						Field::make('text', 'csip_company_us_wn', __('Wire Transfer'))
-							->set_classes('span-4 csip-company-us-wn'),
-						Field::make('text', 'csip_company_us_ach', __('ACH'))
-							->set_classes('span-4 csip-company-us-ach'),
-						Field::make('separator', 'csip_separator_4', __('Other'))
-							->set_classes('span-4 csip-separator-4'),
+						Field::make('text', 'csip_company_bank_ca_fin', __('FIN'))
+							->set_classes('span-4 csip-company-bank-ca-fin')
+							->set_help_text( 'Financial Institution number' )
+							->set_conditional_logic(array( $can_conditional )),
+						Field::make('text', 'csip_company_bank_ca_btn', __('BTN'))
+							->set_classes('span-4 csip-company-bank-ca-btn')
+							->set_help_text( 'Branch Transit Number' )
+							->set_conditional_logic(array( $can_conditional )),
+						Field::make('text', 'csip_company_bank_an', __('Account Number'))
+							->set_classes('span-4 csip-company-bank-an')
+							->set_conditional_logic(
+								array('relation' => 'OR', $gbr_conditional, $usa_conditional, $can_conditional, $aus_conditional )
+							),
+						Field::make('text', 'csip_company_bank_gbr_sc', __('Sort Code'))
+							->set_classes('span-6 csip-company-bank_gbr-sc')
+							->set_conditional_logic(array( $gbr_conditional )),
+						Field::make('text', 'csip_company_bank_usa_ach', __('ACH'))
+							->set_classes('span-4 csip-company-bank-usa-ach')
+							->set_help_text( 'Automated Clearing House Routing Number' )
+							->set_conditional_logic(array( $usa_conditional )),
+						Field::make('text', 'csip_company_bank_usa_aba', __('ABA'))
+							->set_classes('span-4 csip-company-bank-usa-aba')
+							->set_help_text( 'American Bankers Association Routing Number' )
+							->set_conditional_logic(array( $usa_conditional )),
+						Field::make('text', 'csip_company_bank_aus_bsb', __('BSB'))
+							->set_classes('span-6 csip-company-bank-aus-bsb')
+							->set_help_text( 'Bank State Branch Code' )
+							->set_conditional_logic(array( $aus_conditional )),
 						Field::make('text', 'csip_company_iban', __('IBAN'))
 							->set_classes('span-4 csip-company-iban'),
-						Field::make('text', 'csip_company_swift', __('BIC/SWIFT'))
+						Field::make('text', 'csip_company_swift', __('SWIFT'))
 							->set_classes('span-4 csip-company-swift'),
+						Field::make('text', 'csip_company_bic', __('BIC'))
+							->set_classes('span-4 csip-company-bic')
+							->set_help_text( 'Bank Identifier Code' ),
 					))
 					->add_fields('paypal_account', array(
 						Field::make('text', 'csip_company_paypal_email', __('PayPal Email'))
