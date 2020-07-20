@@ -37,21 +37,16 @@ class Clients
 			->where('post_type', '=', 'client')
 			->add_fields(array(
 				Field::make('text', 'cli_address_1', __('Address 1'))
-					->set_width(33)
-					->set_classes('cli-address-1'),
+					->set_classes('span-4 cli-address-1'),
 				Field::make('text', 'cli_address_2', __('Address 2'))
-					->set_width(33)
-					->set_classes('cli-address-2'),
+					->set_classes('span-4 cli-address-2'),
 				Field::make('text', 'cli_city', __('City'))
-					->set_width(33)
-					->set_classes('cli-city'),
+					->set_classes('span-4 cli-city'),
 				Field::make('text', 'cli_zip', __('Zip code'))
-					->set_width(33)
-					->set_classes('cli-zip'),
+					->set_classes('span-4 cli-zip'),
 				Field::make('select', 'cli_country', __('Country'))
 					->set_options(\csip\admin\Helpers::get_countries())
-					->set_width(33)
-					->set_classes('cli-country'),
+					->set_classes('span-4 cli-country'),
 				Field::make('select', 'cli_state', __('State'))
 					->set_options(array(
 						'1' => 1,
@@ -60,8 +55,7 @@ class Clients
 						'4' => 4,
 						'5' => 5,
 					))
-					->set_width(33)
-					->set_classes('cli-state'),
+					->set_classes('span-4 cli-state'),
 			));
 	}
 
@@ -75,27 +69,21 @@ class Clients
 			->where('post_type', '=', 'client')
 			->add_fields(array(
 				Field::make('text', 'cli_email', __('Email'))
-					->set_width(33)
 					->set_attribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
-					->set_classes('cli-email'),
+					->set_classes('span-4 cli-email'),
 				Field::make('text', 'cli_phone', __('Phone number'))
-					->set_width(33)
-					->set_classes('cli-phone'),
+					->set_classes('span-4 cli-phone'),
 				Field::make('text', 'cli_mobile', __('Mobile number'))
-					->set_width(33)
-					->set_classes('cli-mobile'),
+					->set_classes('span-4 cli-mobile'),
 				Field::make('complex', 'cli_contacts', __('Other Contacts'))
 					->add_fields(array(
 						Field::make('text', 'cli_contact_name', __('Name'))
-							->set_width(33)
-							->set_classes('cli-contact-name'),
+							->set_classes('span-4 cli-contact-name'),
 						Field::make('text', 'cli_contact_email', __('Email'))
-							->set_width(33)
 							->set_attribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
-							->set_classes('cli-contact-email'),
+							->set_classes('span-4 cli-contact-email'),
 						Field::make('text', 'cli_contact_mobile', __('Mobile number'))
-							->set_width(33)
-							->set_classes('cli-contact-mobile'),
+							->set_classes('span-4 cli-contact-mobile'),
 					)),
 			));
 	}
@@ -110,22 +98,18 @@ class Clients
 			->where('post_type', '=', 'client')
 			->add_fields(array(
 				Field::make('text', 'cli_tax_rate', __('Tax Rate (%)'))
-					->set_width(50)
-					->set_classes('cli-tax-rate')
+					->set_classes('span-6 cli-tax-rate')
 					->set_attribute('data-number')
 					->set_required(true),
-					Field::make('text', 'cli_grace_period', __('Grace Period (Days)'))
-					->set_width(50)
-					->set_classes('cli-grace-period')
+				Field::make('text', 'cli_grace_period', __('Grace Period (Days)'))
+					->set_classes('span-6 cli-grace-period')
 					->set_attribute('data-number')
 					->set_required(true),
 				Field::make('text', 'cli_vatid', __('VAT ID'))
-					->set_width(50)
-					->set_classes('cli-vatid'),
-					Field::make('select', 'cli_currency', __('Currency'))
-					->set_width(50)
+					->set_classes('span-6 cli-vatid'),
+				Field::make('select', 'cli_currency', __('Currency'))
 					->set_options(\csip\admin\Helpers::get_currencies())
-					->set_classes('cli-currency'),
+					->set_classes('span-6 cli-currency'),
 			));
 	}
 

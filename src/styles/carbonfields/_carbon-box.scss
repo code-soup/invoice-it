@@ -1,0 +1,19 @@
+.carbon-box {
+    @include breakpoint(get-bp("laptop-s")) {
+
+        .inside {
+
+            .span-item-col {
+                flex-basis: 15%;
+            }
+
+            .span-4 {
+                flex-basis: 33.3%;
+            }
+
+            .span-6 {
+                flex-basis: 50%;
+            }
+        }
+    }
+}
