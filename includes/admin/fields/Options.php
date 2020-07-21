@@ -103,6 +103,11 @@ class Options
 						Field::make('textarea', 'csip_company_account_details', __('Details'))
 							->set_classes('csip-company-account-details'),
 					))
+					->set_header_template( '
+						<% if (csip_conpany_account_name) { %>
+							<%- csip_conpany_account_name %>
+						<% } %>
+					' )
 			))
 			->add_tab(__('Invoice Options'), array(
 				Field::make('text', 'csip_company_nin', __('Next Invoice Number'))

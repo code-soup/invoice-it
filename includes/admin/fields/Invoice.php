@@ -100,6 +100,11 @@ class Invoice
 							->set_attribute('readOnly', true)
 							->set_classes('span-item-col inv-item-amount'),
 					))
+					->set_header_template( '
+						<% if (inv_item_title) { %>
+							<%- inv_item_title %>
+						<% } %>
+					' )
 					->set_classes('cf-invoice-items'),
 			));
 	}

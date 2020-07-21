@@ -34,11 +34,6 @@ register_activation_hook( __FILE__, ['csip\Activator', 'activate']);
  */
 register_deactivation_hook( __FILE__, ['csip\Deactivator', 'deactivate']);
 
-// echo '<br />';
-// print_r (\csip\admin\Helpers::get_currencies());
-// print_r (\csip\admin\Helpers::get_countries());
-// echo '<br />';
-
 /**
  * Begins execution of the plugin.
  *
