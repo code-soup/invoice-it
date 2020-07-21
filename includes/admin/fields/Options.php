@@ -35,7 +35,6 @@ class Options
 				Field::make('text', 'csip_company_name', __('Company Name'))
 					->set_classes('csip-company-name'),
 				Field::make('text', 'csip_company_web', __('Website'))
-					->set_attribute('pattern', 'https?://.+')
 					->set_classes('csip-company-web'),
 				Field::make('image', 'csip_company_logo', __('Logo'))
 					->set_help_text('An image of your company logo for the Invoice header.')

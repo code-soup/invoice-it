@@ -78,7 +78,7 @@ class Clients
 				Field::make('text', 'cli_mobile', __('Mobile number'))
 					->set_classes('span-6 cli-mobile'),
 				Field::make('complex', 'cli_contacts', __('Other Contacts'))
-					->setup_labels( array(
+					->setup_labels(array(
 						'plural_name' => 'Contacts',
 						'singular_name' => 'Contact',
 					))
@@ -92,11 +92,11 @@ class Clients
 						Field::make('text', 'cli_contact_mobile', __('Mobile number'))
 							->set_classes('span-4 cli-contact-mobile'),
 					))
-					->set_header_template( '
+					->set_header_template('
 						<% if (cli_contact_name) { %>
 							<%- cli_contact_name %>
 						<% } %>
-					' ),
+					'),
 			));
 	}
 
@@ -111,9 +111,11 @@ class Clients
 			->add_fields(array(
 				Field::make('number', 'cli_tax_rate', __('Tax Rate (%)'))
 					->set_min(0)
+					->set_default_value(0)
 					->set_classes('span-6 cli-tax-rate'),
 				Field::make('number', 'cli_net_period', __('Net'))
 					->set_min(0)
+					->set_default_value(30)
 					->set_classes('span-6 cli-net_period')
 					->set_help_text('Days until the payment is due'),
 				Field::make('text', 'cli_vatid', __('VAT ID'))
