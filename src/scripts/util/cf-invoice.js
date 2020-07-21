@@ -10,55 +10,50 @@ export default function () {
 
 
 		// Validate field event
-		$(document).on('carbonFields.validateField', function (e, fieldName, error) {
-			return validateNumber(e, fieldName, error);
-		});
+		// $(document).on('carbonFields.validateField', function (e, fieldName, error) {
+			// return validateNumber(e, fieldName, error);
+		// });
 
 
 		// Fields update event
 		$(document).on('carbonFields.fieldUpdated', function (e, fieldName) {
-			calcAmount(e, fieldName);
+			calcAmount(e);
 			updateDueDate(fieldName);
-			updateGracePeriod(e, fieldName);
+			updateNetPeriod(e, fieldName);
 		});
 
 
 		// Validate number fields
-		function validateNumber (e, fieldName, error) {
-			let active_el = e.target.activeElement;
+		// function validateNumber (e, fieldName, error) {
+			// let active_el = e.target.activeElement;
 
-			if (null !== active_el.getAttribute('data-number')) {
+			// if (null !== active_el.getAttribute('data-number')) {
 
-				let value = api.getFieldValue(fieldName);
-				if (isNaN(value) || parseInt(value) < 0) {
-					return 'Please enter a valid number';
-				}
+			// 	let value = api.getFieldValue(fieldName);
+			// 	if (isNaN(value) || parseInt(value) < 0) {
+			// 		return 'Please enter a valid number';
+			// 	}
 
-				return error;
-			}
+			// 	return error;
+			// }
 
-			return;
-		}
+			// return;
+		// }
 
 
 		// Calculate amount field for an item
-		function calcAmount (e, fieldName) {
+		function calcAmount (e) {
 			let active_el = e.target.activeElement;
+			// console.log(active_el);
 
-			if (null !== active_el.getAttribute('data-number')) {
-
-				let value = api.getFieldValue(fieldName);
-
-				if (isNaN(value) || value < 0) {
-					return;
-				}
+			if (active_el.type === 'number') {
 
 				let
 					parent_el = active_el.closest('.fields-container'),
-					amount_el = $(parent_el).find('[data-item-amount]'),
-					quantity = $(parent_el).find('[data-item-quantity]').val(),
-					price = $(parent_el).find('[data-item-price]').val(),
-					discount = $(parent_el).find('[data-item-discount]').val(),
+					amount_el = $(parent_el).find('.inv-item-amount input'),
+					quantity = $(parent_el).find('.inv-item-quantity input').val(),
+					price = $(parent_el).find('.inv-item-rate input').val(),
+					discount = $(parent_el).find('.inv-item-discount input').val(),
 					amount;
 
 				amount = (quantity * price) - ((quantity * price) * (discount / 100));
@@ -71,29 +66,29 @@ export default function () {
 		}
 
 
-		// Update due date based on grace period
+		// Update due date based on net period
 		function updateDueDate(fieldName) {
-			if (fieldName === 'inv_grace_period' || fieldName === 'inv_date') {
+			if (fieldName === 'inv_net_period' || fieldName === 'inv_date') {
 
-				let gracePeriod = api.getFieldValue('inv_grace_period');
-				if (gracePeriod === '' || gracePeriod < 0 || isNaN(gracePeriod)) {
+				let netPeriod = api.getFieldValue('inv_net_period');
+				if (netPeriod === '' || netPeriod < 0 || isNaN(netPeriod)) {
 					return;
 				}
 
 				let invDate = new Date(api.getFieldValue('inv_date'));
-				invDate.setDate(invDate.getDate() + parseInt(gracePeriod));
+				invDate.setDate(invDate.getDate() + parseInt(netPeriod));
 				api.setFieldValue('inv_due_date', invDate.toISOString().slice(0, 10));
 			}
 		}
 
 
-		// update grace period based on due date
-		function updateGracePeriod (e, fieldName) {
+		// update net period based on due date
+		function updateNetPeriod (e, fieldName) {
 			if (fieldName === 'inv_due_date') {
 
 				let active_el = e.target.activeElement,
 					parent_el = active_el.closest('.carbon-container'),
-					gp_el = $(parent_el).find('[name=_inv_grace_period]');
+					gp_el = $(parent_el).find('[name=_inv_net_period]');
 
 				let diff = new Date(api.getFieldValue('inv_due_date')) - new Date(api.getFieldValue('inv_date'));
 

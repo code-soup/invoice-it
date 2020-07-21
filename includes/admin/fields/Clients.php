@@ -100,13 +100,12 @@ class Clients
 				Field::make('number', 'cli_tax_rate', __('Tax Rate (%)'))
 					->set_min(0)
 					->set_classes('span-6 cli-tax-rate')
-					->set_attribute('data-number')
 					->set_required(true),
-				Field::make('number', 'cli_grace_period', __('Grace Period (Days)'))
+				Field::make('number', 'cli_net_period', __('Net'))
 					->set_min(0)
-					->set_classes('span-6 cli-grace-period')
-					->set_attribute('data-number')
-					->set_required(true),
+					->set_classes('span-6 cli-net_period')
+					->set_required(true)
+					->set_help_text('Days until the payment is due'),
 				Field::make('text', 'cli_vatid', __('VAT ID'))
 					->set_classes('span-6 cli-vatid'),
 				Field::make('select', 'cli_currency', __('Currency'))

@@ -30,27 +30,6 @@ class Options
 	 */
 	public static function fields_company()
 	{
-		$gbr_conditional = array(
-			'field' => 'csip_company_bank_country',
-			'value' => 'GBR',
-		);
-
-		$usa_conditional = array(
-			'field' => 'csip_company_bank_country',
-			'value' => 'USA',
-		);
-
-		$can_conditional = array(
-			'field' => 'csip_company_bank_country',
-			'value' => 'CAN',
-		);
-
-		$aus_conditional = array(
-			'field' => 'csip_company_bank_country',
-			'value' => 'AUS',
-		);
-
-
 		Container::make('theme_options', __('Invoice Plugin', 'crb'))
 			->add_tab(__('Branding'), array(
 				Field::make('text', 'csip_company_name', __('Company Name'))
@@ -87,6 +66,13 @@ class Options
 					))
 					->set_classes('span-6 csip-company-state'),
 			))
+			->add_tab(__('Contact'), array(
+				Field::make('text', 'csip_company_email', __('Email'))
+					->set_attribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+					->set_classes('csip-company-email'),
+				Field::make('text', 'csip_company_phone', __('Phone number'))
+					->set_classes('csip-company-phone'),
+			))
 			->add_tab(__('Legal'), array(
 				Field::make('text', 'csip_company_id', __('Company ID'))
 					->set_classes('csip-company-id'),
@@ -105,71 +91,17 @@ class Options
 					))
 					->set_classes('span-6 csip-company-vatid'),
 			))
-			->add_tab(__('Contact'), array(
-				Field::make('text', 'csip_company_email', __('Email'))
-					->set_attribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
-					->set_classes('csip-company-email'),
-				Field::make('text', 'csip_company_phone', __('Phone number'))
-					->set_classes('csip-company-phone'),
-			))
-			->add_tab(__('Account Details'), array(
+			->add_tab(__('Bank Details'), array(
 				Field::make('complex', 'inv_items', __('Accounts'))
 					->setup_labels( array(
 						'plural_name' => 'Accounts',
 						'singular_name' => 'Account',
 					))
-					->add_fields('bank_account', array(
-						Field::make('text', 'csip_company_bank_name', __('Bank Name'))
-							->set_classes('csip-company-bank-name'),
-						Field::make('text', 'csip_company_bank_address_1', __('Address 1'))
-							->set_classes('span-6 csip-company-bank-address'),
-						Field::make('text', 'csip_company_bank_address_2', __('Address 2'))
-							->set_classes('span-6 csip-company-bank-address'),
-						Field::make('text', 'csip_company_bank_city', __('City'))
-							->set_classes('span-6 csip-company-bank-city'),
-						Field::make('select', 'csip_company_bank_country', __('Country'))
-							->set_options(\csip\admin\Helpers::get_countries())
-							->set_classes('span-6 csip-company-bank-country'),
-						Field::make('text', 'csip_company_bank_ca_fin', __('FIN'))
-							->set_classes('span-4 csip-company-bank-ca-fin')
-							->set_help_text( 'Financial Institution number' )
-							->set_conditional_logic(array( $can_conditional )),
-						Field::make('text', 'csip_company_bank_ca_btn', __('BTN'))
-							->set_classes('span-4 csip-company-bank-ca-btn')
-							->set_help_text( 'Branch Transit Number' )
-							->set_conditional_logic(array( $can_conditional )),
-						Field::make('text', 'csip_company_bank_an', __('Account Number'))
-							->set_classes('span-4 csip-company-bank-an')
-							->set_conditional_logic(
-								array('relation' => 'OR', $gbr_conditional, $usa_conditional, $can_conditional, $aus_conditional )
-							),
-						Field::make('text', 'csip_company_bank_gbr_sc', __('Sort Code'))
-							->set_classes('span-6 csip-company-bank_gbr-sc')
-							->set_conditional_logic(array( $gbr_conditional )),
-						Field::make('text', 'csip_company_bank_usa_ach', __('ACH'))
-							->set_classes('span-4 csip-company-bank-usa-ach')
-							->set_help_text( 'Automated Clearing House Routing Number' )
-							->set_conditional_logic(array( $usa_conditional )),
-						Field::make('text', 'csip_company_bank_usa_aba', __('ABA'))
-							->set_classes('span-4 csip-company-bank-usa-aba')
-							->set_help_text( 'American Bankers Association Routing Number' )
-							->set_conditional_logic(array( $usa_conditional )),
-						Field::make('text', 'csip_company_bank_aus_bsb', __('BSB'))
-							->set_classes('span-6 csip-company-bank-aus-bsb')
-							->set_help_text( 'Bank State Branch Code' )
-							->set_conditional_logic(array( $aus_conditional )),
-						Field::make('text', 'csip_company_iban', __('IBAN'))
-							->set_classes('span-4 csip-company-iban'),
-						Field::make('text', 'csip_company_swift', __('SWIFT'))
-							->set_classes('span-4 csip-company-swift'),
-						Field::make('text', 'csip_company_bic', __('BIC'))
-							->set_classes('span-4 csip-company-bic')
-							->set_help_text( 'Bank Identifier Code' ),
-					))
-					->add_fields('paypal_account', array(
-						Field::make('text', 'csip_company_paypal_email', __('PayPal Email'))
-							->set_attribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
-							->set_classes('csip-company-paypal-email'),
+					->add_fields('account', array(
+						Field::make('text', 'csip_conpany_account_name', __('Name'))
+							->set_classes('csip-company-account-name'),
+						Field::make('textarea', 'csip_company_account_details', __('Details'))
+							->set_classes('csip-company-account-details'),
 					))
 			))
 			->add_tab(__('Invoice Options'), array(
