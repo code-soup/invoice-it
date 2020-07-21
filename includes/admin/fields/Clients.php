@@ -111,12 +111,10 @@ class Clients
 			->add_fields(array(
 				Field::make('number', 'cli_tax_rate', __('Tax Rate (%)'))
 					->set_min(0)
-					->set_classes('span-6 cli-tax-rate')
-					->set_required(true),
+					->set_classes('span-6 cli-tax-rate'),
 				Field::make('number', 'cli_net_period', __('Net'))
 					->set_min(0)
 					->set_classes('span-6 cli-net_period')
-					->set_required(true)
 					->set_help_text('Days until the payment is due'),
 				Field::make('text', 'cli_vatid', __('VAT ID'))
 					->set_classes('span-6 cli-vatid'),
