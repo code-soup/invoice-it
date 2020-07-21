@@ -32,16 +32,17 @@ class Invoice
 	 */
 	public static function fields_general()
 	{
-		Container::make('post_meta', __('General'))
+		Container::make('post_meta', __('General', 'cs-invoice-plugin'))
 			->where('post_type', '=', 'invoice')
 			->add_fields(array(
-				Field::make('text', 'inv_number', __('Invoice number'))
+				Field::make('text', 'inv_number', __('Invoice number', 'cs-invoice-plugin'))
 					->set_attribute('readOnly', true)
+					->set_default_value(\csip\admin\Helpers::get_invoice_number())
 					->set_classes('span-4 inv-number'),
-				Field::make('select', 'inv_client', __('Client'))
+				Field::make('select', 'inv_client', __('Client', 'cs-invoice-plugin'))
 					->set_options(\csip\admin\Helpers::get_clients())
 					->set_classes('span-4 inv-client'),
-				Field::make('select', 'inv_status', __('Invoice Status'))
+				Field::make('select', 'inv_status', __('Invoice Status', 'cs-invoice-plugin'))
 					->set_options(array(
 						'' => __('-- Please Select'),
 						'inv_outstanding' => 'Outstanding',
@@ -49,13 +50,13 @@ class Invoice
 						'inv_partially_paid' => 'Partially Paid',
 					))
 					->set_classes('span-4 inv-status'),
-				Field::make('date', 'inv_date', __('Invoice Date'))
+				Field::make('date', 'inv_date', __('Invoice Date', 'cs-invoice-plugin'))
 					->set_classes('span-4 inv-date'),
-				Field::make('number', 'inv_net_period', __('Net'))
+				Field::make('number', 'inv_net_period', __('Net', 'cs-invoice-plugin'))
 					->set_min(0)
 					->set_classes('span-4 inv-net-period')
 					->set_help_text('Days until the payment is due'),
-				Field::make('date', 'inv_due_date', __('Invoice Due Date'))
+				Field::make('date', 'inv_due_date', __('Invoice Due Date', 'cs-invoice-plugin'))
 					->set_classes('span-4 inv-due-date'),
 			));
 	}
@@ -66,33 +67,33 @@ class Invoice
 	 */
 	public static function fields_items()
 	{
-		Container::make('post_meta', __('Items list'))
+		Container::make('post_meta', __('Items list', 'cs-invoice-plugin'))
 			->where('post_type', '=', 'invoice')
 			->add_fields(array(
-				Field::make('complex', 'inv_items', __('Items'))
+				Field::make('complex', 'inv_items', __('Items', 'cs-invoice-plugin'))
 					->setup_labels( array(
 						'plural_name' => 'Items',
 						'singular_name' => 'Item',
 					))
 					->add_fields(array(
-						Field::make('text', 'inv_item_title', __('Title'))
+						Field::make('text', 'inv_item_title', __('Title', 'cs-invoice-plugin'))
 							->set_classes('inv-item-title'),
-						Field::make('textarea', 'inv_item_description', __('Description'))
+						Field::make('textarea', 'inv_item_description', __('Description', 'cs-invoice-plugin'))
 							->set_rows(2)
 							->set_classes('inv-item-description'),
-						Field::make('number', 'inv_item_quantity', __('Quantity'))
+						Field::make('number', 'inv_item_quantity', __('Quantity', 'cs-invoice-plugin'))
 							->set_min(0)
 							->set_classes('span-item-col inv-item-quantity'),
-						Field::make('text', 'inv_item_um', __('Unit'))
+						Field::make('text', 'inv_item_um', __('Unit', 'cs-invoice-plugin'))
 							->set_classes('span-item-col inv-item-um'),
-						Field::make('number', 'inv_item_rate', __('Rate'))							->set_min(0)
+						Field::make('number', 'inv_item_rate', __('Rate', 'cs-invoice-plugin'))							->set_min(0)
 							->set_classes('span-item-col inv-item-rate'),
 						Field::make('number', 'inv_item_discount', __('Discount (%)'))
 							->set_min(0)
 							->set_max(100)
 							->set_default_value(0)
 							->set_classes('span-item-col inv-item-discount'),
-						Field::make('text', 'inv_item_amount', __('Amount'))
+						Field::make('text', 'inv_item_amount', __('Amount', 'cs-invoice-plugin'))
 							->set_attribute('readOnly', true)
 							->set_classes('span-item-col inv-item-amount'),
 					))
@@ -111,10 +112,10 @@ class Invoice
 	 */
 	public static function fields_note()
 	{
-		Container::make('post_meta', __('Note'))
+		Container::make('post_meta', __('Note', 'cs-invoice-plugin'))
 			->where('post_type', '=', 'invoice')
 			->add_fields(array(
-				Field::make('textarea', 'inv_comment', __('Comment'))
+				Field::make('textarea', 'inv_comment', __('Comment', 'cs-invoice-plugin'))
 					->set_classes('inv-comment'),
 			));
 	}
