@@ -68,14 +68,21 @@ class Clients
 		Container::make('post_meta', __('Contact Details'))
 			->where('post_type', '=', 'client')
 			->add_fields(array(
+				Field::make('text', 'cli_name', __('Name'))
+					->set_classes('span-6 cli-name'),
 				Field::make('text', 'cli_email', __('Email'))
 					->set_attribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
-					->set_classes('span-4 cli-email'),
+					->set_classes('span-6 cli-email'),
 				Field::make('text', 'cli_phone', __('Phone number'))
-					->set_classes('span-4 cli-phone'),
+					->set_classes('span-6 cli-phone'),
 				Field::make('text', 'cli_mobile', __('Mobile number'))
-					->set_classes('span-4 cli-mobile'),
+					->set_classes('span-6 cli-mobile'),
 				Field::make('complex', 'cli_contacts', __('Other Contacts'))
+					->setup_labels( array(
+						'plural_name' => 'Contacts',
+						'singular_name' => 'Contact',
+					))
+					->set_layout('tabbed-vertical')
 					->add_fields(array(
 						Field::make('text', 'cli_contact_name', __('Name'))
 							->set_classes('span-4 cli-contact-name'),
@@ -84,7 +91,12 @@ class Clients
 							->set_classes('span-4 cli-contact-email'),
 						Field::make('text', 'cli_contact_mobile', __('Mobile number'))
 							->set_classes('span-4 cli-contact-mobile'),
-					)),
+					))
+					->set_header_template( '
+						<% if (cli_contact_name) { %>
+							<%- cli_contact_name %>
+						<% } %>
+					' ),
 			));
 	}
 
