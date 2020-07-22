@@ -59,15 +59,26 @@ class Admin {
 	}
 
 	/**
-	 * 1. Boot Carbon Fields with default IoC dependencies
-	 * 2. Load Custom fields
-	 * @return void
+	 * Boot Carbon Fields with default IoC dependencies
 	 */
-	public function load_custom_fields() {
+	public function boot_custom_fields() {
+
 		\Carbon_Fields\Carbon_Fields::boot();
+	}
+
+	/**
+	 * Load Custom fields
+	 */
+	public function register_custom_fields() {
 
 		fields\Options::load();
 		fields\Clients::load();
 		fields\Invoice::load();
+	}
+
+	// Hook to handle next invoice number
+	public function onsave_custom_fields() {
+
+		add_action('carbon_fields_post_meta_container_saved', Helpers::set_invoice_number());
 	}
 }

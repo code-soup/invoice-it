@@ -3,29 +3,52 @@
 namespace csip\admin;
 
 // Exit if accessed directly
-defined( 'WPINC' ) || die;
+defined('WPINC') || die;
 
 
 /**
  * Class contains helper functions for admin.
  *
  */
-class Helpers {
+class Helpers
+{
 
-	public static function get_clients() {
+	public static function get_invoice_number()
+	{
 
-		$args = array (
+		return get_option('_csip_company_nin');
+	}
+
+	public static function set_invoice_number()
+	{
+
+		// update_option( '_csip_company_nin', '11' );
+	}
+
+	public static function get_clients()
+	{
+
+		$args = array(
 
 			'post_type' => 'client',
 		);
 
-		// $qry = new \WP_Query( $args );
+		$qry = new \WP_Query($args);
 
-		// return $qry;
-		return array ( 'client-1' => 'Client 1' );
+		$clients = [];
+		foreach ($qry->posts as $client) {
+
+			$clients[$client->ID] = $client->post_title;
+		}
+
+		array_multisort($clients);
+		array_unshift($clients, '-- Select Client');
+
+		return $clients;
 	}
 
-	public static function get_currencies() {
+	public static function get_currencies()
+	{
 		$currencies = curriencies('longlist');
 		$array = [];
 
@@ -34,12 +57,13 @@ class Helpers {
 		}
 
 		array_multisort($array);
-		array_unshift( $array, '-- Select currency' );
+		array_unshift($array, '-- Select currency');
 
 		return $array;
 	}
 
-	public static function get_countries() {
+	public static function get_countries()
+	{
 		$countries = countries();
 		$array = [];
 
@@ -48,7 +72,7 @@ class Helpers {
 		}
 
 		array_multisort($array);
-		array_unshift( $array, '-- Select country' );
+		array_unshift($array, '-- Select country');
 
 		return $array;
 	}

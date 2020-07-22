@@ -55,7 +55,7 @@ class Options
 					->set_classes('span-6 csip-company-zip'),
 				Field::make('select', 'csip_company_country', __('Country', 'cs-invoice-plugin'))
 					->set_options(\csip\admin\Helpers::get_countries())
-					->set_classes('span-6 csip-company-country'),
+					->set_classes('span-6 csip-company-country csip-select2'),
 				Field::make('select', 'csip_company_state', __('State', 'cs-invoice-plugin'))
 					->set_options(array(
 						'1' => 1,
@@ -110,8 +110,9 @@ class Options
 					' )
 			))
 			->add_tab(__('Invoice Options', 'cs-invoice-plugin'), array(
-				Field::make('text', 'csip_company_nin', __('Next Invoice Number', 'cs-invoice-plugin'))
+				Field::make('number', 'csip_company_nin', __('Next Invoice Number', 'cs-invoice-plugin'))
 					->set_help_text('This will be the next Invoice number, change this only if you need to reset it.')
+					->set_default_value(0)
 					->set_classes('csip-company-nin'),
 				Field::make('textarea', 'csip_company_tnc', __('Terms & Conditions'))
 					->set_classes('csip-company-tna'),
