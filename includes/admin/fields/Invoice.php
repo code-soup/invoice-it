@@ -41,7 +41,7 @@ class Invoice
 					->set_classes('span-4 inv-number'),
 				Field::make('select', 'inv_client', __('Client', 'cs-invoice-plugin'))
 					->set_options(\csip\admin\Helpers::get_clients())
-					->set_classes('span-4 inv-client'),
+					->set_classes('span-4 inv-client csip-select2'),
 				Field::make('select', 'inv_status', __('Invoice Status', 'cs-invoice-plugin'))
 					->set_options(array(
 						'' => __('-- Please Select'),
@@ -49,7 +49,7 @@ class Invoice
 						'inv_paid' => 'Paid',
 						'inv_partially_paid' => 'Partially Paid',
 					))
-					->set_classes('span-4 inv-status'),
+					->set_classes('span-4 inv-status csip-select2'),
 				Field::make('date', 'inv_date', __('Invoice Date', 'cs-invoice-plugin'))
 					->set_classes('span-4 inv-date'),
 				Field::make('number', 'inv_net_period', __('Net', 'cs-invoice-plugin'))

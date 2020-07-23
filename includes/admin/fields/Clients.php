@@ -46,7 +46,7 @@ class Clients
 					->set_classes('span-4 cli-zip'),
 				Field::make('select', 'cli_country', __('Country', 'cs-invoice-plugin'))
 					->set_options(\csip\admin\Helpers::get_countries())
-					->set_classes('span-4 cli-country'),
+					->set_classes('span-4 cli-country csip-select2'),
 				Field::make('select', 'cli_state', __('State', 'cs-invoice-plugin'))
 					->set_options(array(
 						'1' => 1,
@@ -55,7 +55,7 @@ class Clients
 						'4' => 4,
 						'5' => 5,
 					))
-					->set_classes('span-4 cli-state'),
+					->set_classes('span-4 cli-state csip-select2'),
 			));
 	}
 
@@ -122,7 +122,7 @@ class Clients
 					->set_classes('span-6 cli-vatid'),
 				Field::make('select', 'cli_currency', __('Currency', 'cs-invoice-plugin'))
 					->set_options(\csip\admin\Helpers::get_currencies())
-					->set_classes('span-6 cli-currency'),
+					->set_classes('span-6 cli-currency csip-select2'),
 			));
 	}
 

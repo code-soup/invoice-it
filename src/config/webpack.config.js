@@ -39,7 +39,11 @@ let webpackConfig = {
         hints: "error",
     },
     plugins: require("./webpack/config.plugins"),
-    optimization: require("./webpack/config.optimization"),
+	optimization: require("./webpack/config.optimization"),
+	performance: {
+		maxEntrypointSize: 512000,
+		maxAssetSize: 512000
+	}
 };
 
 /**

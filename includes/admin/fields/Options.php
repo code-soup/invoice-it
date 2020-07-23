@@ -64,7 +64,7 @@ class Options
 						'4' => 4,
 						'5' => 5,
 					))
-					->set_classes('span-6 csip-company-state'),
+					->set_classes('span-6 csip-company-state csip-select2'),
 			))
 			->add_tab(__('Contact', 'cs-invoice-plugin'), array(
 				Field::make('text', 'csip_company_email', __('Email', 'cs-invoice-plugin'))
