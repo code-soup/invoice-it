@@ -1,6 +1,4 @@
-/* eslint-disable */
-import select2 from 'select2';
-/* eslint-enable */
+import select2 from 'select2'; // eslint-disable-line no-unused-vars
 
 export default function () {
 
