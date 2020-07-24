@@ -5,9 +5,9 @@
         "supports": ["title"],
         "config": {
             "menu_icon": "dashicons-media-spreadsheet",
-            "publicly_queryable": false,
+            "publicly_queryable": true,
             "show_in_nav_menus": false,
-            "has_archive": true
+			"has_archive": true
         }
     },
     {

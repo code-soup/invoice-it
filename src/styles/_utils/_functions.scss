@@ -93,6 +93,18 @@
  */
 
 /**
+ * Grid property name
+ */
+
+@function get_opt($name) {
+    @if map-has-key($grid, $name) {
+        @return map-get($grid, $name);
+    }
+    @warn "Unknown `# {$name}` in $grid.";
+    @return null;
+}
+
+/**
  * Columns span
  */
 

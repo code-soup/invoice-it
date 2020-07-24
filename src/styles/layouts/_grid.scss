@@ -1,0 +1,21 @@
+.csip {
+
+    &-container {
+        margin: 0 auto;
+        position: relative;
+        max-width: get_opt("container");
+        padding-left: gutter(true);
+        padding-right: gutter(true);
+    }
+
+    &-row {
+        margin-left: - gutter(true);
+        margin-right: - gutter(true);
+
+        > [class^="csip-span-"] {
+            position: relative;
+            padding-left: gutter(true);
+            padding-right: gutter(true);
+        }
+    }
+}

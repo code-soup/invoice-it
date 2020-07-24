@@ -39,10 +39,11 @@ class Options
 					->set_classes('csip-company-web'),
 				Field::make('image', 'csip_company_logo', __('Logo', 'cs-invoice-plugin'))
 					->set_help_text('An image of your company logo for the Invoice header.')
-					->set_classes('span-6 csip-company-logo'),
+					->set_classes('span-6 csip-company-logo')->set_value_type( 'url' ),
 				Field::make('image', 'csip_company_signature', __('Signature', 'cs-invoice-plugin'))
 					->set_help_text('A .png image of your signature if you want to insert it into Invoices.')
-					->set_classes('span-6 csip-company-signature'),
+					->set_classes('span-6 csip-company-signature')
+					->set_value_type( 'url' ),
 			))
 			->add_tab(__('Address', 'cs-invoice-plugin'), array(
 				Field::make('text', 'csip_company_address_1', __('Address 1'))
@@ -57,13 +58,7 @@ class Options
 					->set_options(\csip\admin\Helpers::get_countries())
 					->set_classes('span-6 csip-company-country csip-select2'),
 				Field::make('select', 'csip_company_state', __('State', 'cs-invoice-plugin'))
-					->set_options(array(
-						'1' => 1,
-						'2' => 2,
-						'3' => 3,
-						'4' => 4,
-						'5' => 5,
-					))
+					->set_options(\csip\admin\Helpers::get_states())
 					->set_classes('span-6 csip-company-state csip-select2'),
 			))
 			->add_tab(__('Contact', 'cs-invoice-plugin'), array(
@@ -92,7 +87,7 @@ class Options
 					->set_classes('span-6 csip-company-vatid'),
 			))
 			->add_tab(__('Bank Details', 'cs-invoice-plugin'), array(
-				Field::make('complex', 'inv_items', __('Accounts', 'cs-invoice-plugin'))
+				Field::make('complex', 'csip_company_bank_accounts', __('Accounts', 'cs-invoice-plugin'))
 					->setup_labels( array(
 						'plural_name' => 'Accounts',
 						'singular_name' => 'Account',
@@ -110,16 +105,20 @@ class Options
 					' )
 			))
 			->add_tab(__('Invoice Options', 'cs-invoice-plugin'), array(
+				Field::make('text', 'csip_company_prefix', __('Invoice Prefix', 'cs-invoice-plugin'))
+					->set_attribute('maxLength', 4)
+					->set_help_text('If needed you can prefix the invoice number with up to 4 characters in the print version of the invoice.')
+					->set_classes('span-6 csip-company-prefix'),
 				Field::make('number', 'csip_company_nin', __('Next Invoice Number', 'cs-invoice-plugin'))
 					->set_help_text('This will be the next Invoice number, change this only if you need to reset it.')
 					->set_default_value(0)
-					->set_classes('csip-company-nin'),
-				Field::make('textarea', 'csip_company_tnc', __('Terms & Conditions'))
-					->set_classes('csip-company-tna'),
+					->set_classes('span-6 csip-company-nin'),
+				Field::make('textarea', 'csip_company_terms', __('Terms & Conditions'))
+					->set_classes('csip-company-terms'),
 				Field::make('textarea', 'csip_company_note', __('Note', 'cs-invoice-plugin'))
 					->set_classes('csip-company-dis'),
-				Field::make('text', 'csip_company_ftext', __('Footer Text', 'cs-invoice-plugin'))
-					->set_classes('csip-company-ftext'),
+				Field::make('text', 'csip_company_footertext', __('Footer Text', 'cs-invoice-plugin'))
+					->set_classes('csip-company-footertext'),
 			));
 	}
 }

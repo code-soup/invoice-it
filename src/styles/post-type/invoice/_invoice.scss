@@ -1,0 +1,110 @@
+.csip-invoice {
+    @import "~normalize.css/normalize.css";
+
+    background-color: get_color("white");
+    padding: 50px 50px 20px;
+    margin: 50px 0;
+
+    .csip-row {
+        display: flex;
+    }
+
+    .csip-span-4 {
+        width: span(4);
+    }
+
+    .csip-span-6 {
+        width: span(6);
+    }
+
+    .csip-span-8 {
+        width: span(8);
+    }
+
+    .csip-company {
+
+        &-logo {
+            //
+        }
+    }
+
+    &-info {
+        padding-top: 80px;
+    }
+
+    &-title {
+        margin-top: 0;
+
+        &-text {
+            padding-right: 30px;
+        }
+    }
+
+    &-list {
+        margin: 0;
+        padding-left: 0;
+
+        li {
+            list-style-type: none;
+            margin-left: 0;
+        }
+
+        &-label {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+
+    &-table {
+        border-collapse: collapse;
+		border: none;
+		margin-top: 80px;
+
+        th,
+        td {
+			border-top: none;
+            border-right: none;
+            border-left: none;
+		}
+
+		tbody,
+		thead {
+
+			text-align: center;
+
+			th,
+			td {
+
+				&:first-child {
+					text-align: left;
+				}
+			}
+		}
+
+        th {
+            border-bottom: 2px solid get_color("brand");
+		}
+
+        &-empty-cell {
+            border-bottom: none;
+        }
+
+        &-entry {
+            border-bottom: 1px solid get_color("grey");
+		}
+
+        &-label {
+            text-transform: uppercase;
+        }
+
+        &-row-total {
+            font-weight: bold;
+        }
+	}
+
+	&-footer {
+		margin-top: 50px;
+		padding-top: 5px;
+		border-top: 1px solid get_color('grey');
+	}
+}

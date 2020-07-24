@@ -37,14 +37,14 @@ class Helpers
 
 		$clients = [];
 		foreach ($qry->posts as $client) {
-
 			$clients[$client->ID] = $client->post_title;
 		}
 
-		array_multisort($clients);
-		array_unshift($clients, '-- Select Client');
+		asort($clients);
+		$first_option = array("0" => '-- Select Client');
+		$array = $first_option + $clients;
 
-		return $clients;
+		return $array;
 	}
 
 	public static function get_currencies()
@@ -56,7 +56,7 @@ class Helpers
 			$array[$currency['iso_4217_code']] = $currency['iso_4217_name'];
 		}
 
-		array_multisort($array);
+		asort($array);
 		array_unshift($array, '-- Select currency');
 
 		return $array;
@@ -71,8 +71,22 @@ class Helpers
 			$array[$country['iso_3166_1_alpha3']] = $country['name'];
 		}
 
-		array_multisort($array);
+		asort($array);
 		array_unshift($array, '-- Select country');
+
+		return $array;
+	}
+
+	public static function get_states()
+	{
+		$array = array(
+			'0' => '-- Select State',
+			'1' => 'Alabama',
+			'2' => 2,
+			'3' => 3,
+			'4' => 4,
+			'5' => 5,
+		);
 
 		return $array;
 	}

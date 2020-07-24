@@ -48,13 +48,7 @@ class Clients
 					->set_options(\csip\admin\Helpers::get_countries())
 					->set_classes('span-4 cli-country csip-select2'),
 				Field::make('select', 'cli_state', __('State', 'cs-invoice-plugin'))
-					->set_options(array(
-						'1' => 1,
-						'2' => 2,
-						'3' => 3,
-						'4' => 4,
-						'5' => 5,
-					))
+					->set_options(\csip\admin\Helpers::get_states())
 					->set_classes('span-4 cli-state csip-select2'),
 			));
 	}
