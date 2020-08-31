@@ -2,14 +2,20 @@
  * Font sizing shortend
  */
 
-@mixin font-size($font-size, $line-height, $letter-spacing) {
-    @if ($font-size) {
-        font-size: calc-rem($font-size);
+ @mixin font-size($size, $line-height: get-font("base-size"), $letter-spacing: 35) {
+    @if ($size) {
+        font-size: calc-rem($size);
     }
-    @if ($line-height) {
-        line-height: calc-leading($font-size, $line-height);
+
+    @if ($line-height == 1) {
+        line-height: 1;
     }
-    @if ($letter-spacing) {
+
+    @if ($line-height != get-font("base-size")) {
+        line-height: calc-leading($size, $line-height);
+    }
+
+    @if ($letter-spacing != 0) {
         letter-spacing: calc-spacing($letter-spacing);
     }
 }
