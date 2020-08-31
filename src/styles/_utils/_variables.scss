@@ -4,7 +4,7 @@
 $grid: (
     "gutter": 20px,
     "columns": 12,
-    "container": 1200px
+    "container": 1200px,
 );
 
 /**
@@ -23,7 +23,8 @@ $colors: (
     "brand": #0c5a9a,
     "black": #000,
     "white": #fff,
-    "grey": #aaa
+    "grey-a": #aaa,
+    "grey-c": #ccc,
 );
 
 /**
@@ -42,5 +43,5 @@ $breakpoints: (
     "desktop-s": 1400px,
     "desktop-m": 1640px,
     "desktop-l": 1880px,
-    "desktop-xl": 2480px
+    "desktop-xl": 2480px,
 );
