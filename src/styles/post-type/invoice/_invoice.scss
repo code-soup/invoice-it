@@ -1,6 +1,4 @@
 .csip-invoice {
-    @import "~normalize.css/normalize.css";
-
     background-color: get_color("white");
     padding: 50px 50px 20px;
     margin: 50px 0;
@@ -23,29 +21,33 @@
             width: span(8);
         }
 
-        &-company {
-
-            &-logo {
-                //
-            }
+        &-company-logo .thumb span {
+            padding-top: 38%;
+            background-position: right;
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: block;
         }
     }
 
     &-info {
-        padding-top: 80px;
+        margin-top: 40px;
     }
 
     &-title {
         margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 19pt;
 
         &-text {
-            padding-right: 30px;
+            padding-right: 10px;
         }
     }
 
     &-list {
         margin: 0;
         padding-left: 0;
+        font-size: 11pt;
 
         li {
             list-style-type: none;
@@ -53,25 +55,36 @@
         }
 
         &-label {
+			margin-top: 0;
             text-transform: uppercase;
             font-weight: bold;
+        }
+
+        &-entry {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 15pt;
         }
     }
 
     &-table {
         border-collapse: collapse;
         border: none;
-        margin-top: 80px;
+        margin-top: 50px;
 
         th,
         td {
             border-top: none;
             border-right: none;
             border-left: none;
+            width: auto;
+            min-width: 70px;
+            word-break: keep-all;
         }
 
         th {
             border-bottom: 2px solid get_color("brand");
+            font-size: 10pt;
         }
 
         td {
@@ -80,38 +93,124 @@
 
         tbody,
         thead {
-            text-align: center;
 
-            th,
-            td {
-
-                &:first-child {
-                    text-align: left;
-                }
+            th + th,
+            td + td {
+                text-align: center;
             }
+        }
+
+        tbody td {
+            font-size: 10pt;
+        }
+
+        dl {
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         dd {
             margin-left: 0;
+            margin-top: 0;
+            font-size: 8pt;
+
+            p {
+                margin-top: 0;
+                margin-bottom: 0;
+                line-height: 10pt;
+            }
         }
 
         &-empty-cell {
             border-bottom: none !important;
         }
 
-        &-label {
-            text-transform: uppercase;
+        &-row-subtotal,
+        &-row-discount {
+
+            td {
+                font-size: 10pt;
+            }
         }
 
         &-row-total {
+            font-size: 12pt;
             font-weight: bold;
+        }
+
+        tfoot td:last-child {
+            text-align: right;
+        }
+    }
+
+    &-payment {
+
+		&-info {
+
+		}
+
+
+		&-title,
+		&-note-title {
+            margin-bottom: 16px;
+            font-size: 12pt;
+            text-transform: uppercase;
         }
     }
 
     &-footer {
         margin-top: 50px;
         padding-top: 5px;
-        border-top: 1px solid get_color("grey-c");
-        // TODO: font-size
+		border-top: 1px solid get_color("grey-c");
+
+		p {
+			margin: 0;
+		}
+    }
+}
+
+.csip-container {
+    width: 100%;
+    max-width: 216mm;
+    min-width: 210mm;
+}
+
+@media print {
+
+    * {
+        -webkit-print-color-adjust: exact;
+	}
+
+	@page {
+		// margin: 0;
+		margin: 20px 0;
+	}
+
+    .csip-container {
+		font-family: Helvetica, Arial, sans-serif;
+		// margin-bottom: 50px;
+		// position: relative;
+
+        .csip-invoice {
+			padding: 10px;
+			margin: 0;
+
+			&-footer {
+				position: fixed;
+				width: 95%;
+				bottom: 0;
+				// margin-top: 0;
+				// bottom: -20px;
+			}
+
+            &-payment-info {
+				page-break-inside: avoid;
+				padding-bottom: 50px;
+            }
+        }
+    }
+
+    footer {
+        display: none !important;
     }
 }
