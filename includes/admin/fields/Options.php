@@ -24,12 +24,13 @@ class Options
 		self::fields_company();
 	}
 
-
 	/**
 	 * Create fields for Company details
 	 */
 	public static function fields_company()
 	{
+		$allowed_tags_info = __('The following HTML tags are allowed: ', PLUGIN_TEXT_DOMAIN) . '&lt;b&gt;, &lt;i&gt;';
+
 		Container::make('theme_options', __('Company Info', PLUGIN_TEXT_DOMAIN))
 			->set_page_menu_title( __('Invoice Plugin', PLUGIN_TEXT_DOMAIN) )
 			->add_tab(__('Branding', PLUGIN_TEXT_DOMAIN), array(
@@ -95,8 +96,14 @@ class Options
 					->add_fields('account', array(
 						Field::make('text', 'csip_conpany_account_name', __('Name', PLUGIN_TEXT_DOMAIN))
 							->set_classes('csip-company-account-name'),
-						Field::make('textarea', 'csip_company_account_details', __('Details', PLUGIN_TEXT_DOMAIN))
-							->set_classes('csip-company-account-details'),
+						Field::make('textarea', 'csip_company_account_details', __('Account Details', PLUGIN_TEXT_DOMAIN))
+							->set_classes('span-6 csip-company-account-details')
+							->set_help_text($allowed_tags_info)
+							->set_rows( 8 ),
+						Field::make('textarea', 'csip_company_account_details_other', __('Other details e.g. Bank Address', PLUGIN_TEXT_DOMAIN))
+							->set_classes('span-6 csip-company-account-details-other')
+							->set_help_text($allowed_tags_info)
+							->set_rows( 8 ),
 					))
 					->set_header_template( '
 						<% if (csip_conpany_account_name) { %>

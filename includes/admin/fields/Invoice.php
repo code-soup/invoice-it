@@ -58,6 +58,9 @@ class Invoice
 					->set_help_text('Days until the payment is due'),
 				Field::make('date', 'inv_due_date', __('Invoice Due Date', PLUGIN_TEXT_DOMAIN))
 					->set_classes('span-4 inv-due-date'),
+				Field::make('select', 'inv_payment_account', __('Payment Account', PLUGIN_TEXT_DOMAIN))
+					->set_options(\csip\admin\Helpers::get_accounts())
+					->set_classes('inv-payment-account csip-select2'),
 			));
 	}
 
