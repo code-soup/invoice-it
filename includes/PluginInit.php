@@ -5,10 +5,11 @@ namespace csip;
 use csip\Loader;
 use csip\I18n;
 use csip\admin\Admin;
+use csip\admin\Helpers;
 use csip\frontend\Frontend;
 
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 
 /**
@@ -19,13 +20,12 @@ defined( 'WPINC' ) || die;
  *
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
- *
  */
 class PluginInit {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
+	 * The loader that's responsible for maintaining and registering all hooks
+	 * that power the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   protected
@@ -63,7 +63,7 @@ class PluginInit {
 	public function __construct() {
 
 		$this->plugin_name = PLUGIN_NAME;
-		$this->version = PLUGIN_VERSION;
+		$this->version     = PLUGIN_VERSION;
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -121,8 +121,12 @@ class PluginInit {
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'boot_custom_fields' );
 		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin, 'register_custom_fields' );
 		$this->loader->add_filter( 'single_template', $plugin_admin, 'get_invoice_template' );
-		// $this->loader->add_filter( 'carbon_fields_fields_registered', $plugin_admin, 'onsave_custom_fields' );
-
+		// $this->loader->add_filter( 'carbon_fields_fields_registered', $plugin_admin, 'onsave_custom_fields' ); // TODO: #NIN
+		// $this->loader->add_action( 'carbon_fields_invoice_container_saved', $plugin_admin, Helpers::set_invoice_number() ); // TODO: #NIN
+		// $this->loader->add_filter( 'carbon_fields_container_is_valid_save ( ' $is_valid, $container ')', $plugin_admin, Helpers::set_invoice_number() ); // TODO: #NIN
+		// $this->loader->add_filter( 'carbon_fields_container_is_valid_save ( $is_valid, $container )', $plugin_admin, 'onsave_custom_fields' );
+		// $this->loader->add_action( 'carbon_fields_post_meta_container_saved', $plugin_admin, 'onsave_post_meta' );
+		// $this->loader->add_action( 'current_screen', $plugin_admin, Helpers::set_invoice_number() );
 	}
 
 	/**

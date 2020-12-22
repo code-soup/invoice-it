@@ -2,7 +2,7 @@
 
 namespace csip\admin;
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 
 
@@ -12,14 +12,36 @@ defined( 'WPINC' ) || die;
 class Helpers {
 
 
+	/**
+	 * Get invoice number for a new invoice
+	 *
+	 * @return int
+	 */
 	public static function get_invoice_number() {
 		return get_option( '_csip_company_nin' );
 	}
 
+	/**
+	 * Set the next invoice number
+	 *
+	 * TODO: #NIN
+	 */
 	public static function set_invoice_number() {
 		// update_option( '_csip_company_nin', '11' );
+		// echo 'post type is:' . $post_type . $pagenow;
+		// echo "<pre>";
+		// print_r($wp);
+		// echo "</pre>";
+		// echo "<pre>";
+		// print_r('yo yo yo y oy oyo');
+		// echo "</pre>";
 	}
 
+	/**
+	 * Return a list of clients
+	 *
+	 * @return array of clients
+	 */
 	public static function get_clients() {
 		$args = array(
 
@@ -41,9 +63,10 @@ class Helpers {
 	}
 
 	/**
+	 * Return accounts of the company listed in options page
 	 * TODO: #BAC find more robust solution.
 	 *
-	 * @return void
+	 * @return array of $accounts
 	 */
 	public static function get_accounts() {
 		$i               = 0;
@@ -60,6 +83,11 @@ class Helpers {
 		return $accounts;
 	}
 
+	/**
+	 * Return a list of currencies
+	 *
+	 * @return array of currencies
+	 */
 	public static function get_currencies() {
 		$currencies = curriencies( 'longlist' );
 		$array      = array();
@@ -74,6 +102,11 @@ class Helpers {
 		return $array;
 	}
 
+	/**
+	 * Return list of all countries
+	 *
+	 * @return array of countries
+	 */
 	public static function get_countries() {
 		$countries = countries();
 		$array     = array();
@@ -88,6 +121,12 @@ class Helpers {
 		return $array;
 	}
 
+	/**
+	 * Return a list of states of a given country
+	 * TODO: do this right
+	 *
+	 * @return array
+	 */
 	public static function get_states() {
 		$array = array(
 			'0' => '-- Select State',

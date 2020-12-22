@@ -5,7 +5,7 @@ namespace csip\admin\fields;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 
 
@@ -19,7 +19,7 @@ class Invoice {
 	 * Load all custom field metaboxes for the Invoice post-type
 	 */
 	public static function load() {
-		 self::fields_general();
+		self::fields_general();
 		self::fields_items();
 		self::fields_note();
 	}

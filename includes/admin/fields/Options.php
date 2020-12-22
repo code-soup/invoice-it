@@ -5,7 +5,7 @@ namespace csip\admin\fields;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 
 
@@ -19,7 +19,7 @@ class Options {
 	 * Load all custom field metaboxes for Plugin Options
 	 */
 	public static function load() {
-		 self::fields_company();
+		self::fields_company();
 	}
 
 	/**
@@ -139,7 +139,7 @@ class Options {
 				array(
 					Field::make( 'text', 'csip_company_prefix', __( 'Invoice Prefix', PLUGIN_TEXT_DOMAIN ) )
 						->set_attribute( 'maxLength', 4 )
-						->set_help_text( __( 'If needed you can prefix the invoice number with up to 4 characters in the print version of the invoice.', PLUGIN_TEXT_DOMAIN ) )
+						->set_help_text( __( 'If needed you can prefix the invoice number with up to 4 characters for the print version of the invoice.', PLUGIN_TEXT_DOMAIN ) )
 						->set_classes( 'span-6 csip-company-prefix' ),
 					Field::make( 'number', 'csip_company_nin', __( 'Next Invoice Number', PLUGIN_TEXT_DOMAIN ) )
 						->set_help_text( __( 'This will be the next Invoice number, change this only if you need to reset it.', PLUGIN_TEXT_DOMAIN ) )

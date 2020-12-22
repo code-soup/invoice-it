@@ -33,7 +33,7 @@ class Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( PLUGIN_NAME . '/wp/css', $this->assets->get('styles/admin.css'), [], PLUGIN_VERSION, 'all' );
+		wp_enqueue_style( PLUGIN_NAME . '/wp/css', $this->assets->get( 'styles/admin.css' ), array(), PLUGIN_VERSION, 'all' );
 	}
 
 	/**
@@ -43,7 +43,7 @@ class Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( PLUGIN_NAME . '/wp/js', $this->assets->get('scripts/admin.js'), [], PLUGIN_VERSION, false );
+		wp_enqueue_script( PLUGIN_NAME . '/wp/js', $this->assets->get( 'scripts/admin.js' ), array(), PLUGIN_VERSION, false );
 	}
 
 	/**
@@ -101,6 +101,6 @@ class Admin {
 	 */
 	public function onsave_custom_fields() {
 
-		add_action('carbon_fields_post_meta_container_saved', Helpers::set_invoice_number());
+		add_action( 'carbon_fields_post_meta_container_saved', Helpers::set_invoice_number() );
 	}
 }
