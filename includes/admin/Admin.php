@@ -22,8 +22,8 @@ class Admin {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-        // Load assets from manifest.json
-        $this->assets = new Assets();
+		// Load assets from manifest.json
+		$this->assets = new Assets();
 	}
 
 	/**
@@ -76,7 +76,29 @@ class Admin {
 		fields\Invoice::load();
 	}
 
-	// Hook to handle next invoice number
+
+	/**
+	 * Register custom post type template
+	 *
+	 * @param [type] $single_template
+	 * @return void
+	 */
+	public function get_invoice_template( $single_template ) {
+		global $wp_query, $post;
+		if ( $post->post_type == 'invoice' ) {
+			$single_template = PLUGIN_PATH . 'includes/templates/invoice.php';
+		}
+		return $single_template;
+	}
+
+
+	/**
+	 * Hook to handle next invoice number
+	 *
+	 * TODO: #NIN
+	 *
+	 * @return void
+	 */
 	public function onsave_custom_fields() {
 
 		add_action('carbon_fields_post_meta_container_saved', Helpers::set_invoice_number());
