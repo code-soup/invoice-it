@@ -1,6 +1,12 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {
 	exit; }
 
+
+// $company_details = array();
+// foreach ( $wp_options_company as $value ) {
+// 	$company_details[ $value['option_name'] ] = $value['option_value'];
+// }
+
 $address_1 = wp_kses( $company_details['_csip_company_address_1'], 'strip' );
 $address_2 = wp_kses( $company_details['_csip_company_address_2'], 'strip' );
 $city      = wp_kses( $company_details['_csip_company_city'], 'strip' );
@@ -10,6 +16,10 @@ $zip       = wp_kses( $company_details['_csip_company_zip'], 'strip' );
 $logo      = $company_details['_csip_company_logo'];
 $phone     = wp_kses( $company_details['_csip_company_phone'], 'strip' );
 $email     = wp_kses( $company_details['_csip_company_email'], 'strip' );
+
+// $invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
+// $footernote     = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
+// $footertext     = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
 ?>
 
 <div class="csip-span-8 csip-company-details">
