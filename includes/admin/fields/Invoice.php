@@ -41,7 +41,7 @@ class Invoice {
 				array(
 					Field::make( 'text', 'inv_number', __( 'Invoice number', PLUGIN_TEXT_DOMAIN ) )
 						->set_attribute( 'readOnly', true )
-						->set_default_value( \csip\admin\Helpers::get_invoice_number() )
+						->set_default_value( \csip\admin\Helpers::get_next_invoice_number() )
 						->set_classes( 'span-4 inv-number' ),
 					Field::make( 'select', 'inv_client', __( 'Client', PLUGIN_TEXT_DOMAIN ) )
 						->set_options( \csip\admin\Helpers::get_clients() )

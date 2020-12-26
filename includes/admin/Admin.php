@@ -102,12 +102,68 @@ class Admin {
 	/**
 	 * Hook to handle next invoice number
 	 *
-	 * TODO: #NIN
-	 *
 	 * @return void
+	 * @since    1.0.0
 	 */
-	public function onsave_custom_fields() {
+	public function on_publish_invoice( $post_id, $post, $update ) {
 
-		add_action( 'carbon_fields_post_meta_container_saved', Helpers::set_invoice_number() );
-			}
+		$post_status         = $post->post_status;
+		$allowed_post_status = array( 'publish', 'draft', 'auto-draft' );
+		$inv_number          = get_post_meta( $post_id, '_inv_number', true );
+
+		if ( ! empty( $inv_number ) || ! $update || ! in_array( $post_status, $allowed_post_status, true ) ) {
+			return;
+		}
+
+		Helpers::set_next_invoice_number();
 	}
+
+	/**
+	 * Add column with invoice number
+	 *
+	 * @param [type] $columns
+	 * @return void
+	 * @since    1.0.0
+	 */
+	public function show_invoice_number_column( $columns ) {
+		$columns = array_merge( $columns, array( 'invoice_number' => __( 'Invoice Number', PLUGIN_TEXT_DOMAIN ) ) );
+
+		// Move the Date column to the end
+		$reposition = $columns['date'];
+		unset($columns['date']);
+		$columns['date'] = $reposition;
+
+		return $columns;
+	}
+
+	/**
+	 * Make the invoice number column soratblle
+	 *
+	 * @param [type] $columns
+	 * @return void
+	 * @since    1.0.0
+	 */
+	public function sortable_invoice_number_column( $columns ) {
+		$columns['invoice_number'] = 'invoice_number';
+		return $columns;
+	}
+
+	/**
+	 * Fill invoice_number column with data
+	 *
+	 * @param [type] $columns
+	 * @return void
+	 * @since    1.0.0
+	 */
+	public function fill_invoice_number_column( $column_key, $post_id ) {
+		if ( $column_key == 'invoice_number' ) {
+			$invoice_number = get_post_meta( $post_id, '_inv_number', true );
+			if ( $invoice_number ) {
+				echo '<span>' . $invoice_number . '</span>';
+			} else {
+				echo '<span>-</span>';
+			}
+		}
+	}
+
+}

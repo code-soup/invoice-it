@@ -16,31 +16,31 @@ class Helpers {
 	 * Get invoice number for a new invoice
 	 *
 	 * @return int
+	 * @since    1.0.0
 	 */
-	public static function get_invoice_number() {
+	public static function get_next_invoice_number() {
 		return get_option( '_csip_company_nin' );
 	}
 
 	/**
 	 * Set the next invoice number
 	 *
-	 * TODO: #NIN
+	 * @return void
+	 * @since    1.0.0
 	 */
-	public static function set_invoice_number() {
-		// update_option( '_csip_company_nin', '11' );
-		// echo 'post type is:' . $post_type . $pagenow;
-		// echo "<pre>";
-		// print_r($wp);
-		// echo "</pre>";
-		// echo "<pre>";
-		// print_r('yo yo yo y oy oyo');
-		// echo "</pre>";
+	public static function set_next_invoice_number() {
+
+		// TODO: check if the invoice already exists with the same invoice prrefix & invoice number
+
+		$nin = get_option( '_csip_company_nin' ) + 1;
+		update_option( '_csip_company_nin', $nin );
 	}
 
 	/**
 	 * Return a list of clients
 	 *
 	 * @return array of clients
+	 * @since    1.0.0
 	 */
 	public static function get_clients() {
 		$args = array(
@@ -67,6 +67,7 @@ class Helpers {
 	 * TODO: #BAC find more robust solution.
 	 *
 	 * @return array of $accounts
+	 * @since    1.0.0
 	 */
 	public static function get_accounts() {
 		$i               = 0;
@@ -87,6 +88,7 @@ class Helpers {
 	 * Return a list of currencies
 	 *
 	 * @return array of currencies
+	 * @since    1.0.0
 	 */
 	public static function get_currencies() {
 		$currencies = curriencies( 'longlist' );
@@ -106,6 +108,7 @@ class Helpers {
 	 * Return list of all countries
 	 *
 	 * @return array of countries
+	 * @since    1.0.0
 	 */
 	public static function get_countries() {
 		$countries = countries();
@@ -126,6 +129,7 @@ class Helpers {
 	 * TODO: do this right
 	 *
 	 * @return array
+	 * @since    1.0.0
 	 */
 	public static function get_states() {
 		$array = array(

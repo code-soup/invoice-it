@@ -121,12 +121,11 @@ class PluginInit {
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'boot_custom_fields' );
 		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin, 'register_custom_fields' );
 		$this->loader->add_filter( 'single_template', $plugin_admin, 'get_invoice_template' );
-		// $this->loader->add_filter( 'carbon_fields_fields_registered', $plugin_admin, 'onsave_custom_fields' ); // TODO: #NIN
-		// $this->loader->add_action( 'carbon_fields_invoice_container_saved', $plugin_admin, Helpers::set_invoice_number() ); // TODO: #NIN
-		// $this->loader->add_filter( 'carbon_fields_container_is_valid_save ( ' $is_valid, $container ')', $plugin_admin, Helpers::set_invoice_number() ); // TODO: #NIN
-		// $this->loader->add_filter( 'carbon_fields_container_is_valid_save ( $is_valid, $container )', $plugin_admin, 'onsave_custom_fields' );
-		// $this->loader->add_action( 'carbon_fields_post_meta_container_saved', $plugin_admin, 'onsave_post_meta' );
-		// $this->loader->add_action( 'current_screen', $plugin_admin, Helpers::set_invoice_number() );
+		$this->loader->add_action( 'save_post_invoice', $plugin_admin, 'on_publish_invoice', 10, 3 );
+		$this->loader->add_filter( 'manage_invoice_posts_columns', $plugin_admin, 'show_invoice_number_column' );
+		$this->loader->add_filter( 'manage_edit-invoice_sortable_columns', $plugin_admin, 'sortable_invoice_number_column' );
+		$this->loader->add_action( 'manage_invoice_posts_custom_column', $plugin_admin, 'fill_invoice_number_column', 10, 2 );
+
 	}
 
 	/**
