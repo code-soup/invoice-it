@@ -1,0 +1,41 @@
+.csip-container {
+    width: 100%;
+    max-width: 216mm;
+    min-width: 210mm;
+}
+
+@media print {
+
+    @page {
+		margin: 20px;
+    }
+
+    .csip-container {
+		-webkit-print-color-adjust: exact;
+		color-adjust: exact;
+
+        font-family: Helvetica, Arial, sans-serif;
+
+        .csip-invoice {
+            padding: 10px;
+            margin: 0;
+
+            &-footer {
+                position: fixed;
+                width: 96%;
+                right: 2%;
+                left: 2%;
+                bottom: 0;
+            }
+
+            &-payment-info {
+                page-break-inside: avoid;
+                padding-bottom: 50px;
+            }
+        }
+    }
+
+    footer {
+        display: none !important;
+    }
+}

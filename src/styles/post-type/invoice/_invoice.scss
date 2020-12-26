@@ -1,254 +1,143 @@
 .csip-invoice {
-    background-color: get_color("white");
+	background-color: get_color("white");
+	color: get_color('grey-2');
     padding: 50px 50px 20px;
     margin: 50px 0;
 
-    .csip {
-
-        &-row {
-            display: flex;
-        }
-
-        &-span-4 {
-            width: span(4);
-        }
-
-        &-span-6 {
-            width: span(6);
-        }
-
-        &-span-8 {
-            width: span(8);
-        }
-
-        &-company-logo .thumb span {
-            padding-top: 38%;
-            background-position: right;
-            background-size: contain;
-            background-repeat: no-repeat;
-            display: block;
-        }
+    .csip-row {
+        display: flex;
     }
 
-    &-info {
-        margin-top: 40px;
+    .csip-span-4 {
+        width: span(4);
     }
 
-    &-title {
-        margin-top: 0;
-        margin-bottom: 16px;
-        font-size: 19pt;
-
-        &-text {
-            padding-right: 10px;
-        }
+    .csip-span-6 {
+        width: span(6);
     }
 
-    &-list {
+    .csip-span-8 {
+        width: span(8);
+    }
+
+    .csip-company-logo .thumb span {
+        padding-top: 38%;
+        background-position: top right;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: block;
+    }
+}
+
+.csip-invoice-info {
+    margin-top: 40px;
+}
+
+.csip-invoice-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 19pt;
+}
+
+.csip-invoice-title-text {
+    padding-right: 10px;
+	color: get_color('grey-1');
+}
+
+.csip-invoice-title-code {
+   color: get_color('brand');
+}
+
+.csip-invoice-list {
+    margin: 0;
+    padding-left: 0;
+    font-size: 11pt;
+
+    li {
+        list-style-type: none;
+        margin-left: 0;
+    }
+}
+
+.csip-invoice-list-label {
+	font-size: 11px;
+	letter-spacing: 0.05em;
+	color: get_color('grey-9');
+    margin-top: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.csip-invoice-list-entry {
+    margin-top: 0;
+    margin-bottom: 0;
+	line-height: 15pt;
+
+	+ .csip-invoice-list-label {
+		margin-top: 5px;
+	}
+}
+
+.csip-client-name {
+	font-weight: bold;
+	font-size: 14pt;
+	margin-top: 10px;
+	color: get_color('grey-1');
+}
+
+.csip-invoice-payment-info {
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+.csip-invoice-payment-title,
+.csip-invoice-payment-note-title {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 12pt;
+    text-transform: uppercase;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        bottom: 0;
+        width: calc(100% + 12px);
+        height: 1px;
+        background-color: get_color("grey-a");
+    }
+}
+
+.csip-invoice-account {
+
+    .csip-span-4 {
+        width: span(4);
+    }
+
+    p {
+        font-size: 10pt;
+    }
+}
+
+.csip-invoice-account-name {
+    margin-top: 10px;
+    font-size: 12pt;
+    text-transform: uppercase;
+    color: get_color("brand");
+}
+
+.csip-invoice-note p {
+    font-size: 10pt;
+}
+
+.csip-invoice-footer {
+    font-size: 10pt;
+    margin-top: 50px;
+    padding-top: 5px;
+    border-top: 1px solid get_color("grey-c");
+
+    p {
         margin: 0;
-        padding-left: 0;
-        font-size: 11pt;
-
-        li {
-            list-style-type: none;
-            margin-left: 0;
-        }
-
-        &-label {
-            margin-top: 0;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        &-entry {
-            margin-top: 0;
-            margin-bottom: 0;
-            line-height: 15pt;
-        }
-    }
-
-    &-table {
-        border-collapse: collapse;
-        border: none;
-        margin-top: 50px;
-
-        th,
-        td {
-            border-top: none;
-            border-right: none;
-            border-left: none;
-            width: auto;
-            min-width: 70px;
-            word-break: keep-all;
-        }
-
-        th {
-            border-bottom: 2px solid get_color("brand");
-            font-size: 10pt;
-        }
-
-        td {
-            border-bottom: 1px solid get_color("grey-c");
-        }
-
-        tbody,
-        thead {
-
-            th + th,
-            td + td {
-                text-align: center;
-            }
-        }
-
-        tbody td {
-            font-size: 10pt;
-        }
-
-        dl {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        dd {
-            margin-left: 0;
-            margin-top: 0;
-            font-size: 8pt;
-
-            p {
-                margin-top: 0;
-                margin-bottom: 0;
-                line-height: 10pt;
-            }
-        }
-
-        &-empty-cell {
-            border-bottom: none !important;
-        }
-
-        &-row-tax,
-        &-row-subtotal,
-        &-row-discount {
-
-            td {
-                font-size: 10pt;
-            }
-        }
-
-        &-row-total {
-            font-size: 12pt;
-			font-weight: bold;
-
-			td {
-				border-bottom: none;
-			}
-        }
-
-        tfoot td:last-child {
-            text-align: right;
-        }
-	}
-
-    &-payment {
-
-		&-info {
-			padding-right: 6px;
-			padding-left: 6px;
-		}
-
-        &-title,
-        &-note-title {
-			padding-bottom: 10px;
-            margin-bottom: 10px;
-            font-size: 12pt;
-			text-transform: uppercase;
-			position: relative;
-
-			&::before {
-				content: '';
-				position: absolute;
-				left: -6px;
-				bottom: 0;
-				width: calc(100% + 12px);
-				height: 1px;
-				background-color: get_color('grey-a');
-			}
-        }
-	}
-
-	&-account {
-
-		&-name {
-			margin-top: 10px;
-            font-size: 12pt;
-            text-transform: uppercase;
-			color: get_color('brand');
-		}
-
-		.csip-span-4 {
-			width: span(4);
-		}
-
-		p {
-			font-size: 10pt;
-		}
-	}
-
-	&-note p {
-		font-size: 10pt;
-	}
-
-    &-footer {
-		font-size: 10pt;
-        margin-top: 50px;
-        padding-top: 5px;
-        border-top: 1px solid get_color("grey-c");
-
-        p {
-            margin: 0;
-        }
-    }
-}
-
-.csip-container {
-    width: 100%;
-    max-width: 216mm;
-    min-width: 210mm;
-}
-
-@media print {
-
-    * {
-		-webkit-print-color-adjust: exact;
-		color-adjust: exact;
-    }
-
-    @page {
-        margin: 20px;
-    }
-
-    .csip-container {
-        font-family: Helvetica, Arial, sans-serif;
-
-        .csip-invoice {
-            padding: 10px;
-            margin: 0;
-
-            &-footer {
-                position: fixed;
-				width: 96%;
-				right: 2%;
-				left: 2%;
-                bottom: 0;
-            }
-
-            &-payment-info {
-                page-break-inside: avoid;
-                padding-bottom: 50px;
-            }
-        }
-    }
-
-    footer {
-        display: none !important;
     }
 }
