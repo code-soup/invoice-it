@@ -115,7 +115,7 @@ class Helpers {
 		$array     = array();
 
 		foreach ( $countries as $country ) {
-			$array[ $country['iso_3166_1_alpha3'] ] = $country['name'];
+			$array[ $country['iso_3166_1_alpha2'] ] = $country['name'];
 		}
 
 		asort( $array );
