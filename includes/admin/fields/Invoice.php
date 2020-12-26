@@ -11,12 +11,16 @@ defined( 'WPINC' ) || die;
 
 /**
  * Class containing fields for the Invoice post-type
+ *
+ * @since    1.0.0
  */
 class Invoice {
 
 
 	/**
 	 * Load all custom field metaboxes for the Invoice post-type
+	 *
+	 * @since    1.0.0
 	 */
 	public static function load() {
 		self::fields_general();
@@ -27,6 +31,8 @@ class Invoice {
 
 	/**
 	 * Create general fields
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_general() {
 		Container::make( 'post_meta', __( 'General', PLUGIN_TEXT_DOMAIN ) )
@@ -68,6 +74,8 @@ class Invoice {
 
 	/**
 	 * Create item repeater fields
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_items() {
 		 Container::make( 'post_meta', __( 'Items list', PLUGIN_TEXT_DOMAIN ) )
@@ -120,6 +128,8 @@ class Invoice {
 
 	/**
 	 * Create note fields
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_note() {
 		Container::make( 'post_meta', __( 'Note', PLUGIN_TEXT_DOMAIN ) )

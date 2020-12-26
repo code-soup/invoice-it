@@ -11,12 +11,16 @@ defined( 'WPINC' ) || die;
 
 /**
  * Class containing fields for the plugin options page.
+ *
+ * @since    1.0.0
  */
 class Clients {
 
 
 	/**
 	 * Load all custom field metaboxes for Client post type
+	 *
+	 * @since    1.0.0
 	 */
 	public static function load() {
 		self::fields_address();
@@ -28,6 +32,8 @@ class Clients {
 
 	/**
 	 * Create address fields
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_address() {
 		Container::make( 'post_meta', __( 'Address', PLUGIN_TEXT_DOMAIN ) )
@@ -55,6 +61,8 @@ class Clients {
 
 	/**
 	 * Create contact fields
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_contact() {
 		Container::make( 'post_meta', __( 'Contact Details', PLUGIN_TEXT_DOMAIN ) )
@@ -103,6 +111,8 @@ class Clients {
 
 	/**
 	 * Create bank detail fields
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_other() {
 		 Container::make( 'post_meta', __( 'Other Details', PLUGIN_TEXT_DOMAIN ) )
@@ -130,6 +140,8 @@ class Clients {
 
 	/**
 	 * Create note fields
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_note() {
 		Container::make( 'post_meta', __( 'Note', PLUGIN_TEXT_DOMAIN ) )

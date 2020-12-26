@@ -3,6 +3,7 @@
 namespace csip\admin;
 
 use csip\Assets;
+use csip\admin\Helpers;
 
 // Exit if accessed directly
 defined( 'WPINC' ) || die;
@@ -52,6 +53,7 @@ class Admin {
 	 * Theme uses models.json file located in the directory set in the filter below
 	 *
 	 * @link( https://github.com/soberwp/models, documentation )
+	 * @since    1.0.0
 	 */
 	public function sober_models_path() {
 
@@ -60,6 +62,8 @@ class Admin {
 
 	/**
 	 * Boot Carbon Fields with default IoC dependencies
+	 *
+	 * @since    1.0.0
 	 */
 	public function boot_custom_fields() {
 
@@ -68,6 +72,8 @@ class Admin {
 
 	/**
 	 * Load Custom fields
+	 *
+	 * @since    1.0.0
 	 */
 	public function register_custom_fields() {
 
@@ -82,6 +88,7 @@ class Admin {
 	 *
 	 * @param [type] $single_template
 	 * @return void
+	 * @since    1.0.0
 	 */
 	public function get_invoice_template( $single_template ) {
 		global $wp_query, $post;
@@ -102,5 +109,5 @@ class Admin {
 	public function onsave_custom_fields() {
 
 		add_action( 'carbon_fields_post_meta_container_saved', Helpers::set_invoice_number() );
+			}
 	}
-}

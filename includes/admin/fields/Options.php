@@ -11,12 +11,16 @@ defined( 'WPINC' ) || die;
 
 /**
  * Class containing fields for the Plugin options page.
+ *
+ * @since    1.0.0
  */
 class Options {
 
 
 	/**
 	 * Load all custom field metaboxes for Plugin Options
+	 *
+	 * @since    1.0.0
 	 */
 	public static function load() {
 		self::fields_company();
@@ -24,6 +28,8 @@ class Options {
 
 	/**
 	 * Create fields for Company details
+	 *
+	 * @since    1.0.0
 	 */
 	public static function fields_company() {
 		$allowed_tags_info = __( 'The following HTML tags are allowed: ', PLUGIN_TEXT_DOMAIN ) . '&lt;b&gt;, &lt;i&gt;';
