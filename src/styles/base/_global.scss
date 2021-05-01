@@ -1,0 +1,45 @@
+.csip-container {
+	width: 100%;
+	max-width: 216mm;
+	min-width: 210mm;
+	margin: 0 auto;
+}
+
+.csip-invoice {
+	background-color: get_color("white");
+	color: get_color('grey-2');
+    padding: 50px 50px 20px;
+    margin: 50px 0;
+}
+
+.csip-row {
+	display: flex;
+}
+
+.csip-span-4 {
+	width: span(4);
+}
+
+.csip-span-6 {
+	width: span(6);
+}
+
+.csip-span-8 {
+	width: span(8);
+}
+
+.csip-block {
+	display: block;
+}
+
+.csip-text-left {
+	text-align: left;
+}
+
+.csip-text-right {
+	text-align: right;
+}
+
+.csip-text-center {
+	text-align: center;
+}

@@ -1,13 +1,20 @@
+/** Import everything from npm dependencies */
+
+@import "_npm/**/*.scss";
+
+/** Import utilities and layout */
+
 @import "_utils/variables";
 @import "_utils/functions";
 @import "_utils/mixins/general";
 @import "_utils/mixins/media-queries";
 @import "_utils/placeholders";
 @import "layouts/grid";
-@import "post-type/invoice/**/*";
+@import "base/global";
+@import "base/reset";
 
-/** Import everything from npm dependencies */
 
-@import "_npm/**/*.scss";
 
 // Add everything else here manually
+
+@import "post-type/invoice/**/*";

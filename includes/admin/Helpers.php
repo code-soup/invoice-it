@@ -56,7 +56,7 @@ class Helpers {
 		}
 
 		asort( $clients );
-		$first_option = array( '0' => '-- Select Client' );
+		$first_option = array( '0' => __('-- Select Client', PLUGIN_TEXT_DOMAIN) );
 		$array        = $first_option + $clients;
 
 		return $array;
@@ -64,11 +64,11 @@ class Helpers {
 
 	/**
 	 * Return accounts of the company listed in options page
-	 * TODO: #BAC find more robust solution.
 	 *
 	 * @return array of $accounts
 	 * @since    1.0.0
 	 */
+	// TODO: #BAC find more robust solution.
 	public static function get_accounts() {
 		$i               = 0;
 		$accounts        = array();
@@ -79,7 +79,7 @@ class Helpers {
 		}
 
 		asort( $accounts );
-		$accounts = array( '-1' => '-- Select Account' ) + $accounts;
+		$accounts = array( '-1' => __( '-- Select Account', PLUGIN_TEXT_DOMAIN ) ) + $accounts;
 
 		return $accounts;
 	}
@@ -91,17 +91,12 @@ class Helpers {
 	 * @since    1.0.0
 	 */
 	public static function get_currencies() {
-		$currencies = curriencies( 'longlist' );
-		$array      = array();
 
-		foreach ( $currencies as $currency ) {
-			$array[ $currency['iso_4217_code'] ] = $currency['iso_4217_name'];
-		}
+		$currencies = self::get_currencies_data();
 
-		asort( $array );
-		array_unshift( $array, '-- Select currency' );
+		array_unshift( $currencies, __( '-- Select currency', PLUGIN_TEXT_DOMAIN ) );
 
-		return $array;
+		return $currencies;
 	}
 
 	/**
@@ -111,36 +106,87 @@ class Helpers {
 	 * @since    1.0.0
 	 */
 	public static function get_countries() {
-		$countries = countries();
-		$array     = array();
+		$countries = self::get_countries_data();
 
+		$array = array();
 		foreach ( $countries as $country ) {
-			$array[ $country['iso_3166_1_alpha2'] ] = $country['name'];
+			$array[ $country['cca2'] ] = $country['name']['common'];
 		}
 
-		asort( $array );
-		array_unshift( $array, '-- Select country' );
+		array_unshift( $array, __('-- Select country', PLUGIN_TEXT_DOMAIN) );
 
 		return $array;
 	}
 
 	/**
 	 * Return a list of states of a given country
-	 * TODO: do this right
 	 *
 	 * @return array
 	 * @since    1.0.0
 	 */
+	// TODO: fetch states with AJAX
 	public static function get_states() {
 		$array = array(
-			'0' => '-- Select State',
-			'1' => 'Alabama',
-			'2' => 2,
-			'3' => 3,
-			'4' => 4,
-			'5' => 5,
+			'0' => __( '-- Select State', PLUGIN_TEXT_DOMAIN ),
 		);
 
 		return $array;
 	}
+
+
+	private static function get_countries_data() {
+
+		$countries_data = get_transient( 'csip_countries' );
+
+		if ( $countries_data === false ) {
+
+			$countries_json = file_get_contents( PLUGIN_PATH . '/vendor/mledoze/countries/dist/countries.json' );
+			$countries_data = json_decode( $countries_json, true );
+
+			set_transient( 'csip_countries', $countries_data, 3600 * 24 );
+		}
+
+		return $countries_data;
+
+	}
+
+	public static function get_country_name( $cca3_code ) {
+
+		foreach ( self::get_countries_data() as $country ) {
+			if ( $country['cca3'] === $cca3_code ) {
+				$country_name = $country['name']['common'];
+				break;
+			}
+		}
+
+		return $country_name;
+
+	}
+
+	private static function get_currencies_data() {
+
+		$currencies = get_transient( 'csip_currencies' );
+
+		if ( $currencies === false ) {
+
+			$countries_data = self::get_countries_data();
+
+			$currencies = array();
+
+			foreach ( $countries_data as $country_data ) {
+
+				foreach ( $country_data['currencies'] as $cca3 => $currency ) {
+					$symbol              = $currency['symbol'] ? ' (' . $currency['symbol'] . ')' : '';
+					$currencies[ $cca3 ] = $currency['name'] . ' - ' . $cca3 . $symbol;
+				}
+			}
+
+			set_transient( 'csip_currencies', $currencies, 3600 * 24 );
+
+		}
+
+		return $currencies;
+	}
 }
+
+

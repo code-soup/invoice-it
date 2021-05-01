@@ -1,6 +1,5 @@
 <?php
 
-// do_action('wp_head');
 get_header();
 
 global $wpdb;
@@ -14,18 +13,16 @@ $allowed_html = array(
 
 /**
  * Get compeny details
- * TODO: databse table name
  */
-$wp_options_company = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}options `wp_6_options` WHERE (CONVERT(`option_name` USING utf8) LIKE '%csip_%')", ARRAY_A );
+$wp_options_company = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}options WHERE (CONVERT(`option_name` USING utf8) LIKE '%csip_%')", ARRAY_A );
 
 $company_details = array();
 foreach ( $wp_options_company as $value ) {
 	$company_details[ $value['option_name'] ] = $value['option_value'];
 }
 
-$invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
-$footernote     = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
-$footertext     = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
+$footernote = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
+$footertext = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
 
 
 
@@ -38,6 +35,7 @@ foreach ( get_post_meta( get_the_ID() ) as $key => $value ) {
 }
 
 $invoice_payment_account = intval( $invoice_details['_inv_payment_account'] );
+$invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 
 ?>
 
@@ -45,7 +43,7 @@ $invoice_payment_account = intval( $invoice_details['_inv_payment_account'] );
 <div class="csip-container">
 	<section class="csip-invoice-plugin csip-invoice">
 
-		<header class="csip-invoice-header">
+		<header class="csip-invoice-header csip-block">
 			<div class="csip-row">
 				<?php require PLUGIN_PATH . '/includes/templates/invoice/company-details.php'; ?>
 			</div>
@@ -71,18 +69,16 @@ $invoice_payment_account = intval( $invoice_details['_inv_payment_account'] );
 			</div>
 
 			<div class="csip-invoice-payment-info">
-				<h5 class="csip-invoice-payment-title">
-					<?php echo __( 'Ways to pay', PLUGIN_TEXT_DOMAIN ); ?>
-				</h5>
+				<h3 class="csip-invoice-payment-title">
+					<?php _e( 'Ways to pay', PLUGIN_TEXT_DOMAIN ); ?>
+				</h3>
 
 				<?php require PLUGIN_PATH . '/includes/templates/invoice/payment-account-details.php'; ?>
 
-				<?php if ( $footernote ) { ?>
+				<?php if ( $invoice_comment ) { ?>
 				<div class="csip-invoice-note">
-					<?php
-						echo sprintf( '<h5 class="csip-invoice-payment-note-title">%s</h5>', __( 'Note', PLUGIN_TEXT_DOMAIN ) );
-						echo wpautop( wp_kses( $invoice_comment, 'post' ) );
-					?>
+					<h4 class="csip-invoice-payment-note-title"><?php _e( 'Note', PLUGIN_TEXT_DOMAIN ); ?></h4>
+					<?php echo wpautop( wp_kses( $invoice_comment, 'post' ) ); ?>
 				</div>
 				<?php } ?>
 

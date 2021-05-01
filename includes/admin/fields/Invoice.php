@@ -49,7 +49,7 @@ class Invoice {
 					Field::make( 'select', 'inv_status', __( 'Invoice Status', PLUGIN_TEXT_DOMAIN ) )
 					->set_options(
 						array(
-							''                   => __( '-- Please Select', PLUGIN_TEXT_DOMAIN),
+							''                   => __( '-- Please Select', PLUGIN_TEXT_DOMAIN ),
 							'inv_outstanding'    => 'Outstanding',
 							'inv_paid'           => 'Paid',
 							'inv_partially_paid' => 'Partially Paid',

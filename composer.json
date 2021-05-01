@@ -31,7 +31,7 @@
 		"soberwp/models": "1.1.0-p",
 		"htmlburger/carbon-fields": "~2.2.0",
 		"htmlburger/carbon-field-number": "^2.2.0",
-		"rinvex/countries": "^7.0"
+		"mledoze/countries": "^4.0"
 	},
 	"extra": {
 		"installer-paths": {

@@ -1,29 +1,23 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {
 	exit; }
 
+$name           = wp_kses( $company_details['_csip_company_name'], 'strip' );
+$address_1      = wp_kses( $company_details['_csip_company_address_1'], 'strip' );
+$address_2      = wp_kses( $company_details['_csip_company_address_2'], 'strip' );
+$city           = wp_kses( $company_details['_csip_company_city'], 'strip' );
+$country        = $company_details['_csip_company_country'];
+$state          = $company_details['_csip_company_state'];
+$zip            = wp_kses( $company_details['_csip_company_zip'], 'strip' );
+$logo           = $company_details['_csip_company_logo'];
+$phone          = wp_kses( $company_details['_csip_company_phone'], 'strip' );
+$email          = wp_kses( $company_details['_csip_company_email'], 'strip' );
+$invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
 
-// $company_details = array();
-// foreach ( $wp_options_company as $value ) {
-// 	$company_details[ $value['option_name'] ] = $value['option_value'];
-// }
-
-$address_1 = wp_kses( $company_details['_csip_company_address_1'], 'strip' );
-$address_2 = wp_kses( $company_details['_csip_company_address_2'], 'strip' );
-$city      = wp_kses( $company_details['_csip_company_city'], 'strip' );
-$country   = $company_details['_csip_company_country'];
-$state     = $company_details['_csip_company_state'];
-$zip       = wp_kses( $company_details['_csip_company_zip'], 'strip' );
-$logo      = $company_details['_csip_company_logo'];
-$phone     = wp_kses( $company_details['_csip_company_phone'], 'strip' );
-$email     = wp_kses( $company_details['_csip_company_email'], 'strip' );
-
-// $invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
-// $footernote     = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
-// $footertext     = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
 ?>
 
 <div class="csip-span-8 csip-company-details">
 	<ul class="csip-invoice-list">
+		<li class="csip-invoice-list-entry csip-company-name"><?php echo $name; ?></li>
 		<li class="csip-invoice-list-entry"><?php echo $address_1; ?></li>
 		<li class="csip-invoice-list-entry"><?php echo $address_2; ?></li>
 		<li class="csip-invoice-list-entry">
@@ -32,8 +26,8 @@ $email     = wp_kses( $company_details['_csip_company_email'], 'strip' );
 			<span class="csip-company-state"><?php echo $state; ?></span>
 		</li>
 		<li class="csip-invoice-list-entry"><?php echo $zip; ?></li>
-		<li class="csip-invoice-list-entry"><?php echo $phone; ?></li>
-		<li class="csip-invoice-list-entry"><?php echo $email; ?></li>
+		<li class="csip-invoice-list-entry"><strong>T: </strong><?php echo $phone; ?></li>
+		<li class="csip-invoice-list-entry"><strong>E: </strong><?php echo $email; ?></li>
 	</ul>
 </div>
 

@@ -1,51 +1,33 @@
-.csip-invoice {
-	background-color: get_color("white");
-	color: get_color('grey-2');
-    padding: 50px 50px 20px;
-    margin: 50px 0;
-
-    .csip-row {
-        display: flex;
-    }
-
-    .csip-span-4 {
-        width: span(4);
-    }
-
-    .csip-span-6 {
-        width: span(6);
-    }
-
-    .csip-span-8 {
-        width: span(8);
-    }
-
-    .csip-company-logo .thumb span {
-        padding-top: 38%;
-        background-position: top right;
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: block;
-    }
+.csip-company-logo .thumb span {
+    padding-top: 38%;
+    background-position: top right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
 }
 
 .csip-invoice-info {
     margin-top: 40px;
+
 }
 
+// h2.csip-invoice-title {
+// 	margin-bottom: 0.5em;
+// }
+
 .csip-invoice-title {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-size: 19pt;
+	font-size: 19pt;
+	margin-top: 0;
+	margin-bottom: 0.5em;
 }
 
 .csip-invoice-title-text {
     padding-right: 10px;
-	color: get_color('grey-1');
+    color: get_color("grey-1");
 }
 
 .csip-invoice-title-code {
-   color: get_color('brand');
+    color: get_color("brand");
 }
 
 .csip-invoice-list {
@@ -60,9 +42,9 @@
 }
 
 .csip-invoice-list-label {
-	font-size: 11px;
-	letter-spacing: 0.05em;
-	color: get_color('grey-9');
+    font-size: 8pt;
+    letter-spacing: 0.05em;
+    color: get_color("grey-9");
     margin-top: 0;
     text-transform: uppercase;
     font-weight: bold;
@@ -71,18 +53,23 @@
 .csip-invoice-list-entry {
     margin-top: 0;
     margin-bottom: 0;
-	line-height: 15pt;
+    line-height: 15pt;
 
-	+ .csip-invoice-list-label {
-		margin-top: 5px;
-	}
+    + .csip-invoice-list-label {
+        margin-top: 5px;
+    }
+}
+
+.csip-company-name {
+    font-weight: bold;
+    font-size: 13pt;
 }
 
 .csip-client-name {
-	font-weight: bold;
-	font-size: 14pt;
-	margin-top: 10px;
-	color: get_color('grey-1');
+    font-weight: bold;
+    font-size: 14pt;
+    margin-top: 10px;
+    color: get_color("grey-1");
 }
 
 .csip-invoice-payment-info {
@@ -93,10 +80,10 @@
 .csip-invoice-payment-title,
 .csip-invoice-payment-note-title {
     padding-bottom: 10px;
-    margin-bottom: 10px;
     font-size: 12pt;
     text-transform: uppercase;
     position: relative;
+	margin: 1em 0;
 
     &::before {
         content: "";
@@ -121,7 +108,7 @@
 }
 
 .csip-invoice-account-name {
-    margin-top: 10px;
+	margin: 1em 0;
     font-size: 12pt;
     text-transform: uppercase;
     color: get_color("brand");
@@ -136,8 +123,4 @@
     margin-top: 50px;
     padding-top: 5px;
     border-top: 1px solid get_color("grey-c");
-
-    p {
-        margin: 0;
-    }
 }

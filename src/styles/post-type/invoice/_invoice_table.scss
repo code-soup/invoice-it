@@ -11,34 +11,22 @@
         width: auto;
         min-width: 70px;
         word-break: keep-all;
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+        font-size: 10pt;
     }
 
     th {
         color: get_color("grey-1");
         border-bottom: 2px solid get_color("brand");
-        font-size: 10pt;
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
     }
 
     td {
         border-bottom: 1px solid get_color("grey-c");
-    }
-
-    tbody,
-    thead {
-
-        th + th,
-        td + td {
-            text-align: center;
-        }
-    }
-
-    tbody td {
-        font-size: 10pt;
-    }
-
-    dl {
-        margin-top: 0;
-        margin-bottom: 0;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
     }
 
     dt {
@@ -46,19 +34,8 @@
     }
 
     dd {
-        margin-left: 0;
-        margin-top: 0;
+        padding-left: 0;
         font-size: 8pt;
-
-        p {
-            margin-top: 0;
-            margin-bottom: 0;
-            line-height: 10pt;
-        }
-    }
-
-    tfoot td:last-child {
-        text-align: right;
     }
 }
 
@@ -66,21 +43,12 @@
     border-bottom: none !important;
 }
 
-.csip-invoice-table-row-tax,
-.csip-invoice-table-row-subtotal,
-.csip-invoice-table-row-discount {
-
-    td {
-        font-size: 10pt;
-    }
-}
-
 .csip-invoice-table-row-total {
-    font-size: 12pt;
     font-weight: bold;
     color: get_color("grey-1");
 
     td {
         border-bottom: none;
+        font-size: 12pt;
     }
 }
