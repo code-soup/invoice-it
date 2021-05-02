@@ -21,8 +21,9 @@ foreach ( $wp_options_company as $value ) {
 	$company_details[ $value['option_name'] ] = $value['option_value'];
 }
 
-$footernote = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
-$footertext = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
+$company_terms  = wpautop( wp_kses( $company_details['_csip_company_terms'], $allowed_html ) );
+$company_note   = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
+$footertext     = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
 
 
 
@@ -43,7 +44,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 <div class="csip-container">
 	<section class="csip-invoice-plugin csip-invoice">
 
-		<header class="csip-invoice-header csip-block">
+		<header class="csip-invoice-header csip-block csip-mb-40">
 			<div class="csip-row">
 				<?php require PLUGIN_PATH . '/includes/templates/invoice/company-details.php'; ?>
 			</div>
@@ -52,7 +53,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 
 		<article>
 
-			<div class="csip-row csip-invoice-info">
+			<div class="csip-row csip-invoice-info csip-mb-40">
 
 				<div class="csip-span-8 csip-invoice-name-info">
 					<?php require PLUGIN_PATH . '/includes/templates/invoice/invoice-details.php'; ?>
@@ -68,16 +69,15 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 				<?php require PLUGIN_PATH . '/includes/templates/invoice/table.php'; ?>
 			</div>
 
-			<div class="csip-invoice-payment-info">
-				<h3 class="csip-invoice-payment-title">
-					<?php _e( 'Ways to pay', PLUGIN_TEXT_DOMAIN ); ?>
-				</h3>
+			<div class="csip-invoice-payment-info csip-avoid-break">
 
 				<?php require PLUGIN_PATH . '/includes/templates/invoice/payment-account-details.php'; ?>
 
 				<?php if ( $invoice_comment ) { ?>
-				<div class="csip-invoice-note">
-					<h4 class="csip-invoice-payment-note-title"><?php _e( 'Note', PLUGIN_TEXT_DOMAIN ); ?></h4>
+				<div class="csip-invoice-note csip-mb-40 csip-avoid-break">
+					<h3 class="csip-invoice-title-underlined">
+						<?php _e( 'Invoice Note', PLUGIN_TEXT_DOMAIN ); ?>
+					</h3>
 					<?php echo wpautop( wp_kses( $invoice_comment, 'post' ) ); ?>
 				</div>
 				<?php } ?>
@@ -86,18 +86,33 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 
 		</article>
 
-
-		<?php if ( $footernote ) { ?>
-		<div class="csip-invoice-note-global">
-			<?php echo $footernote; ?>
+		<?php if ( $company_terms ) : ?>
+		<div class="csip-mb-40 csip-avoid-break">
+			<h3 class="csip-invoice-title-underlined">
+				<?php _e( 'Terms & Conditions', PLUGIN_TEXT_DOMAIN ); ?>
+			</h3>
+			<div class="csip-invoice-note">
+				<?php echo $company_terms; ?>
+			</div>
 		</div>
-		<?php } ?>
+		<?php endif; ?>
 
-		<?php if ( $footertext ) { ?>
+		<?php if ( $company_note ) : ?>
+		<div class="csip-mb-40 csip-avoid-break">
+			<h3 class="csip-invoice-title-underlined">
+				<?php _e( 'Note', PLUGIN_TEXT_DOMAIN ); ?>
+			</h3>
+			<div class="csip-invoice-note">
+				<?php echo $company_note; ?>
+			</div>
+		</div>
+		<?php endif; ?>
+
+		<?php if ( $footertext ) : ?>
 		<div class="csip-invoice-footer">
 			<?php echo $footertext; ?>
 		</div>
-		<?php } ?>
+		<?php endif; ?>
 
 	</section>
 </div>

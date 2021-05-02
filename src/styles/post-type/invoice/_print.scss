@@ -6,8 +6,6 @@
     .csip-container {
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
-
-        font-family: Helvetica, Arial, sans-serif;
     }
 
     .csip-invoice {
@@ -23,9 +21,8 @@
         bottom: 0;
     }
 
-    .csip-invoice-payment-info {
+    .csip-avoid-break {
         page-break-inside: avoid;
-        padding-bottom: 50px;
     }
 
     body {

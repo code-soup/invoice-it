@@ -6,15 +6,6 @@
     display: block;
 }
 
-.csip-invoice-info {
-    margin-top: 40px;
-
-}
-
-// h2.csip-invoice-title {
-// 	margin-bottom: 0.5em;
-// }
-
 .csip-invoice-title {
 	font-size: 19pt;
 	margin-top: 0;
@@ -77,8 +68,7 @@
     padding-left: 6px;
 }
 
-.csip-invoice-payment-title,
-.csip-invoice-payment-note-title {
+.csip-invoice-title-underlined {
     padding-bottom: 10px;
     font-size: 12pt;
     text-transform: uppercase;
@@ -120,7 +110,6 @@
 
 .csip-invoice-footer {
     font-size: 10pt;
-    margin-top: 50px;
     padding-top: 5px;
     border-top: 1px solid get_color("grey-c");
 }

@@ -80,6 +80,7 @@ class Admin {
 		fields\Options::load();
 		fields\Clients::load();
 		fields\Invoice::load();
+		fields\BankAccounts::load();
 	}
 
 

@@ -31,7 +31,7 @@ class Options {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function fields_company() {
+	private static function fields_company() {
 		$allowed_tags_info = __( 'The following HTML tags are allowed: ', PLUGIN_TEXT_DOMAIN ) . '&lt;b&gt;, &lt;i&gt;';
 
 		Container::make( 'theme_options', __( 'Company Info', PLUGIN_TEXT_DOMAIN ) )
@@ -104,40 +104,6 @@ class Options {
 						)
 					)
 					->set_classes( 'span-6 csip-company-vatid' ),
-				)
-			)
-			->add_tab(
-				__( 'Bank Details', PLUGIN_TEXT_DOMAIN ),
-				array(
-					Field::make( 'complex', 'csip_company_bank_accounts', __( 'Accounts', PLUGIN_TEXT_DOMAIN ) )
-					->setup_labels(
-						array(
-							'plural_name'   => 'Accounts',
-							'singular_name' => 'Account',
-						)
-					)
-					->add_fields(
-						'account',
-						array(
-							Field::make( 'text', 'csip_conpany_account_name', __( 'Name', PLUGIN_TEXT_DOMAIN ) )
-								->set_classes( 'csip-company-account-name' ),
-							Field::make( 'textarea', 'csip_company_account_details', __( 'Account Details', PLUGIN_TEXT_DOMAIN ) )
-								->set_classes( 'span-6 csip-company-account-details' )
-								->set_help_text( $allowed_tags_info )
-								->set_rows( 8 ),
-							Field::make( 'textarea', 'csip_company_account_details_other', __( 'Other details e.g. Bank Address', PLUGIN_TEXT_DOMAIN ) )
-								->set_classes( 'span-6 csip-company-account-details-other' )
-								->set_help_text( $allowed_tags_info )
-								->set_rows( 8 ),
-						)
-					)
-					->set_header_template(
-						'
-						<% if (csip_conpany_account_name) { %>
-							<%- csip_conpany_account_name %>
-						<% } %>
-					'
-					),
 				)
 			)
 			->add_tab(

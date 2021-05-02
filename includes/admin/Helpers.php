@@ -22,6 +22,8 @@ class Helpers {
 		return get_option( '_csip_company_nin' );
 	}
 
+
+
 	/**
 	 * Set the next invoice number
 	 *
@@ -35,6 +37,8 @@ class Helpers {
 		$nin = get_option( '_csip_company_nin' ) + 1;
 		update_option( '_csip_company_nin', $nin );
 	}
+
+
 
 	/**
 	 * Return a list of clients
@@ -62,20 +66,25 @@ class Helpers {
 		return $array;
 	}
 
+
+
 	/**
 	 * Return accounts of the company listed in options page
 	 *
 	 * @return array of $accounts
 	 * @since    1.0.0
 	 */
-	// TODO: #BAC find more robust solution.
 	public static function get_accounts() {
-		$i               = 0;
+
+		$args = array(
+
+			'post_type' => 'bankaccount',
+		);
+
+		$qry = new \WP_Query( $args );
 		$accounts        = array();
-		$account_details = carbon_get_theme_option( 'csip_company_bank_accounts' );
-		foreach ( $account_details as $detail ) {
-			$accounts [ $i ] = $detail['csip_conpany_account_name'];
-			$i++;
+		foreach ( $qry->posts as $account ) {
+			$accounts[ $account->ID ] = $account->post_title;
 		}
 
 		asort( $accounts );
@@ -83,6 +92,8 @@ class Helpers {
 
 		return $accounts;
 	}
+
+
 
 	/**
 	 * Return a list of currencies
@@ -98,6 +109,8 @@ class Helpers {
 
 		return $currencies;
 	}
+
+
 
 	/**
 	 * Return list of all countries
@@ -118,6 +131,8 @@ class Helpers {
 		return $array;
 	}
 
+
+
 	/**
 	 * Return a list of states of a given country
 	 *
@@ -134,6 +149,12 @@ class Helpers {
 	}
 
 
+
+	/**
+	 * Return countries data from transients, create transient if does ot exist
+	 *
+	 * @return void
+	 */
 	private static function get_countries_data() {
 
 		$countries_data = get_transient( 'csip_countries' );
@@ -150,6 +171,13 @@ class Helpers {
 
 	}
 
+
+	/**
+	 * Return contry name from cca3 iso code
+	 *
+	 * @param [type] $cca3_code
+	 * @return void
+	 */
 	public static function get_country_name( $cca3_code ) {
 
 		foreach ( self::get_countries_data() as $country ) {
@@ -163,6 +191,13 @@ class Helpers {
 
 	}
 
+
+
+	/**
+	 * Return currencies data from transients, create transient if does ot exist
+	 *
+	 * @return void
+	 */
 	private static function get_currencies_data() {
 
 		$currencies = get_transient( 'csip_currencies' );

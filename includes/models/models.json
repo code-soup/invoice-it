@@ -20,5 +20,16 @@
             "show_in_nav_menus": false,
             "has_archive": true
         }
+    },
+    {
+        "type": "post-type",
+        "name": "Bank Account",
+        "supports": ["title"],
+        "config": {
+            "menu_icon": "dashicons-bank",
+            "publicly_queryable": false,
+            "show_in_nav_menus": false,
+            "has_archive": true
+        }
     }
 ]

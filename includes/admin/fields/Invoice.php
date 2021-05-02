@@ -34,7 +34,7 @@ class Invoice {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function fields_general() {
+	private static function fields_general() {
 		Container::make( 'post_meta', __( 'General', PLUGIN_TEXT_DOMAIN ) )
 			->where( 'post_type', '=', 'invoice' )
 			->add_fields(
@@ -77,7 +77,7 @@ class Invoice {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function fields_items() {
+	private static function fields_items() {
 		 Container::make( 'post_meta', __( 'Items list', PLUGIN_TEXT_DOMAIN ) )
 			->where( 'post_type', '=', 'invoice' )
 			->add_fields(
@@ -131,7 +131,7 @@ class Invoice {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function fields_note() {
+	private static function fields_note() {
 		Container::make( 'post_meta', __( 'Note', PLUGIN_TEXT_DOMAIN ) )
 			->where( 'post_type', '=', 'invoice' )
 			->add_fields(

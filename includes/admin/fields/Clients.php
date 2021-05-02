@@ -10,7 +10,7 @@ defined( 'WPINC' ) || die;
 
 
 /**
- * Class containing fields for the plugin options page.
+ * Class containing fields for the Client post-type.
  *
  * @since    1.0.0
  */
@@ -35,7 +35,7 @@ class Clients {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function fields_address() {
+	private static function fields_address() {
 		Container::make( 'post_meta', __( 'Address', PLUGIN_TEXT_DOMAIN ) )
 			->where( 'post_type', '=', 'client' )
 			->add_fields(
