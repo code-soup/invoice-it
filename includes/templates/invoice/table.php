@@ -10,6 +10,7 @@ $fmt->setTextAttribute( NumberFormatter::CURRENCY_CODE, $client_currency );
 $fmt->setAttribute( NumberFormatter::FRACTION_DIGITS, 2 );
 ?>
 
+<?php if ( $items ) : ?>
 <table class="csip-invoice-table">
 	<thead>
 		<tr>
@@ -31,11 +32,21 @@ $fmt->setAttribute( NumberFormatter::FRACTION_DIGITS, 2 );
 						<dd><?php echo wpautop( wp_kses( $item['inv_item_description'], 'strip' ) ); ?></dd>
 					</dl>
 				</td>
-				<td class="csip-invoice-table-entry csip-text-center"><?php echo $item['inv_item_quantity']; ?></td>
-				<td class="csip-invoice-table-entry csip-text-center"><?php echo wp_kses( $item['inv_item_um'], 'strip' ); ?></td>
-				<td class="csip-invoice-table-entry csip-text-center"><?php echo $item['inv_item_rate']; ?></td>
-				<td class="csip-invoice-table-entry csip-text-center"><?php echo $item['inv_item_discount']; ?></td>
-				<td class="csip-invoice-table-entry csip-text-center"><?php echo $item['inv_item_amount']; ?></td>
+				<td class="csip-invoice-table-entry csip-text-center">
+					<?php echo $item['inv_item_quantity']; ?>
+				</td>
+				<td class="csip-invoice-table-entry csip-text-center">
+					<?php echo wp_kses( $item['inv_item_um'], 'strip' ); ?>
+				</td>
+				<td class="csip-invoice-table-entry csip-text-center">
+					<?php echo $fmt->formatCurrency( $item['inv_item_rate'], $client_currency ); ?>
+				</td>
+				<td class="csip-invoice-table-entry csip-text-center">
+					<?php echo $item['inv_item_discount']; ?>
+				</td>
+				<td class="csip-invoice-table-entry csip-text-center">
+					<?php echo $fmt->formatCurrency( $item['inv_item_amount'], $client_currency ); ?>
+				</td>
 			</tr>
 
 			<?php
@@ -90,3 +101,4 @@ $fmt->setAttribute( NumberFormatter::FRACTION_DIGITS, 2 );
 		</tr>
 	</tfoot>
 </table>
+<?php endif;

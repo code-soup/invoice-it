@@ -17,7 +17,10 @@ $client_country   = csip\admin\Helpers::get_country_name( $client_details['_cli_
 $client_state     = $client_details['_cli_state'];
 $client_zip       = wp_kses( $client_details['_cli_zip'], 'strip' );
 $client_tax_rate  = $client_details['_cli_tax_rate'];
-$client_currency  = $client_details['_cli_currency'];
+
+$client_currency  = $client_details['_cli_currency']
+					? $client_details['_cli_currency']
+					: 'USD';
 
 $client_city_zip = $client_zip
 				? ( $client_city . ', ' . $client_zip )
@@ -31,9 +34,19 @@ $client_country_state = $client_state
 
 <ul class="csip-invoice-list">
 	<li class="csip-invoice-list-label"><?php _e( 'Bill to', PLUGIN_TEXT_DOMAIN ); ?></li>
-	<li class="csip-invoice-list-entry csip-client-name"><?php echo $client_name; ?></li>
-	<li class="csip-invoice-list-entry"><?php echo $client_address_1; ?></li>
-	<li class="csip-invoice-list-entry"><?php echo $client_address_2; ?></li>
-	<li class="csip-invoice-list-entry"><?php echo $client_city_zip; ?></li>
-	<li class="csip-invoice-list-entry"><?php echo $client_country_state; ?></li>
+	<?php if ( $client_name ) : ?>
+		<li class="csip-invoice-list-entry csip-client-name"><?php echo $client_name; ?></li>
+	<?php endif; ?>
+	<?php if ( $client_address_1 ) : ?>
+		<li class="csip-invoice-list-entry"><?php echo $client_address_1; ?></li>
+	<?php endif; ?>
+	<?php if ( $client_address_2 ) : ?>
+		<li class="csip-invoice-list-entry"><?php echo $client_address_2; ?></li>
+	<?php endif; ?>
+	<?php if ( $client_city_zip ) : ?>
+		<li class="csip-invoice-list-entry"><?php echo $client_city_zip; ?></li>
+	<?php endif; ?>
+	<?php if ( $client_country_state ) : ?>
+		<li class="csip-invoice-list-entry"><?php echo $client_country_state; ?></li>
+	<?php endif; ?>
 </ul>

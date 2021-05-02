@@ -17,22 +17,44 @@ $invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
 
 <div class="csip-span-8 csip-company-details">
 	<ul class="csip-invoice-list">
-		<li class="csip-invoice-list-entry csip-company-name"><?php echo $name; ?></li>
-		<li class="csip-invoice-list-entry"><?php echo $address_1; ?></li>
-		<li class="csip-invoice-list-entry"><?php echo $address_2; ?></li>
-		<li class="csip-invoice-list-entry">
-			<span class="csip-company-city"><?php echo $city; ?></span>
-			<span class="csip-company-country"><?php echo $country; ?></span>
-			<span class="csip-company-state"><?php echo $state; ?></span>
-		</li>
-		<li class="csip-invoice-list-entry"><?php echo $zip; ?></li>
-		<li class="csip-invoice-list-entry"><strong>T: </strong><?php echo $phone; ?></li>
-		<li class="csip-invoice-list-entry"><strong>E: </strong><?php echo $email; ?></li>
+		<?php if ( $name) : ?>
+			<li class="csip-invoice-list-entry csip-company-name"><?php echo $name; ?></li>
+		<?php endif; ?>
+		<?php if ( $address_1 ) : ?>
+			<li class="csip-invoice-list-entry"><?php echo $address_1; ?></li>
+		<?php endif; ?>
+		<?php if ( $address_2 ) : ?>
+			<li class="csip-invoice-list-entry"><?php echo $address_2; ?></li>
+		<?php endif; ?>
+		<?php if ( $city || $country || $state ) : ?>
+			<li class="csip-invoice-list-entry">
+				<?php if ( $city ) : ?>
+					<span class="csip-company-city"><?php echo $city; ?></span>
+				<?php endif; ?>
+				<?php if ( $country ) : ?>
+					<span class="csip-company-country"><?php echo $country; ?></span>
+				<?php endif; ?>
+				<?php if ( $state ) : ?>
+					<span class="csip-company-state"><?php echo $state; ?></span>
+				<?php endif; ?>
+			</li>
+		<?php endif; ?>
+		<?php if ( $zip ) : ?>
+			<li class="csip-invoice-list-entry"><?php echo $zip; ?></li>
+		<?php endif; ?>
+		<?php if ( $phone ) : ?>
+			<li class="csip-invoice-list-entry"><strong>T: </strong><?php echo $phone; ?></li>
+		<?php endif; ?>
+		<?php if ( $email ) : ?>
+			<li class="csip-invoice-list-entry"><strong>E: </strong><?php echo $email; ?></li>
+		<?php endif; ?>
 	</ul>
 </div>
 
-<div class="csip-span-4 csip-company-logo">
-	<div class="thumb">
-		<span style="background-image: url('<?php echo $logo; ?>')"></span>
+<?php if ( $logo ) : ?>
+	<div class="csip-span-4 csip-company-logo">
+		<div class="thumb">
+			<span style="background-image: url('<?php echo $logo; ?>')"></span>
+		</div>
 	</div>
-</div>
+<?php endif;

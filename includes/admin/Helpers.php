@@ -123,7 +123,7 @@ class Helpers {
 
 		$array = array();
 		foreach ( $countries as $country ) {
-			$array[ $country['cca2'] ] = $country['name']['common'];
+			$array[ $country['cca3'] ] = $country['name']['common'];
 		}
 
 		array_unshift( $array, __('-- Select country', PLUGIN_TEXT_DOMAIN) );

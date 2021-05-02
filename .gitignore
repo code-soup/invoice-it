@@ -110,3 +110,6 @@ typings/
 
 # Don't commit local configuration file
 src/config-local.js
+
+# Don't commit VS Code SFTP settings
+.vscode
