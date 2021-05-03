@@ -1,5 +1,9 @@
 .csip-invoice {
 
+	* {
+		border: none;
+	}
+
 	font-family: Helvetica, Arial, sans-serif;
 
     h1,
@@ -20,16 +24,30 @@
 		}
     }
 
-	th:first-child {
-		text-align: left;
+	table {
+		min-width: 100%;
+		max-width: 100%;
 	}
 
 	strong {
 		font-weight: bold;
 	}
 
+	dl {
+		display: block;
+		border: none;
+		outline: none;
+	}
+
 	dl,
+	dt,
 	dd {
+		padding: 0;
 		margin: 0;
+	}
+
+	dt,
+	dd {
+		width: 100%;
 	}
 }

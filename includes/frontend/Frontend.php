@@ -36,6 +36,7 @@ class Frontend {
 	public function enqueue_styles() {
 
 		wp_enqueue_style( CSIP_NAME . '/css', $this->assets->get('styles/main.css'), [], CSIP_VERSION, 'all' );
+		wp_enqueue_style( CSIP_NAME . '/print', $this->assets->get('styles/print.css'), [], CSIP_VERSION, 'print' );
 	}
 
 	/**

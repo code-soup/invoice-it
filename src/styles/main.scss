@@ -1,6 +1,7 @@
 /** Import everything from npm dependencies */
 
-@import "_npm/**/*.scss";
+@import "_npm/breakpoint-sass";
+@import "_npm/sprites";
 
 /** Import utilities and layout */
 
@@ -17,4 +18,5 @@
 
 // Add everything else here manually
 
-@import "post-type/invoice/**/*";
+@import "post-type/invoice/invoice";
+@import "post-type/invoice/invoice_table";

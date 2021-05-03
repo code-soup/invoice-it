@@ -1,15 +1,14 @@
 .csip-container {
 	width: 100%;
-	max-width: 216mm;
-	min-width: 210mm;
 	margin: 0 auto;
 }
 
 .csip-invoice {
 	background-color: get_color("white");
 	color: get_color('grey-2');
-    padding: 50px 50px 20px;
+    padding: 50px 50px 30px;
     margin: 50px 0;
+	box-shadow: 0 0 2px grey;
 }
 
 .csip-row {
@@ -42,6 +41,10 @@
 
 .csip-text-center {
 	text-align: center;
+}
+
+.csip-mb-30 {
+	margin-bottom: 40px;
 }
 
 .csip-mb-40 {

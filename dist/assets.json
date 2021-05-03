@@ -1,7 +1,9 @@
 {
-    "styles/admin.css": "styles/admin-bf83a1a2.css",
-    "scripts/admin.js": "scripts/admin-bf83a1a2.js",
-    "styles/main.css": "styles/main-bf83a1a2.css",
-    "scripts/main.js": "scripts/main-bf83a1a2.js",
+    "styles/admin.css": "styles/admin-23b46834.css",
+    "scripts/admin.js": "scripts/admin-23b46834.js",
+    "styles/main.css": "styles/main-23b46834.css",
+    "scripts/main.js": "scripts/main-23b46834.js",
+    "styles/print.css": "styles/print-23b46834.css",
+    "scripts/print.js": "scripts/print-23b46834.js",
     "sprite/spritemap.svg": "sprite/spritemap.svg"
 }

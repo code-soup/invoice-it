@@ -1,16 +1,31 @@
 @media print {
     @page {
-        margin: 20px;
+        margin: 1cm;
+    }
+
+    body {
+
+        hr,
+        header,
+        footer,
+        #header,
+        #footer,
+        .site-header {
+            display: none;
+        }
     }
 
     .csip-container {
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
+        width: 100%;
+        max-width: 216mm;
     }
 
     .csip-invoice {
         padding: 10px;
         margin: 0;
+        box-shadow: none;
     }
 
     .csip-invoice-footer {
@@ -23,14 +38,5 @@
 
     .csip-avoid-break {
         page-break-inside: avoid;
-    }
-
-    body {
-
-        header,
-        footer,
-		.site-header {
-            display: none;
-        }
     }
 }

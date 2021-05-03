@@ -87,7 +87,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 		</article>
 
 		<?php if ( $company_terms ) : ?>
-		<div class="csip-mb-40 csip-avoid-break">
+		<div class="csip-mb-30 csip-avoid-break">
 			<h3 class="csip-invoice-title-underlined">
 				<?php _e( 'Terms & Conditions', CSIP_TEXT_DOMAIN ); ?>
 			</h3>
@@ -98,7 +98,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 		<?php endif; ?>
 
 		<?php if ( $company_note ) : ?>
-		<div class="csip-mb-40 csip-avoid-break">
+		<div class="csip-mb-30 csip-avoid-break">
 			<h3 class="csip-invoice-title-underlined">
 				<?php _e( 'Note', CSIP_TEXT_DOMAIN ); ?>
 			</h3>

@@ -13,7 +13,7 @@ if ( $account_id ) : ?>
 
 if ( $account_details_1 || $account_details_2 ) : ?>
 
-	<div class="csip-invoice-account csip-mb-40">
+	<div class="csip-invoice-account csip-mb-30">
 		<h4 class="csip-invoice-account-name"><?php echo get_the_title( $account_id ); ?></h4>
 		<div class="csip-row">
 			<?php if ( $account_details_1 ) : ?>
