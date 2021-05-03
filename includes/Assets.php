@@ -39,8 +39,8 @@ class Assets {
      */
     public function __construct() {
 
-        $this->dist_path     = sprintf( '%sdist', PLUGIN_PATH );
-        $this->dist_uri      = sprintf( '%sdist', PLUGIN_URI );
+        $this->dist_path     = sprintf( '%sdist', CSIP_PATH );
+        $this->dist_uri      = sprintf( '%sdist', CSIP_URI );
         $this->manifest_path = sprintf( '%s/assets.json', $this->dist_path );
 
         /**

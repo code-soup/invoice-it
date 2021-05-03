@@ -7,7 +7,7 @@ $account_details_2 = get_post_meta( $account_id, '_csip_company_account_details_
 
 if ( $account_id ) : ?>
 <h3 class="csip-invoice-title-underlined">
-	<?php _e( 'Ways to pay', PLUGIN_TEXT_DOMAIN ); ?>
+	<?php _e( 'Ways to pay', CSIP_TEXT_DOMAIN ); ?>
 </h3>
 <?php endif;
 

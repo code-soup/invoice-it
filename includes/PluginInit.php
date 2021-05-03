@@ -62,8 +62,8 @@ class PluginInit {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = PLUGIN_NAME;
-		$this->version     = PLUGIN_VERSION;
+		$this->plugin_name = CSIP_NAME;
+		$this->version     = CSIP_VERSION;
 
 		$this->load_dependencies();
 		$this->set_locale();

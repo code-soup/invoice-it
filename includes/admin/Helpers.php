@@ -60,7 +60,7 @@ class Helpers {
 		}
 
 		asort( $clients );
-		$first_option = array( '0' => __('-- Select Client', PLUGIN_TEXT_DOMAIN) );
+		$first_option = array( '0' => __('-- Select Client', CSIP_TEXT_DOMAIN) );
 		$array        = $first_option + $clients;
 
 		return $array;
@@ -88,7 +88,7 @@ class Helpers {
 		}
 
 		asort( $accounts );
-		$accounts = array( '-1' => __( '-- Select Account', PLUGIN_TEXT_DOMAIN ) ) + $accounts;
+		$accounts = array( '-1' => __( '-- Select Account', CSIP_TEXT_DOMAIN ) ) + $accounts;
 
 		return $accounts;
 	}
@@ -105,7 +105,7 @@ class Helpers {
 
 		$currencies = self::get_currencies_data();
 
-		array_unshift( $currencies, __( '-- Select currency', PLUGIN_TEXT_DOMAIN ) );
+		array_unshift( $currencies, __( '-- Select currency', CSIP_TEXT_DOMAIN ) );
 
 		return $currencies;
 	}
@@ -126,7 +126,7 @@ class Helpers {
 			$array[ $country['cca3'] ] = $country['name']['common'];
 		}
 
-		array_unshift( $array, __('-- Select country', PLUGIN_TEXT_DOMAIN) );
+		array_unshift( $array, __('-- Select country', CSIP_TEXT_DOMAIN) );
 
 		return $array;
 	}
@@ -142,7 +142,7 @@ class Helpers {
 	// TODO: fetch states with AJAX
 	public static function get_states() {
 		$array = array(
-			'0' => __( '-- Select State', PLUGIN_TEXT_DOMAIN ),
+			'0' => __( '-- Select State', CSIP_TEXT_DOMAIN ),
 		);
 
 		return $array;
@@ -161,7 +161,7 @@ class Helpers {
 
 		if ( $countries_data === false ) {
 
-			$countries_json = file_get_contents( PLUGIN_PATH . '/vendor/mledoze/countries/dist/countries.json' );
+			$countries_json = file_get_contents( CSIP_PATH . '/vendor/mledoze/countries/dist/countries.json' );
 			$countries_data = json_decode( $countries_json, true );
 
 			set_transient( 'csip_countries', $countries_data, 3600 * 24 );

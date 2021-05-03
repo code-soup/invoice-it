@@ -33,7 +33,7 @@ $client_country_state = $client_state
 ?>
 
 <ul class="csip-invoice-list">
-	<li class="csip-invoice-list-label"><?php _e( 'Bill to', PLUGIN_TEXT_DOMAIN ); ?></li>
+	<li class="csip-invoice-list-label"><?php _e( 'Bill to', CSIP_TEXT_DOMAIN ); ?></li>
 	<?php if ( $client_name ) : ?>
 		<li class="csip-invoice-list-entry csip-client-name"><?php echo $client_name; ?></li>
 	<?php endif; ?>

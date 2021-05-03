@@ -34,7 +34,7 @@ class Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( PLUGIN_NAME . '/wp/css', $this->assets->get( 'styles/admin.css' ), array(), PLUGIN_VERSION, 'all' );
+		wp_enqueue_style( CSIP_NAME . '/wp/css', $this->assets->get( 'styles/admin.css' ), array(), CSIP_VERSION, 'all' );
 	}
 
 	/**
@@ -44,11 +44,11 @@ class Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( PLUGIN_NAME . '/wp/js', $this->assets->get( 'scripts/admin.js' ), array(), PLUGIN_VERSION, false );
+		wp_enqueue_script( CSIP_NAME . '/wp/js', $this->assets->get( 'scripts/admin.js' ), array(), CSIP_VERSION, false );
 	}
 
 	/**
-	 * Set Custom Post Types file location using Sober/models
+	 * Set Custom Post Types file location using Bober/models
 	 * WordPress plugin to create custom post types and taxonomies using JSON, YAML or PHP files
 	 * Theme uses models.json file located in the directory set in the filter below
 	 *
@@ -57,7 +57,7 @@ class Admin {
 	 */
 	public function sober_models_path() {
 
-		return PLUGIN_PATH . 'includes/models';
+		return CSIP_PATH . 'includes/models';
 	}
 
 	/**
@@ -94,7 +94,7 @@ class Admin {
 	public function get_invoice_template( $single_template ) {
 		global $wp_query, $post;
 		if ( $post->post_type == 'invoice' ) {
-			$single_template = PLUGIN_PATH . 'includes/templates/invoice.php';
+			$single_template = CSIP_PATH . 'includes/templates/invoice.php';
 		}
 		return $single_template;
 	}
@@ -127,7 +127,7 @@ class Admin {
 	 * @since    1.0.0
 	 */
 	public function show_invoice_number_column( $columns ) {
-		$columns = array_merge( $columns, array( 'invoice_number' => __( 'Invoice Number', PLUGIN_TEXT_DOMAIN ) ) );
+		$columns = array_merge( $columns, array( 'invoice_number' => __( 'Invoice Number', CSIP_TEXT_DOMAIN ) ) );
 
 		// Move the Date column to the end
 		$reposition = $columns['date'];
