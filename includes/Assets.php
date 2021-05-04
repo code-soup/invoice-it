@@ -2,7 +2,7 @@
 
 namespace csip;
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 /**
  * Get paths for assets
@@ -82,7 +82,7 @@ class Assets {
 	 */
 	private function locate( $filename ) {
 
-		// Return URL to requested file from manifest
+		// Return URL to requested file from manifest.
 		if ( array_key_exists( $filename, $this->manifest ) ) {
 			return sprintf( '%s/%s', $this->dist_uri, $this->manifest[ $filename ] );
 		}

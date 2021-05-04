@@ -1,8 +1,7 @@
-<?php // Silence is golden
+<?php
 
 /**
  * The plugin bootstrap file
- *
  *
  * @link              https://www.codesoup.co
  * @since             1.0.0
@@ -23,5 +22,5 @@
 // If this file is called directly, abort.
 defined( 'WPINC' ) || die;
 
-// Run the plugin
-include "run.php";
+// Run the plugin.
+require 'run.php';
