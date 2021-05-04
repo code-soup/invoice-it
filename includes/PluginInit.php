@@ -124,9 +124,20 @@ class PluginInit {
 		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin, 'register_custom_fields' );
 		$this->loader->add_filter( 'single_template', $plugin_admin, 'get_invoice_template' );
 		$this->loader->add_action( 'save_post_invoice', $plugin_admin, 'on_publish_invoice', 10, 3 );
+
+		/**
+		 * Add invoice number to Invoice CPT
+		 */
 		$this->loader->add_filter( 'manage_invoice_posts_columns', $plugin_admin, 'show_invoice_number_column' );
 		$this->loader->add_filter( 'manage_edit-invoice_sortable_columns', $plugin_admin, 'sortable_invoice_number_column' );
 		$this->loader->add_action( 'manage_invoice_posts_custom_column', $plugin_admin, 'fill_invoice_number_column', 10, 2 );
+
+		/**
+		 * Add invoice client to Invoice CPT
+		 */
+		$this->loader->add_filter( 'manage_invoice_posts_columns', $plugin_admin, 'show_invoice_client_column' );
+		$this->loader->add_filter( 'manage_edit-invoice_sortable_columns', $plugin_admin, 'sortable_invoice_client_column' );
+		$this->loader->add_action( 'manage_invoice_posts_custom_column', $plugin_admin, 'fill_invoice_client_column', 10, 2 );
 
 	}
 

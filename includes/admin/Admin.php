@@ -252,7 +252,7 @@ class Admin {
 	}
 
 	/**
-	 * Add column with invoice number
+	 * Add column with invoice number to Invoice CPT
 	 *
 	 * @param [type] $columns
 	 * @return void
@@ -293,6 +293,56 @@ class Admin {
 			$invoice_number = get_post_meta( $post_id, '_inv_number', true );
 			if ( $invoice_number ) {
 				echo '<span>' . $invoice_number . '</span>';
+			} else {
+				echo '<span>-</span>';
+			}
+		}
+	}
+
+
+
+	/**
+	 * Add column with invoice client to Invoice CPT
+	 *
+	 * @param [type] $columns
+	 * @return void
+	 * @since    1.0.0
+	 */
+	public function show_invoice_client_column( $columns ) {
+		$columns = array_merge( $columns, array( 'invoice_client' => __( 'Client', CSIP_TEXT_DOMAIN ) ) );
+
+		// Move the Date column to the end
+		$reposition = $columns['date'];
+		unset($columns['date']);
+		$columns['date'] = $reposition;
+
+		return $columns;
+	}
+
+	/**
+	 * Make the invoice client column soratblle
+	 *
+	 * @param [type] $columns
+	 * @return void
+	 * @since    1.0.0
+	 */
+	public function sortable_invoice_client_column( $columns ) {
+		$columns['invoice_client'] = 'invoice_client';
+		return $columns;
+	}
+
+	/**
+	 * Fill invoice_client column with data
+	 *
+	 * @param [type] $columns
+	 * @return void
+	 * @since    1.0.0
+	 */
+	public function fill_invoice_client_column( $column_key, $post_id ) {
+		if ( $column_key == 'invoice_client' ) {
+			$invoice_client = get_post_meta( $post_id, '_inv_client', true );
+			if ( $invoice_client ) {
+				echo '<span>' . get_the_title( $invoice_client ) . '</span>';
 			} else {
 				echo '<span>-</span>';
 			}
