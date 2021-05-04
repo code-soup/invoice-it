@@ -1,6 +1,13 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {
 	exit; }
 
+
+/**
+ * Get company details
+ *
+ * @since      1.0.0
+ */
+
 $name           = wp_kses( $company_details['_csip_company_name'], 'strip' );
 $address_1      = wp_kses( $company_details['_csip_company_address_1'], 'strip' );
 $address_2      = wp_kses( $company_details['_csip_company_address_2'], 'strip' );
@@ -17,7 +24,7 @@ $invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
 
 <div class="csip-span-8 csip-company-details">
 	<ul class="csip-invoice-list">
-		<?php if ( $name) : ?>
+		<?php if ( $name ) : ?>
 			<li class="csip-invoice-list-entry csip-company-name"><?php echo $name; ?></li>
 		<?php endif; ?>
 		<?php if ( $address_1 ) : ?>
@@ -57,4 +64,5 @@ $invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
 			<span style="background-image: url('<?php echo $logo; ?>')"></span>
 		</div>
 	</div>
-<?php endif;
+	<?php
+endif;

@@ -18,7 +18,7 @@ class BankAccounts {
 
 
 	/**
-	 * Load all custom field metaboxes for Client post type
+	 * Load all custom field metaboxes for Bank Account post-type
 	 *
 	 * @since    1.0.0
 	 */

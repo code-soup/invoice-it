@@ -3,7 +3,10 @@
 
 /**
  * Get client details
+ *
+ * @since      1.0.0
  */
+
 $client_details = array();
 foreach ( get_post_meta( $client_id ) as $key => $value ) {
 	$client_details[ $key ] = $value[0];
@@ -18,7 +21,7 @@ $client_state     = $client_details['_cli_state'];
 $client_zip       = wp_kses( $client_details['_cli_zip'], 'strip' );
 $client_tax_rate  = $client_details['_cli_tax_rate'];
 
-$client_currency  = $client_details['_cli_currency']
+$client_currency = $client_details['_cli_currency']
 					? $client_details['_cli_currency']
 					: 'USD';
 

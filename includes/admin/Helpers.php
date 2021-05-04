@@ -8,6 +8,8 @@ defined( 'WPINC' ) || die;
 
 /**
  * Class contains helper functions for admin.
+ *
+ * @since      1.0.0
  */
 class Helpers {
 
@@ -15,7 +17,7 @@ class Helpers {
 	/**
 	 * Get invoice number for a new invoice
 	 *
-	 * @return int
+	 * @return   int
 	 * @since    1.0.0
 	 */
 	public static function get_next_invoice_number() {
@@ -27,12 +29,12 @@ class Helpers {
 	/**
 	 * Set the next invoice number
 	 *
-	 * @return void
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public static function set_next_invoice_number() {
 
-		// TODO: check if the invoice already exists with the same invoice prrefix & invoice number
+		// TODO: check if the invoice already exists with the same invoice prrefix & invoice number.
 
 		$nin = get_option( '_csip_company_nin' ) + 1;
 		update_option( '_csip_company_nin', $nin );
@@ -43,7 +45,7 @@ class Helpers {
 	/**
 	 * Return a list of clients
 	 *
-	 * @return array of clients
+	 * @return   array of clients
 	 * @since    1.0.0
 	 */
 	public static function get_clients() {
@@ -54,16 +56,15 @@ class Helpers {
 
 		$qry = new \WP_Query( $args );
 
-		$clients = array();
+		$array = array();
 		foreach ( $qry->posts as $client ) {
-			$clients[ $client->ID ] = $client->post_title;
+			$array[ $client->ID ] = $client->post_title;
 		}
 
-		asort( $clients );
-		$first_option = array( '0' => __('-- Select Client', CSIP_TEXT_DOMAIN) );
-		$array        = $first_option + $clients;
+		asort( $array );
+		$clients = array( '0' => __( '-- Select Client', CSIP_TEXT_DOMAIN ) ) + $array;
 
-		return $array;
+		return $clients;
 	}
 
 
@@ -71,7 +72,7 @@ class Helpers {
 	/**
 	 * Return accounts of the company listed in options page
 	 *
-	 * @return array of $accounts
+	 * @return   array of $accounts
 	 * @since    1.0.0
 	 */
 	public static function get_accounts() {
@@ -82,13 +83,14 @@ class Helpers {
 		);
 
 		$qry = new \WP_Query( $args );
-		$accounts        = array();
+
+		$array = array();
 		foreach ( $qry->posts as $account ) {
-			$accounts[ $account->ID ] = $account->post_title;
+			$array[ $account->ID ] = $account->post_title;
 		}
 
-		asort( $accounts );
-		$accounts = array( '-1' => __( '-- Select Account', CSIP_TEXT_DOMAIN ) ) + $accounts;
+		asort( $array );
+		$accounts = array( '-1' => __( '-- Select Account', CSIP_TEXT_DOMAIN ) ) + $array;
 
 		return $accounts;
 	}
@@ -98,7 +100,7 @@ class Helpers {
 	/**
 	 * Return a list of currencies
 	 *
-	 * @return array of currencies
+	 * @return   array of currencies
 	 * @since    1.0.0
 	 */
 	public static function get_currencies() {
@@ -115,7 +117,7 @@ class Helpers {
 	/**
 	 * Return list of all countries
 	 *
-	 * @return array of countries
+	 * @return   array of countries
 	 * @since    1.0.0
 	 */
 	public static function get_countries() {
@@ -126,7 +128,7 @@ class Helpers {
 			$array[ $country['cca3'] ] = $country['name']['common'];
 		}
 
-		array_unshift( $array, __('-- Select country', CSIP_TEXT_DOMAIN) );
+		array_unshift( $array, __( '-- Select country', CSIP_TEXT_DOMAIN ) );
 
 		return $array;
 	}
@@ -136,10 +138,10 @@ class Helpers {
 	/**
 	 * Return a list of states of a given country
 	 *
-	 * @return array
+	 * @return   array of states
 	 * @since    1.0.0
 	 */
-	// TODO: fetch states with AJAX
+	// TODO: fetch states with AJAX.
 	public static function get_states() {
 		$array = array(
 			'0' => __( '-- Select State', CSIP_TEXT_DOMAIN ),
@@ -153,7 +155,8 @@ class Helpers {
 	/**
 	 * Return countries data from transients, create transient if does ot exist
 	 *
-	 * @return void
+	 * @return   array of countries data
+	 * @since    1.0.0
 	 */
 	private static function get_countries_data() {
 
@@ -172,11 +175,13 @@ class Helpers {
 	}
 
 
+
 	/**
-	 * Return contry name from cca3 iso code
+	 * Return country name from cca3 iso code
 	 *
-	 * @param [type] $cca3_code
-	 * @return void
+	 * @param    [type] $cca3_code
+	 * @return   string
+	 * @since    1.0.0
 	 */
 	public static function get_country_name( $cca3_code ) {
 
@@ -196,7 +201,8 @@ class Helpers {
 	/**
 	 * Return currencies data from transients, create transient if does ot exist
 	 *
-	 * @return void
+	 * @return   array of currencies
+	 * @since    1.0.0
 	 */
 	private static function get_currencies_data() {
 

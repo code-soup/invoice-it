@@ -20,6 +20,8 @@ defined( 'WPINC' ) || die;
  *
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
+ *
+ * @since      1.0.0
  */
 class PluginInit {
 

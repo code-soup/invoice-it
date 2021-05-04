@@ -1,12 +1,16 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {
 	exit; }
 
-
-$invoice_number  = $invoice_details['_inv_number'];
-$invoice_date    = $invoice_details['_inv_date'];
-$invoice_due     = $invoice_details['_inv_due_date'];
-$client_id       = $invoice_details['_inv_client'];
-$invoice_code    = trim( $invoice_prefix ) . str_pad( $invoice_number, 4, '0', STR_PAD_LEFT );
+/**
+ * Get invoice details
+ *
+ * @since      1.0.0
+ */
+$invoice_number = $invoice_details['_inv_number'];
+$invoice_date   = $invoice_details['_inv_date'];
+$invoice_due    = $invoice_details['_inv_due_date'];
+$client_id      = $invoice_details['_inv_client'];
+$invoice_code   = trim( $invoice_prefix ) . str_pad( $invoice_number, 4, '0', STR_PAD_LEFT );
 
 ?>
 

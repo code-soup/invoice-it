@@ -2,7 +2,7 @@
 
 namespace csip;
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 
 
@@ -15,6 +15,11 @@ defined( 'WPINC' ) || die;
  */
 class Deactivator {
 
+	/**
+	 * On deactivation
+	 *
+	 * @return void
+	 */
 	public static function deactivate() {
 
 	}

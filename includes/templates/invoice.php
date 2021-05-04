@@ -13,6 +13,8 @@ $allowed_html = array(
 
 /**
  * Get compeny details
+ *
+ * @since      1.0.0
  */
 $wp_options_company = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}options WHERE (CONVERT(`option_name` USING utf8) LIKE '%csip_%')", ARRAY_A );
 
@@ -21,9 +23,9 @@ foreach ( $wp_options_company as $value ) {
 	$company_details[ $value['option_name'] ] = $value['option_value'];
 }
 
-$company_terms  = wpautop( wp_kses( $company_details['_csip_company_terms'], $allowed_html ) );
-$company_note   = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
-$footertext     = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
+$company_terms = wpautop( wp_kses( $company_details['_csip_company_terms'], $allowed_html ) );
+$company_note  = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
+$footertext    = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
 
 
 

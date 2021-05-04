@@ -5,7 +5,7 @@ namespace csip\admin;
 use csip\Assets;
 use csip\admin\Helpers;
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 
 
@@ -14,8 +14,11 @@ defined( 'WPINC' ) || die;
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
+ *
+ * @since      1.0.0
  */
 class Admin {
+
 
 	/**
 	 * Initialize the class and set its properties.
@@ -23,9 +26,10 @@ class Admin {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		// Load assets from manifest.json
+		// Load assets from manifest.json.
 		$this->assets = new Assets();
 	}
+
 
 	/**
 	 * Register the stylesheets for the admin area.
@@ -48,9 +52,10 @@ class Admin {
 	}
 
 
-
 	/**
 	 * Register custom post-type Invoice
+	 *
+	 * @since    1.0.0
 	 */
 	public function register_cpt_invoice() {
 
@@ -96,9 +101,10 @@ class Admin {
 	}
 
 
-
 	/**
 	 * Register custom post-type Client
+	 *
+	 * @since    1.0.0
 	 */
 	public function register_cpt_client() {
 
@@ -143,9 +149,10 @@ class Admin {
 	}
 
 
-
 	/**
 	 * Register custom post-type Bank Account
+	 *
+	 * @since    1.0.0
 	 */
 	public function register_cpt_bank_account() {
 
@@ -190,7 +197,6 @@ class Admin {
 	}
 
 
-
 	/**
 	 * Boot Carbon Fields with default IoC dependencies
 	 *
@@ -200,6 +206,7 @@ class Admin {
 
 		\Carbon_Fields\Carbon_Fields::boot();
 	}
+
 
 	/**
 	 * Load Custom fields
@@ -218,8 +225,8 @@ class Admin {
 	/**
 	 * Register custom post type template
 	 *
-	 * @param [type] $single_template
-	 * @return void
+	 * @param    [type] $single_template
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function get_invoice_template( $single_template ) {
@@ -235,7 +242,10 @@ class Admin {
 	/**
 	 * Hook to handle next invoice number
 	 *
-	 * @return void
+	 * @param    [type] $post_id
+	 * @param    [type] $post
+	 * @param    [type] $update
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function on_publish_invoice( $post_id, $post, $update ) {
@@ -251,29 +261,31 @@ class Admin {
 		Helpers::set_next_invoice_number();
 	}
 
+
 	/**
 	 * Add column with invoice number to Invoice CPT
 	 *
-	 * @param [type] $columns
-	 * @return void
+	 * @param    [type] $columns
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function show_invoice_number_column( $columns ) {
 		$columns = array_merge( $columns, array( 'invoice_number' => __( 'Invoice Number', CSIP_TEXT_DOMAIN ) ) );
 
-		// Move the Date column to the end
+		// Move the Date column to the end.
 		$reposition = $columns['date'];
-		unset($columns['date']);
+		unset( $columns['date'] );
 		$columns['date'] = $reposition;
 
 		return $columns;
 	}
 
+
 	/**
 	 * Make the invoice number column soratblle
 	 *
-	 * @param [type] $columns
-	 * @return void
+	 * @param    [type] $columns
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function sortable_invoice_number_column( $columns ) {
@@ -281,11 +293,13 @@ class Admin {
 		return $columns;
 	}
 
+
 	/**
 	 * Fill invoice_number column with data
 	 *
-	 * @param [type] $columns
-	 * @return void
+	 * @param    [type] $column_key
+	 * @param    [type] $post_id
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function fill_invoice_number_column( $column_key, $post_id ) {
@@ -300,30 +314,30 @@ class Admin {
 	}
 
 
-
 	/**
 	 * Add column with invoice client to Invoice CPT
 	 *
-	 * @param [type] $columns
-	 * @return void
+	 * @param    [type] $columns
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function show_invoice_client_column( $columns ) {
 		$columns = array_merge( $columns, array( 'invoice_client' => __( 'Client', CSIP_TEXT_DOMAIN ) ) );
 
-		// Move the Date column to the end
+		// Move the Date column to the end.
 		$reposition = $columns['date'];
-		unset($columns['date']);
+		unset( $columns['date'] );
 		$columns['date'] = $reposition;
 
 		return $columns;
 	}
 
+
 	/**
 	 * Make the invoice client column soratblle
 	 *
-	 * @param [type] $columns
-	 * @return void
+	 * @param    [type] $columns
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function sortable_invoice_client_column( $columns ) {
@@ -331,11 +345,13 @@ class Admin {
 		return $columns;
 	}
 
+
 	/**
 	 * Fill invoice_client column with data
 	 *
-	 * @param [type] $columns
-	 * @return void
+	 * @param    [type] $column_key
+	 * @param    [type] $post_id
+	 * @return   void
 	 * @since    1.0.0
 	 */
 	public function fill_invoice_client_column( $column_key, $post_id ) {

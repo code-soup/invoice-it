@@ -1,16 +1,22 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {
 	exit; }
 
+/**
+ * Display table with invoice items
+ *
+ * @since      1.0.0
+ */
+
 $subtotal = $discount = $tax_duty = $total = 0;
 $items    = carbon_get_the_post_meta( 'inv_items' );
 
-// Handle currency formatting
+// Handle currency formatting.
 $fmt = new NumberFormatter( get_locale(), NumberFormatter::CURRENCY );
 $fmt->setTextAttribute( NumberFormatter::CURRENCY_CODE, $client_currency );
 $fmt->setAttribute( NumberFormatter::FRACTION_DIGITS, 2 );
-?>
 
-<?php if ( $items ) : ?>
+if ( $items ) : ?>
+
 <table class="csip-invoice-table">
 	<thead>
 		<tr>
@@ -101,4 +107,6 @@ $fmt->setAttribute( NumberFormatter::FRACTION_DIGITS, 2 );
 		</tr>
 	</tfoot>
 </table>
-<?php endif;
+
+	<?php
+endif;

@@ -1,6 +1,12 @@
 <?php if ( ! defined( 'ABSPATH' ) ) {
 	exit; }
 
+/**
+ * Get payment account details
+ *
+ * @since      1.0.0
+ */
+
 $account_id        = carbon_get_post_meta( get_the_ID(), 'inv_payment_account' );
 $account_details_1 = get_post_meta( $account_id, '_csip_company_account_details', true );
 $account_details_2 = get_post_meta( $account_id, '_csip_company_account_details_other', true );
@@ -9,9 +15,11 @@ if ( $account_id ) : ?>
 <h3 class="csip-invoice-title-underlined">
 	<?php _e( 'Ways to pay', CSIP_TEXT_DOMAIN ); ?>
 </h3>
-<?php endif;
+	<?php
+endif;
 
-if ( $account_details_1 || $account_details_2 ) : ?>
+if ( $account_details_1 || $account_details_2 ) :
+	?>
 
 	<div class="csip-invoice-account csip-mb-30">
 		<h4 class="csip-invoice-account-name"><?php echo get_the_title( $account_id ); ?></h4>

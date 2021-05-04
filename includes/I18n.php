@@ -2,7 +2,7 @@
 
 namespace csip;
 
-// Exit if accessed directly
+// Exit if accessed directly.
 defined( 'WPINC' ) || die;
 
 /**
@@ -11,6 +11,7 @@ defined( 'WPINC' ) || die;
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
+ * @since      1.0.0
  */
 class I18n {
 

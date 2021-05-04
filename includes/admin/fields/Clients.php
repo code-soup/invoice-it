@@ -18,7 +18,7 @@ class Clients {
 
 
 	/**
-	 * Load all custom field metaboxes for Client post type
+	 * Load all custom field metaboxes for Client post-type
 	 *
 	 * @since    1.0.0
 	 */
@@ -110,12 +110,12 @@ class Clients {
 
 
 	/**
-	 * Create bank detail fields
+	 * Create other details fields
 	 *
 	 * @since    1.0.0
 	 */
 	public static function fields_other() {
-		 Container::make( 'post_meta', __( 'Other Details', CSIP_TEXT_DOMAIN ) )
+		Container::make( 'post_meta', __( 'Other Details', CSIP_TEXT_DOMAIN ) )
 			->where( 'post_type', '=', 'client' )
 			->add_fields(
 				array(
