@@ -47,18 +47,149 @@ class Admin {
 		wp_enqueue_script( CSIP_NAME . '/wp/js', $this->assets->get( 'scripts/admin.js' ), array(), CSIP_VERSION, false );
 	}
 
-	/**
-	 * Set Custom Post Types file location using Bober/models
-	 * WordPress plugin to create custom post types and taxonomies using JSON, YAML or PHP files
-	 * Theme uses models.json file located in the directory set in the filter below
-	 *
-	 * @link( https://github.com/soberwp/models, documentation )
-	 * @since    1.0.0
-	 */
-	public function sober_models_path() {
 
-		return CSIP_PATH . 'includes/models';
+
+	/**
+	 * Register custom post-type Invoice
+	 */
+	public function register_cpt_invoice() {
+
+		$labels = array(
+			'name'                  => _x( 'Invoices', 'Post type general name', CSIP_TEXT_DOMAIN ),
+			'singular_name'         => _x( 'Invoice', 'Post type singular name', CSIP_TEXT_DOMAIN ),
+			'menu_name'             => _x( 'Invoices', 'Admin Menu text', CSIP_TEXT_DOMAIN ),
+			'name_admin_bar'        => _x( 'Invoice', 'Add New on Toolbar', CSIP_TEXT_DOMAIN ),
+			'add_new'               => __( 'Add New', CSIP_TEXT_DOMAIN ),
+			'add_new_item'          => __( 'Add New Invoice', CSIP_TEXT_DOMAIN ),
+			'new_item'              => __( 'New Invoice', CSIP_TEXT_DOMAIN ),
+			'edit_item'             => __( 'Edit Invoice', CSIP_TEXT_DOMAIN ),
+			'view_item'             => __( 'View Invoice', CSIP_TEXT_DOMAIN ),
+			'all_items'             => __( 'All Invoices', CSIP_TEXT_DOMAIN ),
+			'search_items'          => __( 'Search Invoices', CSIP_TEXT_DOMAIN ),
+			'parent_item_colon'     => __( 'Parent Invoices:', CSIP_TEXT_DOMAIN ),
+			'not_found'             => __( 'No invoices found.', CSIP_TEXT_DOMAIN ),
+			'not_found_in_trash'    => __( 'No invoices found in Trash.', CSIP_TEXT_DOMAIN ),
+			'archives'              => _x( 'Invoice archives', 'The post type archive label used in nav menus. Default “Post Archives”.', CSIP_TEXT_DOMAIN ),
+			'insert_into_item'      => _x( 'Insert into invoice', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post).', CSIP_TEXT_DOMAIN ),
+			'filter_items_list'     => _x( 'Filter invoice list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”.', CSIP_TEXT_DOMAIN ),
+			'items_list_navigation' => _x( 'Invoices list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”.', CSIP_TEXT_DOMAIN ),
+			'items_list'            => _x( 'Invoices list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”.', CSIP_TEXT_DOMAIN ),
+		);
+
+		$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_in_nav_menus'  => false,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'invoice' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title' ),
+			'menu_icon'          => 'dashicons-media-spreadsheet',
+		);
+
+		register_post_type( 'invoice', $args );
+
 	}
+
+
+
+	/**
+	 * Register custom post-type Client
+	 */
+	public function register_cpt_client() {
+
+		$labels = array(
+			'name'                  => _x( 'Clients', 'Post type general name', CSIP_TEXT_DOMAIN ),
+			'singular_name'         => _x( 'Client', 'Post type singular name', CSIP_TEXT_DOMAIN ),
+			'menu_name'             => _x( 'Clients', 'Admin Menu text', CSIP_TEXT_DOMAIN ),
+			'name_admin_bar'        => _x( 'Client', 'Add New on Toolbar', CSIP_TEXT_DOMAIN ),
+			'add_new'               => __( 'Add New', CSIP_TEXT_DOMAIN ),
+			'add_new_item'          => __( 'Add New Client', CSIP_TEXT_DOMAIN ),
+			'new_item'              => __( 'New Client', CSIP_TEXT_DOMAIN ),
+			'edit_item'             => __( 'Edit Client', CSIP_TEXT_DOMAIN ),
+			'view_item'             => __( 'View Client', CSIP_TEXT_DOMAIN ),
+			'all_items'             => __( 'All Clients', CSIP_TEXT_DOMAIN ),
+			'search_items'          => __( 'Search Clients', CSIP_TEXT_DOMAIN ),
+			'parent_item_colon'     => __( 'Parent Clients:', CSIP_TEXT_DOMAIN ),
+			'not_found'             => __( 'No clients found.', CSIP_TEXT_DOMAIN ),
+			'not_found_in_trash'    => __( 'No clients found in Trash.', CSIP_TEXT_DOMAIN ),
+			'archives'              => _x( 'Client archives', 'The post type archive label used in nav menus. Default “Post Archives”.', CSIP_TEXT_DOMAIN ),
+			'insert_into_item'      => _x( 'Insert into client', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post).', CSIP_TEXT_DOMAIN ),
+			'filter_items_list'     => _x( 'Filter client list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”.', CSIP_TEXT_DOMAIN ),
+			'items_list_navigation' => _x( 'Clients list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”.', CSIP_TEXT_DOMAIN ),
+			'items_list'            => _x( 'Clients list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”.', CSIP_TEXT_DOMAIN ),
+		);
+
+		$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => false,
+			'show_in_nav_menus'  => false,
+			'rewrite'            => array( 'slug' => 'client' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title' ),
+			'menu_icon'          => 'dashicons-groups',
+		);
+
+		register_post_type( 'client', $args );
+
+	}
+
+
+
+	/**
+	 * Register custom post-type Bank Account
+	 */
+	public function register_cpt_bank_account() {
+
+		$labels = array(
+			'name'                  => _x( 'Bank Accounts', 'Post type general name', CSIP_TEXT_DOMAIN ),
+			'singular_name'         => _x( 'Bank Account', 'Post type singular name', CSIP_TEXT_DOMAIN ),
+			'menu_name'             => _x( 'Bank Accounts', 'Admin Menu text', CSIP_TEXT_DOMAIN ),
+			'name_admin_bar'        => _x( 'Bank Account', 'Add New on Toolbar', CSIP_TEXT_DOMAIN ),
+			'add_new'               => __( 'Add New', CSIP_TEXT_DOMAIN ),
+			'add_new_item'          => __( 'Add New Bank Account', CSIP_TEXT_DOMAIN ),
+			'new_item'              => __( 'New Bank Account', CSIP_TEXT_DOMAIN ),
+			'edit_item'             => __( 'Edit Bank Account', CSIP_TEXT_DOMAIN ),
+			'view_item'             => __( 'View Bank Account', CSIP_TEXT_DOMAIN ),
+			'all_items'             => __( 'All Bank Accounts', CSIP_TEXT_DOMAIN ),
+			'search_items'          => __( 'Search Bank Accounts', CSIP_TEXT_DOMAIN ),
+			'parent_item_colon'     => __( 'Parent Bank Accounts:', CSIP_TEXT_DOMAIN ),
+			'not_found'             => __( 'No bank accounts found.', CSIP_TEXT_DOMAIN ),
+			'not_found_in_trash'    => __( 'No bank accounts found in Trash.', CSIP_TEXT_DOMAIN ),
+			'archives'              => _x( 'Bank Account archives', 'The post type archive label used in nav menus. Default “Post Archives”.', CSIP_TEXT_DOMAIN ),
+			'insert_into_item'      => _x( 'Insert into bank account', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post).', CSIP_TEXT_DOMAIN ),
+			'filter_items_list'     => _x( 'Filter bank account list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”.', CSIP_TEXT_DOMAIN ),
+			'items_list_navigation' => _x( 'Bank Accounts list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”.', CSIP_TEXT_DOMAIN ),
+			'items_list'            => _x( 'Bank Accounts list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”.', CSIP_TEXT_DOMAIN ),
+		);
+
+		$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => false,
+			'show_in_nav_menus'  => false,
+			'rewrite'            => array( 'slug' => 'bankaccount' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title' ),
+			'menu_icon'          => 'dashicons-bank',
+		);
+
+		register_post_type( 'bankaccount', $args );
+
+	}
+
+
 
 	/**
 	 * Boot Carbon Fields with default IoC dependencies
@@ -92,10 +223,11 @@ class Admin {
 	 * @since    1.0.0
 	 */
 	public function get_invoice_template( $single_template ) {
-		global $wp_query, $post;
-		if ( $post->post_type == 'invoice' ) {
-			$single_template = CSIP_PATH . 'includes/templates/invoice.php';
+		global $post;
+		if ( 'invoice' === $post->post_type ) {
+			$single_template = trailingslashit( CSIP_PATH ) . 'includes/templates/invoice.php';
 		}
+
 		return $single_template;
 	}
 
