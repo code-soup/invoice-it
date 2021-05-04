@@ -23,6 +23,7 @@ foreach ( $wp_options_company as $value ) {
 	$company_details[ $value['option_name'] ] = $value['option_value'];
 }
 
+$signature_url = $company_details['_csip_company_signature'];
 $company_terms = wpautop( wp_kses( $company_details['_csip_company_terms'], $allowed_html ) );
 $company_note  = wpautop( wp_kses( $company_details['_csip_company_note'], $allowed_html ) );
 $footertext    = wpautop( wp_kses( $company_details['_csip_company_footertext'], $allowed_html ) );
@@ -38,6 +39,8 @@ foreach ( get_post_meta( get_the_ID() ) as $key => $value ) {
 }
 
 $invoice_payment_account = intval( $invoice_details['_inv_payment_account'] );
+$signature_show          = intval( $invoice_details['_inv_payment_signature'] );
+$account_id              = carbon_get_post_meta( get_the_ID(), 'inv_payment_account' );
 $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 
 ?>
@@ -71,25 +74,34 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 				<?php require CSIP_PATH . '/includes/templates/invoice/table.php'; ?>
 			</div>
 
-			<div class="csip-invoice-payment-info csip-avoid-break">
-
-				<?php require CSIP_PATH . '/includes/templates/invoice/payment-account-details.php'; ?>
-
-				<?php if ( $invoice_comment ) { ?>
-				<div class="csip-invoice-note csip-mb-40 csip-avoid-break">
-					<h3 class="csip-invoice-title-underlined">
-						<?php _e( 'Invoice Note', CSIP_TEXT_DOMAIN ); ?>
-					</h3>
-					<?php echo wpautop( wp_kses( $invoice_comment, 'post' ) ); ?>
+			<?php if ( $signature_url && $signature_show ) : ?>
+				<div class="csip-invoice-signature csip-avoid-break csip-px-6">
+					<p class="csip-text-right"><?php _e( 'Signature', CSIP_TEXT_DOMAIN ); ?></p>
+					<div class="thumb">
+						<span style="background-image: url(<?php echo $signature_url; ?>)"></span>
+					</div>
 				</div>
-				<?php } ?>
+			<?php endif; ?>
 
+			<?php if ( $account_id ) : ?>
+				<div class="csip-invoice-payment-account csip-mb-40 csip-avoid-break csip-px-6">
+				<?php require CSIP_PATH . '/includes/templates/invoice/payment-account-details.php'; ?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( $invoice_comment ) { ?>
+			<div class="csip-invoice-note csip-mb-40 csip-avoid-break csip-px-6">
+				<h3 class="csip-invoice-title-underlined">
+					<?php _e( 'Invoice Note', CSIP_TEXT_DOMAIN ); ?>
+				</h3>
+				<?php echo wpautop( wp_kses( $invoice_comment, 'post' ) ); ?>
 			</div>
+			<?php } ?>
 
 		</article>
 
 		<?php if ( $company_terms ) : ?>
-		<div class="csip-mb-30 csip-avoid-break">
+		<div class="csip-mb-30 csip-avoid-break csip-px-6">
 			<h3 class="csip-invoice-title-underlined">
 				<?php _e( 'Terms & Conditions', CSIP_TEXT_DOMAIN ); ?>
 			</h3>
@@ -100,7 +112,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 		<?php endif; ?>
 
 		<?php if ( $company_note ) : ?>
-		<div class="csip-mb-30 csip-avoid-break">
+		<div class="csip-mb-30 csip-avoid-break csip-px-6">
 			<h3 class="csip-invoice-title-underlined">
 				<?php _e( 'Note', CSIP_TEXT_DOMAIN ); ?>
 			</h3>

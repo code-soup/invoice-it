@@ -90,7 +90,7 @@ class Helpers {
 		}
 
 		asort( $array );
-		$accounts = array( '-1' => __( '-- Select Account', CSIP_TEXT_DOMAIN ) ) + $array;
+		$accounts = array( '0' => __( '-- Select Account', CSIP_TEXT_DOMAIN ) ) + $array;
 
 		return $accounts;
 	}

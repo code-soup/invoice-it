@@ -66,7 +66,11 @@ class Invoice {
 						->set_classes( 'span-4 inv-due-date' ),
 					Field::make( 'select', 'inv_payment_account', __( 'Payment Account', CSIP_TEXT_DOMAIN ) )
 						->set_options( \csip\admin\Helpers::get_accounts() )
-						->set_classes( 'inv-payment-account csip-select2' ),
+						->set_classes( 'span-8 inv-payment-account csip-select2' ),
+					Field::make( 'checkbox', 'inv_payment_signature', __( 'Show Signature', CSIP_TEXT_DOMAIN ) )
+						->set_option_value( '1' )
+						->set_classes( 'span-4 inv-payment-signature' )
+						->set_help_text( 'Display signature if it is set in the options page' ),
 				)
 			);
 	}
