@@ -32,61 +32,61 @@ class Options {
 	 * @since    1.0.0
 	 */
 	private static function fields_company() {
-		$allowed_tags_info = __( 'The following HTML tags are allowed: ', CSIP_TEXT_DOMAIN ) . '&lt;b&gt;, &lt;i&gt;';
+		$allowed_tags_info = __( 'The following HTML tags are allowed: ', 'invoiceit' ) . '&lt;b&gt;, &lt;i&gt;';
 
-		Container::make( 'theme_options', __( 'Company Info', CSIP_TEXT_DOMAIN ) )
-			->set_page_menu_title( __( 'Invoice Plugin', CSIP_TEXT_DOMAIN ) )
+		Container::make( 'theme_options', __( 'Company Info', 'invoiceit' ) )
+			->set_page_menu_title( __( 'Invoice Plugin', 'invoiceit' ) )
 			->add_tab(
-				__( 'Branding', CSIP_TEXT_DOMAIN ),
+				__( 'Branding', 'invoiceit' ),
 				array(
-					Field::make( 'text', 'csip_company_name', __( 'Company Name', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_name', __( 'Company Name', 'invoiceit' ) )
 						->set_classes( 'csip-company-name' ),
-					Field::make( 'text', 'csip_company_web', __( 'Website', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_web', __( 'Website', 'invoiceit' ) )
 						->set_classes( 'csip-company-web' ),
-					Field::make( 'image', 'csip_company_logo', __( 'Logo', CSIP_TEXT_DOMAIN ) )
-						->set_help_text( __( 'An image of your company logo for the Invoice header.', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'image', 'csip_company_logo', __( 'Logo', 'invoiceit' ) )
+						->set_help_text( __( 'An image of your company logo for the Invoice header.', 'invoiceit' ) )
 						->set_classes( 'span-6 csip-company-logo' )->set_value_type( 'url' ),
-					Field::make( 'image', 'csip_company_signature', __( 'Signature', CSIP_TEXT_DOMAIN ) )
-						->set_help_text( __( 'A .png image of your signature if you want to insert it into Invoices.', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'image', 'csip_company_signature', __( 'Signature', 'invoiceit' ) )
+						->set_help_text( __( 'A .png image of your signature if you want to insert it into Invoices.', 'invoiceit' ) )
 						->set_classes( 'span-6 csip-company-signature' )
 						->set_value_type( 'url' ),
 				)
 			)
 			->add_tab(
-				__( 'Address', CSIP_TEXT_DOMAIN ),
+				__( 'Address', 'invoiceit' ),
 				array(
-					Field::make( 'text', 'csip_company_address_1', __( 'Address 1', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_address_1', __( 'Address 1', 'invoiceit' ) )
 						->set_classes( 'span-6 csip-company-address-1' ),
-					Field::make( 'text', 'csip_company_address_2', __( 'Address 2', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_address_2', __( 'Address 2', 'invoiceit' ) )
 						->set_classes( 'span-6 csip-company-address-2' ),
-					Field::make( 'text', 'csip_company_city', __( 'City', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_city', __( 'City', 'invoiceit' ) )
 						->set_classes( 'span-6 csip-company-city' ),
-					Field::make( 'text', 'csip_company_zip', __( 'Zip Code', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_zip', __( 'Zip Code', 'invoiceit' ) )
 						->set_classes( 'span-6 csip-company-zip' ),
-					Field::make( 'select', 'csip_company_country', __( 'Country', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'select', 'csip_company_country', __( 'Country', 'invoiceit' ) )
 						->set_options( \csip\admin\Helpers::get_countries() )
 						->set_classes( 'span-6 csip-company-country csip-select2' ),
-					Field::make( 'select', 'csip_company_state', __( 'State', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'select', 'csip_company_state', __( 'State', 'invoiceit' ) )
 						->set_options( \csip\admin\Helpers::get_states() )
 						->set_classes( 'span-6 csip-company-state csip-select2' ),
 				)
 			)
 			->add_tab(
-				__( 'Contact', CSIP_TEXT_DOMAIN ),
+				__( 'Contact', 'invoiceit' ),
 				array(
-					Field::make( 'text', 'csip_company_email', __( 'Email', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_email', __( 'Email', 'invoiceit' ) )
 						->set_attribute( 'pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' )
 						->set_classes( 'csip-company-email' ),
-					Field::make( 'text', 'csip_company_phone', __( 'Phone number', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_phone', __( 'Phone number', 'invoiceit' ) )
 						->set_classes( 'csip-company-phone' ),
 				)
 			)
 			->add_tab(
-				__( 'Legal', CSIP_TEXT_DOMAIN ),
+				__( 'Legal', 'invoiceit' ),
 				array(
-					Field::make( 'text', 'csip_company_id', __( 'Company ID', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_id', __( 'Company ID', 'invoiceit' ) )
 						->set_classes( 'csip-company-id' ),
-					Field::make( 'select', 'csip_company_vatreg', __( 'VAT registered', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'select', 'csip_company_vatreg', __( 'VAT registered', 'invoiceit' ) )
 					->set_options(
 						array(
 							'0' => 'No',
@@ -94,7 +94,7 @@ class Options {
 						)
 					)
 					->set_classes( 'span-6 csip-company-vatreg' ),
-					Field::make( 'text', 'csip_company_vatid', __( 'VAT ID', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_vatid', __( 'VAT ID', 'invoiceit' ) )
 					->set_conditional_logic(
 						array(
 							array(
@@ -107,21 +107,21 @@ class Options {
 				)
 			)
 			->add_tab(
-				__( 'Invoice Options', CSIP_TEXT_DOMAIN ),
+				__( 'Invoice Options', 'invoiceit' ),
 				array(
-					Field::make( 'text', 'csip_company_prefix', __( 'Invoice Prefix', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_prefix', __( 'Invoice Prefix', 'invoiceit' ) )
 						->set_attribute( 'maxLength', 4 )
-						->set_help_text( __( 'If needed you can prefix the invoice number with up to 4 characters for the print version of the invoice.', CSIP_TEXT_DOMAIN ) )
+						->set_help_text( __( 'If needed you can prefix the invoice number with up to 4 characters for the print version of the invoice.', 'invoiceit' ) )
 						->set_classes( 'span-6 csip-company-prefix' ),
-					Field::make( 'number', 'csip_company_nin', __( 'Next Invoice Number', CSIP_TEXT_DOMAIN ) )
-						->set_help_text( __( 'This will be the next Invoice number, change this only if you need to reset it.', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'number', 'csip_company_nin', __( 'Next Invoice Number', 'invoiceit' ) )
+						->set_help_text( __( 'This will be the next Invoice number, change this only if you need to reset it.', 'invoiceit' ) )
 						->set_default_value( 0 )
 						->set_classes( 'span-6 csip-company-nin' ),
-					Field::make( 'textarea', 'csip_company_terms', __( 'Terms & Conditions', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'textarea', 'csip_company_terms', __( 'Terms & Conditions', 'invoiceit' ) )
 						->set_classes( 'csip-company-terms' ),
-					Field::make( 'textarea', 'csip_company_note', __( 'Note', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'textarea', 'csip_company_note', __( 'Note', 'invoiceit' ) )
 						->set_classes( 'csip-company-dis' ),
-					Field::make( 'text', 'csip_company_footertext', __( 'Footer Text', CSIP_TEXT_DOMAIN ) )
+					Field::make( 'text', 'csip_company_footertext', __( 'Footer Text', 'invoiceit' ) )
 						->set_classes( 'csip-company-footertext' ),
 				)
 			);

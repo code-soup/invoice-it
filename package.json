@@ -1,5 +1,5 @@
 {
-    "name": "cs-invoice-webpack",
+    "name": "invoiceit",
     "version": "1.0.0",
     "description": "WordPress Invoice Plugin with webpack build script",
     "authors": [

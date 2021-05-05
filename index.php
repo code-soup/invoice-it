@@ -7,15 +7,15 @@
  * @since             1.0.0
  *
  * @wordpress-plugin
- * Plugin Name:       CodeSoup Invoice Plugin
+ * Plugin Name:       InvoiceIT
  * Plugin URI:        https://github.com/code-soup/invoice-plugin
- * Description:       WordPress Invoice Plugin with webpack build script and php namespacing
+ * Description:       WordPress Plugin for invoicing with client managment
  * Version:           1.0.0
  * Author:            Code Soup, brbs, Kodelato
- * Author URI:        https://www.bobz.co, https://brbs.works/, https://kodelato.hr/
+ * Author URI:        https://github.com/code-soup/invoice-plugin
  * License:           GPL-3.0+
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:       cs-invoice-plugin
+ * Text Domain:       invoiceit
  * Domain Path:       /languages
  */
 

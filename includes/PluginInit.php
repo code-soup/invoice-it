@@ -92,7 +92,7 @@ class PluginInit {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Ticket_Support_i18n class in order to set the domain and to register the hook
+	 * Uses the I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -125,17 +125,17 @@ class PluginInit {
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'boot_custom_fields' );
 		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin, 'register_custom_fields' );
 		$this->loader->add_filter( 'single_template', $plugin_admin, 'get_invoice_template' );
-		$this->loader->add_action( 'save_post_invoice', $plugin_admin, 'on_publish_invoice', 10, 3 );
+		$this->loader->add_action( 'transition_post_status', $plugin_admin, 'on_transition_invoice', 10, 3 );
 
 		/**
-		 * Add invoice number to Invoice CPT
+		 * Add invoice number to Invoice CPT table
 		 */
 		$this->loader->add_filter( 'manage_invoice_posts_columns', $plugin_admin, 'show_invoice_number_column' );
 		$this->loader->add_filter( 'manage_edit-invoice_sortable_columns', $plugin_admin, 'sortable_invoice_number_column' );
 		$this->loader->add_action( 'manage_invoice_posts_custom_column', $plugin_admin, 'fill_invoice_number_column', 10, 2 );
 
 		/**
-		 * Add invoice client to Invoice CPT
+		 * Add invoice client to Invoice CPT table
 		 */
 		$this->loader->add_filter( 'manage_invoice_posts_columns', $plugin_admin, 'show_invoice_client_column' );
 		$this->loader->add_filter( 'manage_edit-invoice_sortable_columns', $plugin_admin, 'sortable_invoice_client_column' );
@@ -183,7 +183,7 @@ class PluginInit {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Ticket_Support_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

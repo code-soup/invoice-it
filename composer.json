@@ -1,5 +1,5 @@
 {
-	"name": "codesoup/invoice-plugin",
+	"name": "codesoup/invoicit",
 	"type": "wordpress-plugin",
 	"license": "MIT",
 	"description": "WordPress invoice plugin with Webpack dev server, Webpack build script and PSR-4 namespacing",

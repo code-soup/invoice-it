@@ -10,9 +10,6 @@ defined( 'WPINC' ) || die;
 /**
  * The public-facing functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
  * @since      1.0.0
  */
 class Frontend {
@@ -31,8 +28,6 @@ class Frontend {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * NOTE: Remember to enqueue your styles only on templates where needed
-	 *
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
@@ -43,8 +38,6 @@ class Frontend {
 
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * NOTE: Remember to enqueue your scripts only on templates where needed
 	 *
 	 * @since    1.0.0
 	 */

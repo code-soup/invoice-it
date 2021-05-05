@@ -62,7 +62,7 @@ class Helpers {
 		}
 
 		asort( $array );
-		$clients = array( '0' => __( '-- Select Client', CSIP_TEXT_DOMAIN ) ) + $array;
+		$clients = array( '0' => __( '-- Select Client', 'invoiceit' ) ) + $array;
 
 		return $clients;
 	}
@@ -90,7 +90,7 @@ class Helpers {
 		}
 
 		asort( $array );
-		$accounts = array( '0' => __( '-- Select Account', CSIP_TEXT_DOMAIN ) ) + $array;
+		$accounts = array( '0' => __( '-- Select Account', 'invoiceit' ) ) + $array;
 
 		return $accounts;
 	}
@@ -107,7 +107,7 @@ class Helpers {
 
 		$currencies = self::get_currencies_data();
 
-		array_unshift( $currencies, __( '-- Select currency', CSIP_TEXT_DOMAIN ) );
+		array_unshift( $currencies, __( '-- Select currency', 'invoiceit' ) );
 
 		return $currencies;
 	}
@@ -128,7 +128,7 @@ class Helpers {
 			$array[ $country['cca3'] ] = $country['name']['common'];
 		}
 
-		array_unshift( $array, __( '-- Select country', CSIP_TEXT_DOMAIN ) );
+		array_unshift( $array, __( '-- Select country', 'invoiceit' ) );
 
 		return $array;
 	}
@@ -144,7 +144,7 @@ class Helpers {
 	// TODO: fetch states with AJAX.
 	public static function get_states() {
 		$array = array(
-			'0' => __( '-- Select State', CSIP_TEXT_DOMAIN ),
+			'0' => __( '-- Select State', 'invoiceit' ),
 		);
 
 		return $array;

@@ -13,7 +13,7 @@ $account_details_2 = get_post_meta( $account_id, '_csip_company_account_details_
 if ( $account_details_1 || $account_details_2 ) : ?>
 
 	<h3 class="csip-invoice-title-underlined">
-		<?php _e( 'Ways to pay', CSIP_TEXT_DOMAIN ); ?>
+		<?php _e( 'Ways to pay', 'invoiceit' ); ?>
 	</h3>
 
 	<div class="csip-invoice-account csip-mb-30">

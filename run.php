@@ -16,9 +16,9 @@ define( 'CSIP_URI', plugin_dir_url( __FILE__ ) );
 define( 'CSIP_PATH', plugin_dir_path( __FILE__ ) );
 
 // Plugin details.
-define( 'CSIP_NAME', 'CodeSoup Invoice Plugin' );
+define( 'CSIP_NAME', 'InvoiceIT' );
 define( 'CSIP_VERSION', '1.0.0' );
-define( 'CSIP_TEXT_DOMAIN', 'cs-invoice-plugin' );
+define( 'CSIP_TEXT_DOMAIN', 'invoiceit' );
 
 
 /**

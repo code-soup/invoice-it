@@ -20,12 +20,12 @@ if ( $items ) : ?>
 <table class="csip-invoice-table">
 	<thead>
 		<tr>
-			<th class="csip-text-left"><?php _e( 'Item', CSIP_TEXT_DOMAIN ); ?></th>
-			<th class="csip-text-center"><?php _e( 'Quantity', CSIP_TEXT_DOMAIN ); ?></th>
-			<th class="csip-text-center"><?php _e( 'Unit', CSIP_TEXT_DOMAIN ); ?></th>
-			<th class="csip-text-center"><?php _e( 'Rate', CSIP_TEXT_DOMAIN ); ?></th>
-			<th class="csip-text-center"><?php _e( 'Discount (%)', CSIP_TEXT_DOMAIN ); ?></th>
-			<th class="csip-text-center"><?php _e( 'Amount', CSIP_TEXT_DOMAIN ); ?></th>
+			<th class="csip-text-left"><?php _e( 'Item', 'invoiceit' ); ?></th>
+			<th class="csip-text-center"><?php _e( 'Quantity', 'invoiceit' ); ?></th>
+			<th class="csip-text-center"><?php _e( 'Unit', 'invoiceit' ); ?></th>
+			<th class="csip-text-center"><?php _e( 'Rate', 'invoiceit' ); ?></th>
+			<th class="csip-text-center"><?php _e( 'Discount (%)', 'invoiceit' ); ?></th>
+			<th class="csip-text-center"><?php _e( 'Amount', 'invoiceit' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -72,7 +72,7 @@ if ( $items ) : ?>
 		<tr class="csip-invoice-table-row-subtotal">
 			<td colspan=2 class="csip-invoice-table-empty-cell"></td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-left">
-				<?php _e( 'Subtotal', CSIP_TEXT_DOMAIN ); ?>
+				<?php _e( 'Subtotal', 'invoiceit' ); ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
 				<?php echo $fmt->formatCurrency( $subtotal, $client_currency ); ?>
@@ -81,7 +81,7 @@ if ( $items ) : ?>
 		<tr class="csip-invoice-table-row-discount">
 			<td colspan=2 class="csip-invoice-table-empty-cell"></td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-left">
-				<?php _e( 'Discount', CSIP_TEXT_DOMAIN ); ?>
+				<?php _e( 'Discount', 'invoiceit' ); ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
 				<?php echo $fmt->formatCurrency( $discount, $client_currency ); ?>
@@ -90,7 +90,7 @@ if ( $items ) : ?>
 		<tr class="csip-invoice-table-row-tax">
 			<td colspan=2 class="csip-invoice-table-empty-cell"></td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-left">
-				<?php echo __( 'Tax', CSIP_TEXT_DOMAIN ) . ' (' . $client_tax_rate . '%)'; ?>
+				<?php echo __( 'Tax', 'invoiceit' ) . ' (' . $client_tax_rate . '%)'; ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
 				<?php echo $fmt->formatCurrency( $tax_duty, $client_currency ); ?>
@@ -99,7 +99,7 @@ if ( $items ) : ?>
 		<tr class="csip-invoice-table-row-total">
 			<td colspan=2 class="csip-invoice-table-empty-cell"></td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-left">
-				<?php _e( 'TOTAL', CSIP_TEXT_DOMAIN ); ?>
+				<?php _e( 'TOTAL', 'invoiceit' ); ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
 				<?php echo $fmt->formatCurrency( $total, $client_currency ); ?>

@@ -4,15 +4,17 @@ get_header();
 
 global $wpdb;
 
+/**
+ * Set allowed html tags fields
+ */
 $allowed_html = array(
 	'b' => array(),
 	'i' => array(),
 );
 
 
-
 /**
- * Get compeny details
+ * Get company details
  *
  * @since      1.0.0
  */
@@ -47,7 +49,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 
 
 <div class="csip-container">
-	<section class="csip-invoice-plugin csip-invoice">
+	<section class="csip-invoice">
 
 		<header class="csip-invoice-header csip-block csip-mb-40">
 			<div class="csip-row">
@@ -76,7 +78,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 
 			<?php if ( $signature_url && $signature_show ) : ?>
 				<div class="csip-invoice-signature csip-avoid-break csip-px-6">
-					<p class="csip-text-right"><?php _e( 'Signature', CSIP_TEXT_DOMAIN ); ?></p>
+					<p class="csip-text-right"><?php _e( 'Signature', 'invoiceit' ); ?></p>
 					<div class="thumb">
 						<span style="background-image: url(<?php echo $signature_url; ?>)"></span>
 					</div>
@@ -92,7 +94,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 			<?php if ( $invoice_comment ) { ?>
 			<div class="csip-invoice-note csip-mb-40 csip-avoid-break csip-px-6">
 				<h3 class="csip-invoice-title-underlined">
-					<?php _e( 'Invoice Note', CSIP_TEXT_DOMAIN ); ?>
+					<?php _e( 'Invoice Note', 'invoiceit' ); ?>
 				</h3>
 				<?php echo wpautop( wp_kses( $invoice_comment, 'post' ) ); ?>
 			</div>
@@ -103,7 +105,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 		<?php if ( $company_terms ) : ?>
 		<div class="csip-mb-30 csip-avoid-break csip-px-6">
 			<h3 class="csip-invoice-title-underlined">
-				<?php _e( 'Terms & Conditions', CSIP_TEXT_DOMAIN ); ?>
+				<?php _e( 'Terms & Conditions', 'invoiceit' ); ?>
 			</h3>
 			<div class="csip-invoice-note">
 				<?php echo $company_terms; ?>
@@ -114,7 +116,7 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 		<?php if ( $company_note ) : ?>
 		<div class="csip-mb-30 csip-avoid-break csip-px-6">
 			<h3 class="csip-invoice-title-underlined">
-				<?php _e( 'Note', CSIP_TEXT_DOMAIN ); ?>
+				<?php _e( 'Note', 'invoiceit' ); ?>
 			</h3>
 			<div class="csip-invoice-note">
 				<?php echo $company_note; ?>
