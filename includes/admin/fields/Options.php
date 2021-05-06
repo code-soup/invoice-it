@@ -117,6 +117,15 @@ class Options {
 						->set_help_text( __( 'This will be the next Invoice number, change this only if you need to reset it.', 'invoiceit' ) )
 						->set_default_value( 0 )
 						->set_classes( 'span-6 csip-company-nin' ),
+					Field::make( 'select', 'csip_company_fallback_currency', __( 'Fallback Currency', 'invoiceit' ) )
+						->set_options( \csip\admin\Helpers::get_currencies() )
+						->set_classes( 'span-6 csip-company-fallback-currency csip-select2' )
+						->set_help_text( __( 'Set a fallback currency if no client is selected for an invoice. If not set it will default to USD.', 'invoiceit' ) ),
+					Field::make( 'number', 'csip_company_fallback_tax_rate', __( 'Fallback Tax Rate (%)', 'invoiceit' ) )
+						->set_min( 0 )
+						->set_default_value( 0 )
+						->set_classes( 'span-6 csip-company-fallback-tax-rate' )
+						->set_help_text( __( 'Set a fallback tax rate if no client is selected for an invoice.', 'invoiceit' ) ),
 					Field::make( 'textarea', 'csip_company_terms', __( 'Terms & Conditions', 'invoiceit' ) )
 						->set_classes( 'csip-company-terms' ),
 					Field::make( 'textarea', 'csip_company_note', __( 'Note', 'invoiceit' ) )

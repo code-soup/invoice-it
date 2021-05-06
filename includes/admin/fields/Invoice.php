@@ -102,15 +102,19 @@ class Invoice {
 								->set_classes( 'inv-item-description' ),
 							Field::make( 'number', 'inv_item_quantity', __( 'Quantity', 'invoiceit' ) )
 								->set_min( 0 )
+								->set_required( true )
 								->set_classes( 'span-item-col inv-item-quantity' ),
 							Field::make( 'text', 'inv_item_um', __( 'Unit', 'invoiceit' ) )
 								->set_classes( 'span-item-col inv-item-um' ),
-							Field::make( 'number', 'inv_item_rate', __( 'Rate', 'invoiceit' ) )->set_min( 0 )
+							Field::make( 'number', 'inv_item_rate', __( 'Rate', 'invoiceit' ) )
+								->set_min( 0 )
+								->set_required( true )
 								->set_classes( 'span-item-col inv-item-rate' ),
 							Field::make( 'number', 'inv_item_discount', __( 'Discount (%)', 'invoiceit' ) )
 								->set_min( 0 )
 								->set_max( 100 )
 								->set_default_value( 0 )
+								->set_required( true )
 								->set_classes( 'span-item-col inv-item-discount' ),
 							Field::make( 'text', 'inv_item_amount', __( 'Amount', 'invoiceit' ) )
 								->set_attribute( 'readOnly', true )

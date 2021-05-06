@@ -23,7 +23,7 @@ $client_tax_rate  = $client_details['_cli_tax_rate'];
 
 $client_currency = $client_details['_cli_currency']
 					? $client_details['_cli_currency']
-					: 'USD';
+					: $fallback_currency;
 
 $client_city_zip = $client_zip
 				? ( $client_city . ', ' . $client_zip )

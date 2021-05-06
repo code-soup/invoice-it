@@ -3,8 +3,6 @@
 // Autoload all classes via composer.
 require 'vendor/autoload.php';
 
-use csip\Activator;
-use csip\Deactivator;
 use csip\PluginInit;
 
 // If this file is called directly, abort.
@@ -20,19 +18,6 @@ define( 'CSIP_NAME', 'InvoiceIT' );
 define( 'CSIP_VERSION', '1.0.0' );
 define( 'CSIP_TEXT_DOMAIN', 'invoiceit' );
 
-
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/Activator.php
- */
-register_activation_hook( __FILE__, array( 'csip\Activator', 'activate' ) );
-
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/Deactivator.php
- */
-register_deactivation_hook( __FILE__, array( 'csip\Deactivator', 'deactivate' ) );
 
 /**
  * Begins execution of the plugin.

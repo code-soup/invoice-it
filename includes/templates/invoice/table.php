@@ -10,9 +10,17 @@
 $subtotal = $discount = $tax_duty = $total = 0;
 $items    = carbon_get_the_post_meta( 'inv_items' );
 
+
+$invoice_currency = isset( $client_currency )
+					? $client_currency
+					: $fallback_currency;
+$invoice_tax_rate = isset( $client_tax_rate )
+					? $client_tax_rate
+					: $fallback_tax_rate;
+
 // Handle currency formatting.
 $fmt = new NumberFormatter( get_locale(), NumberFormatter::CURRENCY );
-$fmt->setTextAttribute( NumberFormatter::CURRENCY_CODE, $client_currency );
+$fmt->setTextAttribute( NumberFormatter::CURRENCY_CODE, $invoice_currency );
 $fmt->setAttribute( NumberFormatter::FRACTION_DIGITS, 2 );
 
 if ( $items ) : ?>
@@ -45,13 +53,13 @@ if ( $items ) : ?>
 					<?php echo wp_kses( $item['inv_item_um'], 'strip' ); ?>
 				</td>
 				<td class="csip-invoice-table-entry csip-text-center">
-					<?php echo $fmt->formatCurrency( $item['inv_item_rate'], $client_currency ); ?>
+					<?php echo $fmt->formatCurrency( $item['inv_item_rate'], $invoice_currency ); ?>
 				</td>
 				<td class="csip-invoice-table-entry csip-text-center">
 					<?php echo $item['inv_item_discount']; ?>
 				</td>
 				<td class="csip-invoice-table-entry csip-text-center">
-					<?php echo $fmt->formatCurrency( $item['inv_item_amount'], $client_currency ); ?>
+					<?php echo $fmt->formatCurrency( $item['inv_item_amount'], $invoice_currency ); ?>
 				</td>
 			</tr>
 
@@ -62,8 +70,9 @@ if ( $items ) : ?>
 
 		endforeach;
 
-		if ( $client_tax_rate > 0 ) {
-			$tax_duty = $total / ( 100 / $client_tax_rate );
+		if ( $invoice_tax_rate > 0 ) {
+			$tax_duty = $total / ( 100 / $invoice_tax_rate );
+			$total += $tax_duty;
 		}
 
 		?>
@@ -75,7 +84,7 @@ if ( $items ) : ?>
 				<?php _e( 'Subtotal', 'invoiceit' ); ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
-				<?php echo $fmt->formatCurrency( $subtotal, $client_currency ); ?>
+				<?php echo $fmt->formatCurrency( $subtotal, $invoice_currency ); ?>
 			</td>
 		</tr>
 		<tr class="csip-invoice-table-row-discount">
@@ -84,16 +93,16 @@ if ( $items ) : ?>
 				<?php _e( 'Discount', 'invoiceit' ); ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
-				<?php echo $fmt->formatCurrency( $discount, $client_currency ); ?>
+				<?php echo $fmt->formatCurrency( $discount, $invoice_currency ); ?>
 			</td>
 		</tr>
 		<tr class="csip-invoice-table-row-tax">
 			<td colspan=2 class="csip-invoice-table-empty-cell"></td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-left">
-				<?php echo __( 'Tax', 'invoiceit' ) . ' (' . $client_tax_rate . '%)'; ?>
+				<?php echo __( 'Tax', 'invoiceit' ) . ' (' . $invoice_tax_rate . '%)'; ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
-				<?php echo $fmt->formatCurrency( $tax_duty, $client_currency ); ?>
+				<?php echo $fmt->formatCurrency( $tax_duty, $invoice_currency ); ?>
 			</td>
 		</tr>
 		<tr class="csip-invoice-table-row-total">
@@ -102,7 +111,7 @@ if ( $items ) : ?>
 				<?php _e( 'TOTAL', 'invoiceit' ); ?>
 			</td>
 			<td colspan=2 class="csip-invoice-table-entry csip-text-right">
-				<?php echo $fmt->formatCurrency( $total, $client_currency ); ?>
+				<?php echo $fmt->formatCurrency( $total, $invoice_currency ); ?>
 			</td>
 		</tr>
 	</tfoot>

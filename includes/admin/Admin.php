@@ -247,7 +247,7 @@ class Admin {
 	public function on_transition_invoice( $new_status, $old_status, $post ) {
 
 		$allowed_new_status = array( 'publish', 'draft' );
-		$inv_number = get_post_meta( $post->ID, '_inv_number', true );
+		$inv_number         = get_post_meta( $post->ID, '_inv_number', true );
 
 		if (
 			$new_status === $old_status
@@ -364,6 +364,17 @@ class Admin {
 				echo '<span>-</span>';
 			}
 		}
+	}
+
+
+	/**
+	 * Reloads permalink structure for new post-types
+	 *
+	 * @return void
+	 */
+	public function reload_permalink_structure() {
+		global $wp_rewrite;
+		$wp_rewrite->flush_rules();
 	}
 
 }

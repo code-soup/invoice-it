@@ -18,6 +18,10 @@ $logo           = $company_details['_csip_company_logo'];
 $phone          = wp_kses( $company_details['_csip_company_phone'], 'strip' );
 $email          = wp_kses( $company_details['_csip_company_email'], 'strip' );
 $invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
+$company_id     = wp_kses( $company_details['_csip_company_id'], 'strip' );
+$company_vat    = $company_details['_csip_company_vatreg']
+				? wp_kses( $company_details['_csip_company_vatid'], 'strip' )
+				: '';
 
 ?>
 
@@ -53,6 +57,12 @@ $invoice_prefix = wp_kses( $company_details['_csip_company_prefix'], 'strip' );
 		<?php endif; ?>
 		<?php if ( $email ) : ?>
 			<li class="csip-invoice-list-entry"><strong>E: </strong><?php echo $email; ?></li>
+		<?php endif; ?>
+		<?php if ( $company_id ) : ?>
+			<li class="csip-invoice-list-entry"><strong><?php _e( 'Company ID', 'invoiceit' ); ?>: </strong><?php echo $company_id; ?></li>
+		<?php endif; ?>
+		<?php if ( $company_vat ) : ?>
+			<li class="csip-invoice-list-entry"><strong><?php _e( 'VAT ID', 'invoiceit' ); ?>: </strong><?php echo $company_vat; ?></li>
 		<?php endif; ?>
 	</ul>
 </div>

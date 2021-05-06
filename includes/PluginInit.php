@@ -122,6 +122,7 @@ class PluginInit {
 		$this->loader->add_action( 'init', $plugin_admin, 'register_cpt_invoice' );
 		$this->loader->add_action( 'init', $plugin_admin, 'register_cpt_client' );
 		$this->loader->add_action( 'init', $plugin_admin, 'register_cpt_bank_account' );
+		$this->loader->add_action( 'init', $plugin_admin, 'reload_permalink_structure' );
 		$this->loader->add_action( 'after_setup_theme', $plugin_admin, 'boot_custom_fields' );
 		$this->loader->add_action( 'carbon_fields_register_fields', $plugin_admin, 'register_custom_fields' );
 		$this->loader->add_filter( 'single_template', $plugin_admin, 'get_invoice_template' );

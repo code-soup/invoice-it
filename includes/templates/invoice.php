@@ -1,6 +1,6 @@
 <?php
 
-get_header();
+wp_head();
 
 global $wpdb;
 
@@ -45,6 +45,17 @@ $signature_show          = intval( $invoice_details['_inv_payment_signature'] );
 $account_id              = carbon_get_post_meta( get_the_ID(), 'inv_payment_account' );
 $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 
+
+/**
+ * Set some defaults in case no client is selected
+ */
+$fallback_tax_rate = $company_details['_csip_company_fallback_tax_rate']
+					? $company_details['_csip_company_fallback_tax_rate']
+					: 0;
+$fallback_currency = ( '0' !== $company_details['_csip_company_fallback_currency'] )
+					? $company_details['_csip_company_fallback_currency']
+					: 'USD';
+
 ?>
 
 
@@ -66,9 +77,11 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 					<?php require CSIP_PATH . '/includes/templates/invoice/invoice-details.php'; ?>
 				</div>
 
+				<?php if ( $client_id ) : ?>
 				<div class="csip-span-4 csip-invoice-billto">
 					<?php require CSIP_PATH . '/includes/templates/invoice/client-details.php'; ?>
 				</div>
+				<?php endif; ?>
 
 			</div>
 
@@ -134,4 +147,4 @@ $invoice_comment         = wp_kses( $invoice_details['_inv_comment'], 'strip' );
 </div>
 
 <?php
-get_footer();
+wp_footer();

@@ -22,5 +22,34 @@
 // If this file is called directly, abort.
 defined( 'WPINC' ) || die;
 
+
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/Activator.php
+ */
+register_activation_hook(
+	__FILE__,
+	function() {
+
+		// On activate do this.
+		csip\Activator::activate();
+	}
+);
+
+
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/Deactivator.php
+ */
+register_deactivation_hook(
+	__FILE__,
+	function() {
+
+		// On activate do this.
+		csip\Deactivator::deactivate();
+	}
+);
+
+
 // Run the plugin.
 require 'run.php';
