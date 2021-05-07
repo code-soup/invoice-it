@@ -5,6 +5,17 @@
         min-height: 37px;
     }
 
+    .carbon-date {
+
+        input {
+            background-color: get_color("white");
+        }
+
+        .button {
+            display: none;
+        }
+    }
+
     @include breakpoint(get-bp("laptop-s")) {
 
         .inside {

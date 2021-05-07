@@ -47,15 +47,15 @@ class Invoice {
 						->set_options( \csip\admin\Helpers::get_clients() )
 						->set_classes( 'span-4 inv-client csip-select2' ),
 					Field::make( 'select', 'inv_status', __( 'Invoice Status', 'invoiceit' ) )
-					->set_options(
-						array(
-							''                   => __( '-- Please Select', 'invoiceit' ),
-							'inv_outstanding'    => 'Outstanding',
-							'inv_paid'           => 'Paid',
-							'inv_partially_paid' => 'Partially Paid',
+						->set_options(
+							array(
+								''                   => __( '-- Please Select', 'invoiceit' ),
+								'inv_outstanding'    => _x( 'Outstanding', 'Invoice stauts', 'invoiceit' ),
+								'inv_paid'           => _x( 'Paid', 'Invoice stauts', 'invoiceit'  ),
+								'inv_partially_paid' => _x( 'Partially Paid', 'Invoice stauts', 'invoiceit' ),
+							)
 						)
-					)
-					->set_classes( 'span-4 inv-status csip-select2' ),
+						->set_classes( 'span-4 inv-status csip-select2' ),
 					Field::make( 'date', 'inv_date', __( 'Invoice Date', 'invoiceit' ) )
 						->set_classes( 'span-4 inv-date' ),
 					Field::make( 'number', 'inv_net_period', __( 'Net', 'invoiceit' ) )
@@ -117,6 +117,7 @@ class Invoice {
 								->set_required( true )
 								->set_classes( 'span-item-col inv-item-discount' ),
 							Field::make( 'text', 'inv_item_amount', __( 'Amount', 'invoiceit' ) )
+								->set_default_value( 0 )
 								->set_attribute( 'readOnly', true )
 								->set_classes( 'span-item-col inv-item-amount' ),
 						)

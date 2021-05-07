@@ -46,6 +46,26 @@ class Admin {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( CSIP_NAME . '/wp/js', $this->assets->get( 'scripts/admin.js' ), array(), CSIP_VERSION, false );
+
+		/**
+		 * CHeck if it is a new or existing invoice post-type and load the js if so
+		 */
+		global $pagenow;
+		if (
+				(
+				'post.php' === $pagenow
+				&& isset( $_GET['post'] )
+				&& 'invoice' === get_post_type( $_GET['post'] )
+				)
+			||
+				(
+				'post-new.php' === $pagenow
+				&& isset( $_GET['post_type'] )
+				&& 'invoice' === $_GET['post_type']
+				)
+			) {
+			wp_enqueue_script( CSIP_NAME . '/wp/invoice', $this->assets->get( 'scripts/invoice.js' ), array( 'jquery' ), CSIP_VERSION, true );
+		}
 	}
 
 
@@ -250,11 +270,11 @@ class Admin {
 		$inv_number         = get_post_meta( $post->ID, '_inv_number', true );
 
 		if (
-			$new_status === $old_status
-			|| ( 'auto-draft' === $old_status && 'draft' === $new_status )
-			|| ! in_array( $new_status, $allowed_new_status, true )
-			|| ! empty( $inv_number )
-			) {
+		$new_status === $old_status
+		|| ( 'auto-draft' === $old_status && 'draft' === $new_status )
+		|| ! in_array( $new_status, $allowed_new_status, true )
+		|| ! empty( $inv_number )
+		) {
 			return;
 		}
 
@@ -372,9 +392,11 @@ class Admin {
 	 *
 	 * @return void
 	 */
+	// TODO flush on activation
 	public function reload_permalink_structure() {
-		global $wp_rewrite;
-		$wp_rewrite->flush_rules();
+		// error_log( 'flushing it' );
+		// global $wp_rewrite;
+		// $wp_rewrite->flush_rules();
 	}
 
 }

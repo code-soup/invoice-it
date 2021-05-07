@@ -1,9 +1,10 @@
 {
-    "styles/admin.css": "styles/admin-49163833.css",
-    "scripts/admin.js": "scripts/admin-49163833.js",
-    "styles/main.css": "styles/main-49163833.css",
-    "scripts/main.js": "scripts/main-49163833.js",
-    "styles/print.css": "styles/print-49163833.css",
-    "scripts/print.js": "scripts/print-49163833.js",
+    "styles/admin.css": "styles/admin-b7f9e107.css",
+    "scripts/admin.js": "scripts/admin-b7f9e107.js",
+    "scripts/invoice.js": "scripts/invoice-b7f9e107.js",
+    "styles/main.css": "styles/main-b7f9e107.css",
+    "scripts/main.js": "scripts/main-b7f9e107.js",
+    "styles/print.css": "styles/print-b7f9e107.css",
+    "scripts/print.js": "scripts/print-b7f9e107.js",
     "sprite/spritemap.svg": "sprite/spritemap.svg"
 }
