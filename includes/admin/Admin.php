@@ -392,11 +392,15 @@ class Admin {
 	 *
 	 * @return void
 	 */
-	// TODO flush on activation
 	public function reload_permalink_structure() {
-		// error_log( 'flushing it' );
-		// global $wp_rewrite;
-		// $wp_rewrite->flush_rules();
+
+		if ( ! get_option( 'csip_permalinks_flushed' ) ) {
+			error_log( 'flushing rules' );
+			flush_rewrite_rules( false );
+			update_option( 'csip_permalinks_flushed', 1 );
+
+		}
+
 	}
 
 }

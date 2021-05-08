@@ -21,7 +21,7 @@ class Deactivator {
 	 * @return void
 	 */
 	public static function deactivate() {
-
+		flush_rewrite_rules( false );
 	}
 
 }

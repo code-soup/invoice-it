@@ -114,7 +114,6 @@ class Invoice {
 								->set_min( 0 )
 								->set_max( 100 )
 								->set_default_value( 0 )
-								->set_required( true )
 								->set_classes( 'span-item-col inv-item-discount' ),
 							Field::make( 'text', 'inv_item_amount', __( 'Amount', 'invoiceit' ) )
 								->set_default_value( 0 )

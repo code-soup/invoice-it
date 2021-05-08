@@ -20,7 +20,7 @@ class Activator {
 	 * @return void
 	 */
 	public static function activate() {
-
+		update_option( 'csip_permalinks_flushed', 0 );
 	}
 
 }

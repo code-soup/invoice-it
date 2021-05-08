@@ -56,7 +56,12 @@ if ( $items ) : ?>
 					<?php echo $fmt->formatCurrency( $item['inv_item_rate'], $invoice_currency ); ?>
 				</td>
 				<td class="csip-invoice-table-entry csip-text-center">
-					<?php echo $item['inv_item_discount']; ?>
+					<?php
+						$item_discount = $item['inv_item_discount']
+										? $item['inv_item_discount']
+										: 0;
+						echo $item_discount;
+					?>
 				</td>
 				<td class="csip-invoice-table-entry csip-text-center">
 					<?php echo $fmt->formatCurrency( $item['inv_item_amount'], $invoice_currency ); ?>

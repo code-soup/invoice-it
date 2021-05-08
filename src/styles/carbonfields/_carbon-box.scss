@@ -16,6 +16,10 @@
         }
     }
 
+	input[type=number] {
+		appearance: initial;
+	}
+
     @include breakpoint(get-bp("laptop-s")) {
 
         .inside {
