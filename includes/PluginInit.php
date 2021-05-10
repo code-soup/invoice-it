@@ -142,6 +142,10 @@ class PluginInit {
 		$this->loader->add_filter( 'manage_edit-invoice_sortable_columns', $plugin_admin, 'sortable_invoice_client_column' );
 		$this->loader->add_action( 'manage_invoice_posts_custom_column', $plugin_admin, 'fill_invoice_client_column', 10, 2 );
 
+		/**
+		 * Use AJAX to fetch clients NET
+		 */
+		$this->loader->add_action( 'wp_ajax_do_fetch_client_net', $plugin_admin, 'fetch_client_net' );
 	}
 
 	/**

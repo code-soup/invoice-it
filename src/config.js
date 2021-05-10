@@ -4,6 +4,7 @@ module.exports = {
 		print: ["styles/print.scss"],						// style file for print stylesheet - frontend
         invoice: ["scripts/util/invoice.js"],				// javascript file invoice post-type - backend
         admin: ["scripts/admin.js", "styles/admin.scss"],	// root javascript and style files - backend
+        ajax: ["scripts/ajax.js"],	// ajax - backend
     },
     openBrowserOnWatch: false,								// open browser with devUrl url on watch
     showErrorsInBrowser: true,								// show webpack errors on frontent

@@ -45,7 +45,7 @@ class Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( CSIP_NAME . '/wp/js', $this->assets->get( 'scripts/admin.js' ), array(), CSIP_VERSION, false );
+		wp_enqueue_script( CSIP_NAME . '/wp/js', $this->assets->get( 'scripts/admin.js' ), array( 'jquery' ), CSIP_VERSION, true );
 
 		/**
 		 * CHeck if it is a new or existing invoice post-type and load the js if so
@@ -64,8 +64,22 @@ class Admin {
 				&& 'invoice' === $_GET['post_type']
 				)
 			) {
-			wp_enqueue_script( CSIP_NAME . '/wp/invoice', $this->assets->get( 'scripts/invoice.js' ), array( 'jquery' ), CSIP_VERSION, true );
+			wp_enqueue_script( CSIP_NAME . '/wp/invoice', $this->assets->get( 'scripts/invoice.js' ), array(), CSIP_VERSION, false );
+			wp_enqueue_script( CSIP_NAME . 'wp/aj', $this->assets->get( 'scripts/ajax.js' ), array( 'jquery' ), CSIP_VERSION, true );
 		}
+
+		/**
+		 * Enquee AJAX scripts
+		 */
+		wp_localize_script(
+			CSIP_NAME . 'wp/aj',
+			'csip',
+			array(
+				'nonce'    => wp_create_nonce( 'csip' ),
+				'ajax_url' => admin_url( 'admin-ajax.php' ),
+			)
+		);
+
 	}
 
 
@@ -401,6 +415,54 @@ class Admin {
 
 		}
 
+	}
+
+
+	/**
+	 * Undocumented function
+	 *
+	 * @return void
+	 */
+	public function fetch_client_net() {
+
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'csip' ) ) {
+			die( 'Permission denied' );
+		}
+
+		/**
+		 * Default response
+		 */
+		$response = array(
+			'status'    => 500,
+			'message'   => 'Something is wrong, please try again later ...',
+			'client_id' => false,
+		);
+
+		$client_id = intval( $_POST['params']['client_id'] );
+
+		$net = get_post_meta( $client_id, '_cli_net_period', true );
+
+		if ( $net ) {
+			$response['status']  = 200;
+			$response['message'] = 'success';
+			$response['net']     = $net;
+		}
+
+		// do_action( 'admin_notices' );
+
+		add_action(
+			'admin_notices',
+			function () {
+				?>
+					<div class="notice notice-error is-dismissible">
+						<p><?php _e( 'Something went wrong!', 'invoice-it' ); ?></p>
+					</div>
+				<?php
+			},
+			101
+		);
+
+		die( json_encode( $response ) );
 	}
 
 }

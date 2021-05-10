@@ -1,10 +1,11 @@
 {
-    "styles/admin.css": "styles/admin-99ec886c.css",
-    "scripts/admin.js": "scripts/admin-99ec886c.js",
-    "scripts/invoice.js": "scripts/invoice-99ec886c.js",
-    "styles/main.css": "styles/main-99ec886c.css",
-    "scripts/main.js": "scripts/main-99ec886c.js",
-    "styles/print.css": "styles/print-99ec886c.css",
-    "scripts/print.js": "scripts/print-99ec886c.js",
+    "styles/admin.css": "styles/admin-76af474e.css",
+    "scripts/admin.js": "scripts/admin-76af474e.js",
+    "scripts/ajax.js": "scripts/ajax-76af474e.js",
+    "scripts/invoice.js": "scripts/invoice-76af474e.js",
+    "styles/main.css": "styles/main-76af474e.css",
+    "scripts/main.js": "scripts/main-76af474e.js",
+    "styles/print.css": "styles/print-76af474e.css",
+    "scripts/print.js": "scripts/print-76af474e.js",
     "sprite/spritemap.svg": "sprite/spritemap.svg"
 }

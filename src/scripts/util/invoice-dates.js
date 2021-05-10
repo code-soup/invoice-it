@@ -19,9 +19,6 @@ export default function () {
 
 	const invDateFlap = flatpickr(invDate_el, {
 		onReady: function (e) {
-			if (invDate_el.value !== '') {
-				console.log('invoice date: ' + invDate_el.value);
-			}
 
 			if (e.length === 0) {
 				invDate_el.value = new Date().toISOString().slice(0, 10);
