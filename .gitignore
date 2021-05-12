@@ -113,3 +113,6 @@ src/config-local.js
 
 # Don't commit VS Code SFTP settings
 .vscode
+
+# Don't commit WordPress svn folder
+svn

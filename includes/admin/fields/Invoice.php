@@ -39,7 +39,7 @@ class Invoice {
 			->where( 'post_type', '=', 'invoice' )
 			->add_fields(
 				array(
-					Field::make( 'text', 'inv_number', __( 'Invoice number', 'invoiceit' ) )
+					Field::make( 'text', 'inv_number', __( 'Invoice Number', 'invoiceit' ) )
 						->set_attribute( 'readOnly', true )
 						->set_default_value( \csip\admin\Helpers::get_next_invoice_number() )
 						->set_classes( 'span-4 inv-number' ),
@@ -58,7 +58,7 @@ class Invoice {
 						->set_classes( 'span-4 inv-status csip-select2' ),
 					Field::make( 'date', 'inv_date', __( 'Invoice Date', 'invoiceit' ) )
 						->set_classes( 'span-4 inv-date' ),
-					Field::make( 'number', 'inv_net_period', __( 'Net', 'invoiceit' ) )
+					Field::make( 'number', 'inv_net_period', _x( 'Net', 'The period of time between an invoice is issued and the date payment is due', 'invoiceit' ) )
 						->set_min( 0 )
 						->set_classes( 'span-4 inv-net-period' )
 						->set_help_text( 'Days until the payment is due' ),

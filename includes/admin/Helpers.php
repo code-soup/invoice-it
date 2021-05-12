@@ -107,7 +107,7 @@ class Helpers {
 
 		$currencies = self::get_currencies_data();
 
-		array_unshift( $currencies, __( '-- Select currency', 'invoiceit' ) );
+		array_unshift( $currencies, __( '-- Select Currency', 'invoiceit' ) );
 
 		return $currencies;
 	}
@@ -128,7 +128,7 @@ class Helpers {
 			$array[ $country['cca3'] ] = $country['name']['common'];
 		}
 
-		array_unshift( $array, __( '-- Select country', 'invoiceit' ) );
+		array_unshift( $array, __( '-- Select Country', 'invoiceit' ) );
 
 		return $array;
 	}

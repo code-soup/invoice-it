@@ -46,12 +46,12 @@ class Clients {
 						->set_classes( 'span-4 cli-address-2' ),
 					Field::make( 'text', 'cli_city', __( 'City', 'invoiceit' ) )
 						->set_classes( 'span-4 cli-city' ),
-					Field::make( 'text', 'cli_zip', __( 'Zip code', 'invoiceit' ) )
+					Field::make( 'text', 'cli_zip', __( 'Zip Code', 'invoiceit' ) )
 						->set_classes( 'span-4 cli-zip' ),
 					Field::make( 'select', 'cli_country', __( 'Country', 'invoiceit' ) )
 						->set_options( \csip\admin\Helpers::get_countries() )
 						->set_classes( 'span-4 cli-country csip-select2' ),
-					Field::make( 'select', 'cli_state', __( 'State', 'invoiceit' ) )
+					Field::make( 'select', 'cli_state', _x( 'State', 'As a State of a Country', 'invoiceit' ) )
 						->set_options( \csip\admin\Helpers::get_states() )
 						->set_classes( 'span-4 cli-state csip-select2' ),
 				)
@@ -123,7 +123,7 @@ class Clients {
 						->set_min( 0 )
 						->set_default_value( 0 )
 						->set_classes( 'span-6 cli-tax-rate' ),
-					Field::make( 'number', 'cli_net_period', __( 'Net', 'invoiceit' ) )
+					Field::make( 'number', 'cli_net_period', _x( 'Net', 'The period of time between an invoice is issued and the date payment is due', 'invoiceit' ) )
 						->set_min( 0 )
 						->set_default_value( 30 )
 						->set_classes( 'span-6 cli-net_period' )

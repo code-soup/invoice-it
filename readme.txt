@@ -31,7 +31,7 @@ This free plugin lets you create invoices, maintain a client base and choose a p
 #Invoice#
 - automatic invoice number with prefix if prefix is set in plugin options
 - choose a client & invoice status
-- date and due date with NET period
+- date and due date with NET period, NET is automatically pulled from selected Client settings
 - choose payment option from user predefined Bank Accounts
 - choose weather to show the global signature or not
 - add invoice items: title, description, quantity, unit, rate & discount - totals are calculated automatically
@@ -47,9 +47,15 @@ This free plugin lets you create invoices, maintain a client base and choose a p
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 
 == Screenshots ==
-1. Plugin Options
-2. Invoice
-3. Client Options
+1. Company Info - Branding
+2. Company Info - Address
+3. Company Info - Contact
+4. Company Info - Legal
+5. Company Info - Invoice Options
+6. New Bank Account Setup
+7. New Client Setup
+8. New Invoice Setup
+9. Rendered Invoice
 
 == Changelog ==
 1.0.0 - First release
