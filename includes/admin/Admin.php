@@ -448,20 +448,6 @@ class Admin {
 			$response['net']     = $net;
 		}
 
-		// do_action( 'admin_notices' );
-
-		add_action(
-			'admin_notices',
-			function () {
-				?>
-					<div class="notice notice-error is-dismissible">
-						<p><?php _e( 'Something went wrong!', 'invoice-it' ); ?></p>
-					</div>
-				<?php
-			},
-			101
-		);
-
 		die( json_encode( $response ) );
 	}
 

@@ -29,8 +29,7 @@
 		"php": ">=7.3.0",
 		"composer/installers": "~1.0",
 		"htmlburger/carbon-fields": "~2.2.0",
-		"htmlburger/carbon-field-number": "^2.2.0",
-		"mledoze/countries": "^4.0"
+		"htmlburger/carbon-field-number": "^2.2.0"
 	},
 	"extra": {
 		"installer-paths": {

@@ -121,11 +121,12 @@ class Helpers {
 	 * @since    1.0.0
 	 */
 	public static function get_countries() {
+
 		$countries = self::get_countries_data();
 
 		$array = array();
 		foreach ( $countries as $country ) {
-			$array[ $country['cca3'] ] = $country['name']['common'];
+			$array[ $country['alpha3Code'] ] = $country['name'];
 		}
 
 		array_unshift( $array, __( '-- Select Country', 'invoiceit' ) );
@@ -141,8 +142,8 @@ class Helpers {
 	 * @return   array of states
 	 * @since    1.0.0
 	 */
-	// TODO: fetch states with AJAX.
 	public static function get_states() {
+		// TODO: fetch states with AJAX.
 		$array = array(
 			'0' => __( '-- Select State', 'invoiceit' ),
 		);
@@ -162,9 +163,9 @@ class Helpers {
 
 		$countries_data = get_transient( 'csip_countries' );
 
-		if ( $countries_data === false ) {
+		if ( false === $countries_data ) {
 
-			$countries_json = file_get_contents( CSIP_PATH . '/vendor/mledoze/countries/dist/countries.json' );
+			$countries_json = file_get_contents( 'https://restcountries.eu/rest/v2/all' );
 			$countries_data = json_decode( $countries_json, true );
 
 			set_transient( 'csip_countries', $countries_data, 3600 * 24 );
@@ -179,15 +180,15 @@ class Helpers {
 	/**
 	 * Return country name from cca3 iso code
 	 *
-	 * @param    [type] $cca3_code
+	 * @param    [type] $cca3
 	 * @return   string
 	 * @since    1.0.0
 	 */
-	public static function get_country_name( $cca3_code ) {
+	public static function get_country_name( $cca3 ) {
 
 		foreach ( self::get_countries_data() as $country ) {
-			if ( $country['cca3'] === $cca3_code ) {
-				$country_name = $country['name']['common'];
+			if ( $country['alpha3Code'] === $cca3 ) {
+				$country_name = $country['name'];
 				break;
 			}
 		}
@@ -208,7 +209,7 @@ class Helpers {
 
 		$currencies = get_transient( 'csip_currencies' );
 
-		if ( $currencies === false ) {
+		if ( false === $currencies || '' === $currencies ) {
 
 			$countries_data = self::get_countries_data();
 
@@ -216,9 +217,12 @@ class Helpers {
 
 			foreach ( $countries_data as $country_data ) {
 
-				foreach ( $country_data['currencies'] as $cca3 => $currency ) {
-					$symbol              = $currency['symbol'] ? ' (' . $currency['symbol'] . ')' : '';
-					$currencies[ $cca3 ] = $currency['name'] . ' - ' . $cca3 . $symbol;
+				foreach ( $country_data['currencies'] as $currency ) {
+					$symbol = $currency['symbol']
+							? ' (' . $currency['symbol'] . ')'
+							: '';
+
+					$currencies[ $currency['code'] ] = $currency['name'] . ' - ' . $currency['code'] . $symbol;
 				}
 			}
 
