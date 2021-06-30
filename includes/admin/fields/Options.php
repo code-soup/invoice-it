@@ -115,7 +115,7 @@ class Options {
 						->set_classes( 'span-6 csip-company-prefix' ),
 					Field::make( 'number', 'csip_company_nin', __( 'Next Invoice Number', 'invoiceit' ) )
 						->set_help_text( __( 'This will be the next Invoice number, change this only if you need to reset it.', 'invoiceit' ) )
-						->set_default_value( 0 )
+						->set_default_value( 1 )
 						->set_classes( 'span-6 csip-company-nin' ),
 					Field::make( 'select', 'csip_company_fallback_currency', __( 'Fallback Currency', 'invoiceit' ) )
 						->set_options( \csip\admin\Helpers::get_currencies() )
