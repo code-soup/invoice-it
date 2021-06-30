@@ -2,9 +2,9 @@
 Contributors: codesoup, iramljak
 Tags: invoice, invoicing
 Requires at least: 5.0
-Tested up to: 5.7.1
+Tested up to: 5.7.2
 Requires PHP: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -59,3 +59,9 @@ This free plugin lets you create invoices, maintain a client base and choose a p
 
 == Changelog ==
 1.0.0 - First release
+
+1.0.1
+- Fix: On plugin activation update plugin meta option for first invoice number
+- Update: Set a default value in admin plugin options for first invoice number
+- Update: Remove debug log for reload_permalinks_structure function
+- Update: Plugin Author
